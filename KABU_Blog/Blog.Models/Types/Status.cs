@@ -32,4 +32,11 @@ namespace Blog.Models.Types
         [Display(ResourceType = typeof(Displays), Name = "UnRead")]
         UnRead = 0
     }
+
+    public enum BlockStatus
+    {
+        Allowed = 1,
+
+        Banned = 0
+    }
 }
