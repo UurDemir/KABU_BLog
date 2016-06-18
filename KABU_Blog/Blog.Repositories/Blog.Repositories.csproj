@@ -55,6 +55,8 @@
     <Compile Include="Commons\IGenericRepository.cs" />
     <Compile Include="IArticleRepository.cs" />
     <Compile Include="ICategoryRepository.cs" />
+    <Compile Include="IPageRepository.cs" />
+    <Compile Include="PageRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
