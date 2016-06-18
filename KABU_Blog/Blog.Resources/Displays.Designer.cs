@@ -106,6 +106,15 @@ namespace Blog.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mesaj.
+        /// </summary>
+        public static string Message {
+            get {
+                return ResourceManager.GetString("Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ad.
         /// </summary>
         public static string Name {
@@ -138,6 +147,15 @@ namespace Blog.Resources {
         public static string Status {
             get {
                 return ResourceManager.GetString("Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kullanıcı Ip.
+        /// </summary>
+        public static string UserIp {
+            get {
+                return ResourceManager.GetString("UserIp", resourceCulture);
             }
         }
     }

@@ -132,6 +132,9 @@
   <data name="Draft" xml:space="preserve">
     <value>Taslak</value>
   </data>
+  <data name="Message" xml:space="preserve">
+    <value>Mesaj</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Ad</value>
   </data>
@@ -143,5 +146,8 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>Durum</value>
+  </data>
+  <data name="UserIp" xml:space="preserve">
+    <value>Kullanıcı Ip</value>
   </data>
 </root>
