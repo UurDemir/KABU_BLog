@@ -62,6 +62,7 @@
     <Compile Include="IArticleChangeRepository.cs" />
     <Compile Include="IArticleRepository.cs" />
     <Compile Include="ICategoryRepository.cs" />
+    <Compile Include="ICommentRepository.cs" />
     <Compile Include="IContactsRepository.cs" />
     <Compile Include="ILanguageRepositories.cs" />
     <Compile Include="ISocialMediaRepositories.cs" />
