@@ -16,10 +16,5 @@ namespace Blog.Repositories
         {
             
         }
-
-        public Task<Article> FindById<TProperty>(int id, params Expression<Func<Article, TProperty>>[] includes)
-        {
-            return FindBy(x => x.Id == id, includes);
-        }
     }
 }

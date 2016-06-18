@@ -58,8 +58,11 @@
     <Compile Include="IArticleChangeRepository.cs" />
     <Compile Include="IArticleRepository.cs" />
     <Compile Include="ICategoryRepository.cs" />
-    <Compile Include="ICommentRepository.cs" />
+    <Compile Include="IPageRepository.cs" />
+    <Compile Include="ITagRepository.cs" />
+    <Compile Include="PageRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TagRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Blog.Models\Blog.Models.csproj">

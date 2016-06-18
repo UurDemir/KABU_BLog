@@ -9,7 +9,7 @@ using Blog.Repositories.Commons;
 
 namespace Blog.Repositories
 {
-    public interface IArticleRepository : IGenericRepository<Article>
+    public interface IPageRepository : IGenericRepository<Page>
     {
     }
 }
