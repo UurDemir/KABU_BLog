@@ -64,7 +64,6 @@
     <Compile Include="ICategoryService.cs" />
     <Compile Include="IPageService.cs" />
     <Compile Include="ISettingService.cs" />
-    <Compile Include="ICategoryService.cs" />
     <Compile Include="IContactService.cs" />
     <Compile Include="ILanguageService.cs" />
     <Compile Include="ISocialMediaService.cs" />
@@ -87,7 +86,7 @@
       <Name>Blog.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Blog.Models\Blog.Models.csproj">
-      <Project>{5E051C0B-A8AA-4D15-9AB8-7B2C285A007A}</Project>
+      <Project>{5e051c0b-a8aa-4d15-9ab8-7b2c285a007a}</Project>
       <Name>Blog.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\Blog.Repositories\Blog.Repositories.csproj">
