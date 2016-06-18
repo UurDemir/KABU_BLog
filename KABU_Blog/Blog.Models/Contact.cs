@@ -14,7 +14,7 @@ namespace Blog.Models
 {
     public class Contact : Entity<int>
     {
-        [Display(ResourceType = typeof(Displays), Name = "Name")]
+        [Display(ResourceType = typeof(Displays), Name = "FullName")]
         [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
         public string Fullname { get; set; }
 
