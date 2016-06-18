@@ -1,7 +1,17 @@
-﻿@{
+﻿@model List<Blog.Models.SocialMedia>
+@{
     ViewBag.Title = "About";
 }
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
 <p>Use this area to provide additional information.</p>
+
+@foreach (var setting in Model)
+{
+    @Html.Label(setting.Id)<br/>
+    @setting.Name<br />
+    @Html.Label(setting.Icon)<br />
+    @Html.Label(setting.Link)<br/>
+    @Html.Label(setting.Status.ToString())<br />
+}

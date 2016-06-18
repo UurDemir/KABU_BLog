@@ -8,6 +8,6 @@ namespace Blog.Services
 {
     public interface ITagService:IEntityService<Tag>
     {
-        Task<Tag> FindById<TProperty>(int id, params Expression<Func<Tag, TProperty>>[] includes);
+        Task<Tag> FindById(int id, params Expression<Func<Tag, object>>[] includes);
     }
 }

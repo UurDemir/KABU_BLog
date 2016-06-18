@@ -11,6 +11,6 @@ namespace Blog.Services
 {
     public interface IArticleService : IEntityService<Article>
     {
-        Task<Article> FindById<TProperty>(int id, params Expression<Func<Article, TProperty>>[] includes);
+        Task<Article> FindById(int id, params Expression<Func<Article, object>>[] includes);
     }
 }

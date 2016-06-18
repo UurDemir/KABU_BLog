@@ -46,12 +46,17 @@ namespace Blog.Services.Commons
             _unitOfWork.Commit();
         }
 
-        public Task<IQueryable<T>> Get<TProperty>(Expression<Func<T, bool>> predicate, params Expression<Func<T, TProperty>>[] includes)
+        public Task<IQueryable<T>> Get(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includes)
         {
             return _repository.Get(predicate, includes); ;
         }
 
-        public Task<T> FindBy<TProperty>(Expression<Func<T, bool>> predicate, params Expression<Func<T, TProperty>>[] includes)
+        public Task<IQueryable<T>> Get( params Expression<Func<T, object>>[] includes)
+        {
+            return _repository.Get(includes); ;
+        }
+
+        public Task<T> FindBy(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includes)
         {
             return _repository.FindBy(predicate, includes);
         }

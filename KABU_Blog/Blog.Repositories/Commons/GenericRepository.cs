@@ -29,12 +29,17 @@ namespace Blog.Repositories.Commons
             return _dbSet.Remove(entity);
         }
 
-        public Task<T> FindBy<TProperty>(Expression<Func<T, bool>> predicate, params Expression<Func<T, TProperty>>[] includes)
+        public Task<T> FindBy(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includes)
         {
             return _dbSet.IncludeRange(includes).FirstOrDefaultAsync(predicate);
         }
 
-        public Task<IQueryable<T>> Get<TProperty>(Expression<Func<T, bool>> predicate, params Expression<Func<T, TProperty>>[] includes)
+        public Task<IQueryable<T>> Get(params Expression<Func<T, object>>[] includes)
+        {
+            return Task.FromResult(_dbSet.IncludeRange(includes));
+        }
+
+        public Task<IQueryable<T>> Get(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includes)
         {
             return Task.FromResult(_dbSet.Where(predicate).IncludeRange(includes));
         }

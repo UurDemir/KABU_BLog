@@ -8,6 +8,6 @@ namespace Blog.Services
 {
     public interface ICategoryService:IEntityService<Category>
     {
-        Task<Category> FindById<TProperty>(int id, params Expression<Func<Category, TProperty>>[] includes);
+        Task<Category> FindById(int id, params Expression<Func<Category, object>>[] includes);
     }
 }

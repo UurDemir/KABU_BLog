@@ -8,6 +8,6 @@ namespace Blog.Services
 {
     public interface ILanguageService:IEntityService<Language>
     {
-        Task<Language> FindById<TProperty>(string id, params Expression<Func<Language, TProperty>>[] includes);
+        Task<Language> FindById(string id, params Expression<Func<Language, object>>[] includes);
     }
 }

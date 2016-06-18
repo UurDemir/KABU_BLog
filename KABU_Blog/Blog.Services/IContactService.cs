@@ -8,6 +8,6 @@ namespace Blog.Services
 {
     public interface IContactService: IEntityService<Contact>
     {
-        Task<Contact> FindById<TProperty>(int id, params Expression<Func<Contact, TProperty>>[] includes);
+        Task<Contact> FindById(int id, params Expression<Func<Contact, object>>[] includes);
     }
 }

@@ -18,7 +18,7 @@ namespace Blog.Services
 
         }
 
-        public Task<Page> FindById<TProperty>(int id, params Expression<Func<Page, TProperty>>[] includes)
+        public Task<Page> FindById(int id, params Expression<Func<Page, object>>[] includes)
         {
             return FindBy(x => x.Id == id, includes);
         }

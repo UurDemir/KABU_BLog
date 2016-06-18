@@ -17,7 +17,7 @@ namespace Blog.Services
         {
         }
 
-        public Task<SocialMedia> FindById<TProperty>(string id, params Expression<Func<SocialMedia, TProperty>>[] includes)
+        public Task<SocialMedia> FindById(string id, params Expression<Func<SocialMedia, object>>[] includes)
         {
             return FindBy(x => x.Id == id, includes);
         }

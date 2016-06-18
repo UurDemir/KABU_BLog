@@ -17,7 +17,7 @@ namespace Blog.Services
         {
         }
 
-        public Task<Category> FindById<TProperty>(int id, params Expression<Func<Category, TProperty>>[] includes)
+        public Task<Category> FindById(int id, params Expression<Func<Category, object>>[] includes)
         {
             return FindBy(x => x.Id == id, includes);
         }

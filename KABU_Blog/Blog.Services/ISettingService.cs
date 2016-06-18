@@ -11,6 +11,6 @@ namespace Blog.Services
 {
     public interface ISettingService : IEntityService<Setting>
     {
-        Task<Setting> FindById<TProperty>(string id, params Expression<Func<Setting, TProperty>>[] includes);
+        Task<Setting> FindById(string id, params Expression<Func<Setting, object>>[] includes);
     }
 }

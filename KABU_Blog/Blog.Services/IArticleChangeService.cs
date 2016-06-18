@@ -8,6 +8,6 @@ namespace Blog.Services
 {
     public interface IArticleChangeService : IEntityService<ArticleChange>
     {
-        Task<ArticleChange> FindById<TProperty>(int id, params Expression<Func<ArticleChange, TProperty>>[] includes);
+        Task<ArticleChange> FindById(int id, params Expression<Func<ArticleChange, object>>[] includes);
     }
 }

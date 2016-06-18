@@ -8,6 +8,7 @@ namespace Blog.Models
     public class Setting: Entity<string>
     {
         [Column("Key")]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public override string Id { get; set; }
 
         [Display(ResourceType = typeof(Displays), Name = "Value")]

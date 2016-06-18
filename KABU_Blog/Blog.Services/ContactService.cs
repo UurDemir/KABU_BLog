@@ -17,7 +17,7 @@ namespace Blog.Services
         {
         }
 
-        public Task<Contact> FindById<TProperty>(int id, params Expression<Func<Contact, TProperty>>[] includes)
+        public Task<Contact> FindById(int id, params Expression<Func<Contact, object>>[] includes)
         {
             return FindBy(x => x.Id == id, includes);
         }

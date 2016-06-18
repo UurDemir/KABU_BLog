@@ -13,10 +13,12 @@ namespace Blog.Services.Commons
         void Delete(T entity);
         
         void Update(T entity);
+
+        Task<IQueryable<T>> Get( params Expression<Func<T, object>>[] includes);
+
+        Task<IQueryable<T>> Get(Expression<Func<T, bool>> predicate,params Expression<Func<T, object>>[] includes);
         
-        Task<IQueryable<T>> Get<TProperty>(Expression<Func<T, bool>> predicate,params Expression<Func<T, TProperty>>[] includes);
-        
-        Task<T> FindBy<TProperty>(Expression<Func<T, bool>> predicate, params Expression<Func<T, TProperty>>[] includes);
+        Task<T> FindBy(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includes);
 
     }
 }

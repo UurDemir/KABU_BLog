@@ -11,6 +11,6 @@ namespace Blog.Services
 {
     public interface ICommentService:IEntityService<Comment>
     {
-        Task<Comment> FindById<TProperty>(int id, params Expression<Func<Comment, TProperty>>[] includes);
+        Task<Comment> FindById(int id, params Expression<Func<Comment, object>>[] includes);
     }
 }

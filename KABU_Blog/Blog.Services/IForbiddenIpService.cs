@@ -12,7 +12,7 @@ namespace Blog.Services
 {
     public interface IForbiddenIpService : IEntityService<ForbiddenIp>
     {
-        Task<ForbiddenIp> FindById<TProperty>(int id, params Expression<Func<ForbiddenIp, TProperty>>[] includes);
+        Task<ForbiddenIp> FindById(int id, params Expression<Func<ForbiddenIp, object>>[] includes);
 
     }
 }

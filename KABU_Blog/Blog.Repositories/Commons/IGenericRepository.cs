@@ -8,8 +8,9 @@ namespace Blog.Repositories.Commons
 {
     public interface IGenericRepository<T>
     {
-        Task<IQueryable<T>> Get<TProperty>(Expression<Func<T, bool>> predicate, params Expression<Func<T, TProperty>>[] includes);
-        Task<T> FindBy<TProperty>(Expression<Func<T, bool>> predicate, params Expression<Func<T, TProperty>>[] includes);
+        Task<IQueryable<T>> Get(params Expression<Func<T, object>>[] includes);
+        Task<IQueryable<T>> Get(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includes);
+        Task<T> FindBy(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includes);
         T Add(T entity);
         T Delete(T entity);
         T Update(T entity);

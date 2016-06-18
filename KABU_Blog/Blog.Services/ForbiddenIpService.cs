@@ -18,7 +18,7 @@ namespace Blog.Services
                 
         }
 
-        public Task<ForbiddenIp> FindById<TProperty>(int id, params Expression<Func<ForbiddenIp, TProperty>>[] includes )
+        public Task<ForbiddenIp> FindById(int id, params Expression<Func<ForbiddenIp, object>>[] includes )
         {
             return FindBy(x => x.Id == id, includes);
         }

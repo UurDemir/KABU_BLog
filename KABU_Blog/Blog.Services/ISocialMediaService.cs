@@ -8,6 +8,6 @@ namespace Blog.Services
 {
     public interface ISocialMediaService:IEntityService<SocialMedia>
     {
-        Task<SocialMedia> FindById<TProperty>(string id, params Expression<Func<SocialMedia, TProperty>>[] includes);
+        Task<SocialMedia> FindById(string id, params Expression<Func<SocialMedia, object>>[] includes);
     }
 }
