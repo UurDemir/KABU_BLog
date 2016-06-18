@@ -18,6 +18,8 @@ namespace Blog.Models
         [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
         public string Name { get; set; }
 
+        [Display(ResourceType = typeof(Displays), Name = "Email")]
+        [RegularExpression(@"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Regex")]
         [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
         public string Email { get; set; }
 
@@ -35,7 +37,7 @@ namespace Blog.Models
 
         [Display(ResourceType = typeof(Displays), Name = "Status")]
         [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
-        public CommentStatus Type { get; set; }
+        public CommentStatus Status { get; set; }
 
 
         #region Foreign Key(s)
