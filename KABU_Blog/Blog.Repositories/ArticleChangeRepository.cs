@@ -5,7 +5,7 @@ using Blog.Repositories.Commons;
 
 namespace Blog.Repositories
 {
-    class ArticleChangeRepository : GenericRepository<ArticleChange>
+    public class ArticleChangeRepository : GenericRepository<ArticleChange>, IArticleChangeRepository
     {
         public ArticleChangeRepository(DbContext context) : base(context)
         {
