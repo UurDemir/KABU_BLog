@@ -47,7 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Article.cs" />
     <Compile Include="Category.cs" />
+    <Compile Include="Comment.cs" />
     <Compile Include="Commons\BaseEntity.cs" />
     <Compile Include="Commons\Entity.cs" />
     <Compile Include="Commons\IEntity.cs" />

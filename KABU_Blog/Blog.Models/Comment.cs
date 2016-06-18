@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,30 +11,35 @@ using Blog.Resources;
 
 namespace Blog.Models
 {
-    public class Category : MonitoredEntity<int>
+    public class Comment : Entity<int>
     {
-        [Display(ResourceType = typeof(Displays),Name = "Name")]
-        [Required(ErrorMessageResourceType = typeof(Messages),ErrorMessageResourceName = "Required")]
+        public int ArticleId { get; set; }
+
+        [Display(ResourceType = typeof(Displays), Name = "Name")]
+        [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
         public string Name { get; set; }
 
-        [Display(ResourceType = typeof(Displays), Name = "Description")]
         [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
-        public string Description { get; set; }
-        
-        [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
-        public string Slug { get; set; }
+        public string Email { get; set; }
 
-        [Display(ResourceType = typeof(Displays), Name = "Status")]
+        [Display(ResourceType = typeof(Displays), Name = "Message")]
         [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
-        public Status Status { get; set; }
+        public string Message { get; set; }
+
+        [Display(ResourceType = typeof(Displays), Name = "UserIp")]
+        [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
+        public string UserIp { get; set; }
+
+
+        public DateTime Created { get; set; }
+
+        public Status Type { get; set; }
+
 
         #region Foreign Key(s)
 
         [Column("Parent")]
         public int? ParentId { get; set; }
-
-        [Column("Language")]
-        public string LanguageId { get; set; }
 
         #endregion
 
@@ -43,15 +47,6 @@ namespace Blog.Models
 
         [ForeignKey("ParentId")]
         public Category Parent { get; set; }
-
-        [ForeignKey("Language")]
-        public Language Language { get; set; }
-
-        #endregion
-
-        #region Computed Properties
-
-        public override string SlugId => $"category{Id}";
 
         #endregion
     }

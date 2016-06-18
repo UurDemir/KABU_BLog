@@ -14,4 +14,11 @@ namespace Blog.Models.Types
         [Display(ResourceType = typeof(Displays), Name = "Deleted")]
         Deleted = -999
     }
+
+    public enum CommentStatus
+    {
+        Approved = 1,
+
+        Ignored = 0
+    }
 }
