@@ -13,7 +13,7 @@ namespace Blog.Models
 
         [Display(ResourceType = typeof(Displays), Name = "Rate")]
         [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
-        public string Rate { get; set; }
+        public int Rate { get; set; }
 
         #region Foreign Key(s)
         [Column("Article")]
