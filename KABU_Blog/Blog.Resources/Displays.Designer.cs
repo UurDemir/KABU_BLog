@@ -169,7 +169,7 @@ namespace Blog.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ekstra.
+        ///   Looks up a localized string similar to Extra.
         /// </summary>
         public static string Extra {
             get {
@@ -345,6 +345,15 @@ namespace Blog.Resources {
         public static string Value {
             get {
                 return ResourceManager.GetString("Value", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gösterim Sayısı.
+        /// </summary>
+        public static string ViewCount {
+            get {
+                return ResourceManager.GetString("ViewCount", resourceCulture);
             }
         }
     }
