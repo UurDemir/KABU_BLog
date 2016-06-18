@@ -49,12 +49,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArticleInfoService.cs" />
     <Compile Include="CategoryService.cs" />
     <Compile Include="Commons\EntityService.cs" />
     <Compile Include="Commons\IEntityService.cs" />
     <Compile Include="Commons\IService.cs" />
+    <Compile Include="ContactService.cs" />
+    <Compile Include="IArticleInfoService.cs" />
     <Compile Include="ICategoryService.cs" />
+    <Compile Include="IContactService.cs" />
+    <Compile Include="ILanguageService.cs" />
+    <Compile Include="ISocialMediaService.cs" />
+    <Compile Include="LanguageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SocialMediaService.cs" />
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
   </ItemGroup>
