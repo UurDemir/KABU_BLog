@@ -55,9 +55,11 @@
     <Compile Include="CommentRepository.cs" />
     <Compile Include="Commons\GenericRepository.cs" />
     <Compile Include="Commons\IGenericRepository.cs" />
+    <Compile Include="ForbiddenIpRepository.cs" />
     <Compile Include="IArticleChangeRepository.cs" />
     <Compile Include="IArticleRepository.cs" />
     <Compile Include="ICategoryRepository.cs" />
+    <Compile Include="IForbiddenIpRepository.cs" />
     <Compile Include="IPageRepository.cs" />
     <Compile Include="ISettingRepository.cs" />
     <Compile Include="ITagRepository.cs" />
