@@ -162,4 +162,13 @@
   <data name="UserIp" xml:space="preserve">
     <value>Kullanıcı Ip</value>
   </data>
+  <data name="BlockingTime" xml:space="preserve">
+    <value>Yasak Kalkma Tarihi</value>
+  </data>
+  <data name="Rate" xml:space="preserve">
+    <value>Oran</value>
+  </data>
+  <data name="Reason" xml:space="preserve">
+    <value>Sebep</value>
+  </data>
 </root>

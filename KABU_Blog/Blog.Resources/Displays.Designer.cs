@@ -70,6 +70,15 @@ namespace Blog.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Yasak Kalkma Tarihi.
+        /// </summary>
+        public static string BlockingTime {
+            get {
+                return ResourceManager.GetString("BlockingTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to İçerik.
         /// </summary>
         public static string Content {
@@ -160,6 +169,24 @@ namespace Blog.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Oran.
+        /// </summary>
+        public static string Rate {
+            get {
+                return ResourceManager.GetString("Rate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sebep.
+        /// </summary>
+        public static string Reason {
+            get {
+                return ResourceManager.GetString("Reason", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Durum.
         /// </summary>
         public static string Status {
@@ -178,20 +205,20 @@ namespace Blog.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gösterim Sayısı.
-        /// </summary>
-        public static string ViewCount {
-            get {
-                return ResourceManager.GetString("ViewCount", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Kullanıcı Ip.
         /// </summary>
         public static string UserIp {
             get {
                 return ResourceManager.GetString("UserIp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gösterim Sayısı.
+        /// </summary>
+        public static string ViewCount {
+            get {
+                return ResourceManager.GetString("ViewCount", resourceCulture);
             }
         }
     }

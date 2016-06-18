@@ -21,4 +21,11 @@ namespace Blog.Models.Types
 
         Ignored = 0
     }
+
+    public enum BlockStatus
+    {
+        Allowed = 1,
+
+        Banned = 0
+    }
 }
