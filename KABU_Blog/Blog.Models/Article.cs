@@ -26,8 +26,8 @@ namespace Blog.Models
         public string ContentSummary { get; set; }
 
         [Display(ResourceType = typeof(Displays), Name = "ViewCount")]
-        [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName =  "Required")]
-        public string ViewCount{ get; set; }
+        [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
+        public int ViewCount { get; set; }
 
         [Display(ResourceType = typeof(Displays), Name = "Status")]
         [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
