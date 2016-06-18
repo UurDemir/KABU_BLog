@@ -145,10 +145,10 @@
     <value>Mesaj</value>
   </data>
   <data name="Name" xml:space="preserve">
-    <value>Ad</value>
+    <value>İsim</value>
   </data>
   <data name="NativeName" xml:space="preserve">
-    <value>Yerel Ad</value>
+    <value>Yerel İsim</value>
   </data>
   <data name="Passive" xml:space="preserve">
     <value>Pasif</value>
@@ -179,5 +179,17 @@
   </data>
   <data name="UpdatedDate" xml:space="preserve">
     <value>Güncellenme Tarihi</value>
+  </data>
+  <data name="Extra" xml:space="preserve">
+    <value>Extra</value>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>Tam İsim</value>
+  </data>
+  <data name="Key" xml:space="preserve">
+    <value>Anahtar</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Değer</value>
   </data>
 </root>

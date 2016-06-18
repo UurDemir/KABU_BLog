@@ -151,6 +151,33 @@ namespace Blog.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Extra.
+        /// </summary>
+        public static string Extra {
+            get {
+                return ResourceManager.GetString("Extra", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tam İsim.
+        /// </summary>
+        public static string FullName {
+            get {
+                return ResourceManager.GetString("FullName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Anahtar.
+        /// </summary>
+        public static string Key {
+            get {
+                return ResourceManager.GetString("Key", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mesaj.
         /// </summary>
         public static string Message {
@@ -160,7 +187,7 @@ namespace Blog.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ad.
+        ///   Looks up a localized string similar to İsim.
         /// </summary>
         public static string Name {
             get {
@@ -169,7 +196,7 @@ namespace Blog.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Yerel Ad.
+        ///   Looks up a localized string similar to Yerel İsim.
         /// </summary>
         public static string NativeName {
             get {
@@ -237,6 +264,15 @@ namespace Blog.Resources {
         public static string UserIp {
             get {
                 return ResourceManager.GetString("UserIp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Değer.
+        /// </summary>
+        public static string Value {
+            get {
+                return ResourceManager.GetString("Value", resourceCulture);
             }
         }
         
