@@ -8,6 +8,5 @@ namespace Blog.Repositories
 {
     public interface ICategoryRepository:IGenericRepository<Category>
     {
-        Task<Category> FindById<TProperty>(int id, params Expression<Func<Category, TProperty>>[] includes);
     }
 }
