@@ -12,7 +12,7 @@ using Blog.Resources;
 
 namespace Blog.Models
 {
-    public class Category:MonitoredEntity<int>
+    public class Category : MonitoredEntity<int>
     {
         [Display(ResourceType = typeof(Displays),Name = "Name")]
         [Required(ErrorMessageResourceType = typeof(Messages),ErrorMessageResourceName = "Required")]
@@ -34,12 +34,18 @@ namespace Blog.Models
         [Column("Parent")]
         public int? ParentId { get; set; }
 
+        [Column("Language")]
+        public string LanguageId { get; set; }
+
         #endregion
 
         #region Navigation(s)
 
         [ForeignKey("ParentId")]
         public Category Parent { get; set; }
+
+        [ForeignKey("Language")]
+        public Language Language { get; set; }
 
         #endregion
 
