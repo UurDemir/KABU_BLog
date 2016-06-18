@@ -63,6 +63,8 @@
     <Compile Include="IArticleService.cs" />
     <Compile Include="ICategoryService.cs" />
     <Compile Include="ICommentService.cs" />
+    <Compile Include="ForbiddenIpService.cs" />
+    <Compile Include="IForbiddenIpService.cs" />
     <Compile Include="IPageService.cs" />
     <Compile Include="ISettingService.cs" />
     <Compile Include="IContactService.cs" />
@@ -72,6 +74,7 @@
     <Compile Include="IRatingService.cs" />
     <Compile Include="PageService.cs" />
     <Compile Include="RatingService.cs" />
+    <Compile Include="SettingService.cs" />
     <Compile Include="SocialMedia.cs" />
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
