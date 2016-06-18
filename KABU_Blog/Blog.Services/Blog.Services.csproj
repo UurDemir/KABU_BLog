@@ -76,7 +76,7 @@
     <Compile Include="PageService.cs" />
     <Compile Include="RatingService.cs" />
     <Compile Include="SettingService.cs" />
-    <Compile Include="SocialMedia.cs" />
+    <Compile Include="SocialMediaService.cs" />
     <Compile Include="TagService.cs" />
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
