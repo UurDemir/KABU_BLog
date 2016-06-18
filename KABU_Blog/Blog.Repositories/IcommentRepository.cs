@@ -6,7 +6,7 @@ using Blog.Repositories.Commons;
 
 namespace Blog.Repositories
 {
-    public interface ICategoryRepository:IGenericRepository<Category>
+    public interface ICommentRepository : IGenericRepository<Comment>
     {
     }
 }
