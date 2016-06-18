@@ -50,9 +50,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoryRepository.cs" />
+    <Compile Include="CommentRepository.cs" />
     <Compile Include="Commons\GenericRepository.cs" />
     <Compile Include="Commons\IGenericRepository.cs" />
     <Compile Include="ICategoryRepository.cs" />
+    <Compile Include="ICommentRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
