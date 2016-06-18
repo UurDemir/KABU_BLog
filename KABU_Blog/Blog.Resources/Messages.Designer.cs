@@ -77,5 +77,23 @@ namespace Blog.Resources {
                 return ResourceManager.GetString("Required", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} , en fazla {1} karakter içerebilir..
+        /// </summary>
+        public static string StringLenght {
+            get {
+                return ResourceManager.GetString("StringLenght", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} , {2} ile {1} arasında karakter içerebilir..
+        /// </summary>
+        public static string StringLenghtWithMin {
+            get {
+                return ResourceManager.GetString("StringLenghtWithMin", resourceCulture);
+            }
+        }
     }
 }

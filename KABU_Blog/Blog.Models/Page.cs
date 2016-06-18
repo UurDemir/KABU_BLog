@@ -21,7 +21,7 @@ namespace Blog.Models
 
         #region Computed Properties
 
-        public override string SlugId => $"category{Id}";
+        public override string SlugId => $"page{Id}";
 
         #endregion
     }

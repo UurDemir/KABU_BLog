@@ -33,10 +33,11 @@ namespace Blog.Models.Types
         UnRead = 0
     }
 
-    public enum BlockStatus
+    public enum BlockStatus: short
     {
+        [Display(ResourceType = typeof(Displays), Name = "Allowed")]
         Allowed = 1,
-
+        [Display(ResourceType = typeof(Displays), Name = "Banned")]
         Banned = 0
     }
 }

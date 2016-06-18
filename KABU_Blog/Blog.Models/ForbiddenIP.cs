@@ -6,20 +6,21 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Blog.Models
 {
-    public class ForbiddenIP : MonitoredEntity<int>
+    public class ForbiddenIp : MonitoredEntity<int>
     {
+        [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
         public string Ip { get; set; }
 
-        [Display(ResourceType = typeof(Displays), Name = "UserIp")]
+        [Display(ResourceType = typeof(Displays), Name = "Reason")]
         [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
         public string Reason { get; set; }
 
-        [Display(ResourceType = typeof(Displays), Name = "BlockingTime")]
+        [Display(ResourceType = typeof(Displays), Name = "EndDate")]
         [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
-        public DateTime BlockingTime { get; set; }
+        public DateTime EndDate { get; set; }
 
         [Display(ResourceType = typeof(Displays), Name = "Status")]
         [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
-        public Status Status {get ; set;}
+        public BlockStatus Status {get ; set;}
     }
 }

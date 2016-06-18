@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
+using Blog.Models.Contexts;
 
 namespace Blog.UI.Controllers
 {
@@ -6,6 +8,8 @@ namespace Blog.UI.Controllers
     {
         public ActionResult Index()
         {
+            var db = new BlogContext();
+            db.Articles.ToList();
             return View();
         }
 

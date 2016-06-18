@@ -9,9 +9,10 @@ namespace Blog.Models
 {
     public class Comment : Entity<int>
     {
-        [Display(ResourceType = typeof (Displays), Name = "Name")]
+        [Display(ResourceType = typeof (Displays), Name = "FullName")]
         [Required(ErrorMessageResourceType = typeof (Messages), ErrorMessageResourceName = "Required")]
-        public string Name { get; set; }
+        [StringLength(50,MinimumLength = 2, ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "StringLenghtWithMin")]
+        public string Fullname { get; set; }
 
         [Display(ResourceType = typeof(Displays), Name = "Email")]
         [RegularExpression(@"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Regex")]
@@ -20,6 +21,7 @@ namespace Blog.Models
 
         [Display(ResourceType = typeof (Displays), Name = "Message")]
         [Required(ErrorMessageResourceType = typeof (Messages), ErrorMessageResourceName = "Required")]
+        [StringLength(2000,ErrorMessageResourceType = typeof(Messages),ErrorMessageResourceName = "StringLenght")]
         public string Message { get; set; }
 
         [Display(ResourceType = typeof (Displays), Name = "UserIp")]

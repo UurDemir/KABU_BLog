@@ -17,7 +17,7 @@ namespace Blog.Models
 
         #region Foreign Key(s)
         [Column("Article")]
-        public string ArticleId { get; set; }
+        public int ArticleId { get; set; }
         #endregion
 
 

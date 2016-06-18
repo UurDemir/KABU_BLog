@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Blog.Models.Commons;
 using Blog.Models.Types;
@@ -36,10 +37,12 @@ namespace Blog.Models
         #region Navigation(s)
 
         [ForeignKey("ParentId")]
-        public Category Parent { get; set; }
+        public virtual Category Parent { get; set; }
 
-        [ForeignKey("Language")]
-        public Language Language { get; set; }
+        [ForeignKey("LanguageId")]
+        public virtual Language Language { get; set; }
+
+        public virtual List<Article> Articles { get; set; }
 
         #endregion
 

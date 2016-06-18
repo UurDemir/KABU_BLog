@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Blog.Models.Commons;
 using Blog.Models.Types;
@@ -26,19 +27,14 @@ namespace Blog.Models
         [Display(ResourceType = typeof(Displays), Name = "Status")]
         [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
         public Status Status { get; set; }
-
-        #region Foreign Key(s)
-
-        [Column("Category")]
-        public int CategoryId { get; set; }
-
-        #endregion
-
+        
         #region Navigastion(s)
 
-        [ForeignKey("CategoryId")]
-        public Category Category { get; set; }
-
+        public virtual List<ArticleInfo> ArticleInfos { get; set; }
+        public virtual List<Category> Categories { get; set; }
+        public virtual List<Rating> Ratings { get; set; }
+        public virtual List<Comment> Comments { get; set; }
+        public virtual List<ArticleChange> ArticleChanges { get; set; }
         #endregion
 
         #region Computed Properties

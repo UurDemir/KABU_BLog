@@ -123,4 +123,10 @@
   <data name="Required" xml:space="preserve">
     <value>{0} gerekli bir değerdir. Boş geçilemez.</value>
   </data>
+  <data name="StringLenght" xml:space="preserve">
+    <value>{0} , en fazla {1} karakter içerebilir.</value>
+  </data>
+  <data name="StringLenghtWithMin" xml:space="preserve">
+    <value>{0} , {2} ile {1} arasında karakter içerebilir.</value>
+  </data>
 </root>

@@ -207,13 +207,31 @@
   <data name="Value" xml:space="preserve">
     <value>Değer</value>
   </data>
-  <data name="BlockingTime" xml:space="preserve">
-    <value>Yasak Kalkma Tarihi</value>
+  <data name="EndDate" xml:space="preserve">
+    <value>Bitiş Tarihi</value>
   </data>
   <data name="Rate" xml:space="preserve">
     <value>Oran</value>
   </data>
   <data name="Reason" xml:space="preserve">
     <value>Sebep</value>
+  </data>
+  <data name="Allowed" xml:space="preserve">
+    <value>İzinli</value>
+  </data>
+  <data name="Blocked" xml:space="preserve">
+    <value>Engellendi</value>
+  </data>
+  <data name="Banned" xml:space="preserve">
+    <value>Yasaklı</value>
+  </data>
+  <data name="Firstname" xml:space="preserve">
+    <value>İsim</value>
+  </data>
+  <data name="Surname" xml:space="preserve">
+    <value>Soyad</value>
+  </data>
+  <data name="Birthdate" xml:space="preserve">
+    <value>Doğum Tarihi</value>
   </data>
 </root>

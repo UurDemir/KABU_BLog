@@ -70,6 +70,15 @@ namespace Blog.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to İzinli.
+        /// </summary>
+        public static string Allowed {
+            get {
+                return ResourceManager.GetString("Allowed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Onaylandı.
         /// </summary>
         public static string Approved {
@@ -79,11 +88,29 @@ namespace Blog.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Yasak Kalkma Tarihi.
+        ///   Looks up a localized string similar to Yasaklı.
         /// </summary>
-        public static string BlockingTime {
+        public static string Banned {
             get {
-                return ResourceManager.GetString("BlockingTime", resourceCulture);
+                return ResourceManager.GetString("Banned", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Doğum Tarihi.
+        /// </summary>
+        public static string Birthdate {
+            get {
+                return ResourceManager.GetString("Birthdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Engellendi.
+        /// </summary>
+        public static string Blocked {
+            get {
+                return ResourceManager.GetString("Blocked", resourceCulture);
             }
         }
         
@@ -169,11 +196,29 @@ namespace Blog.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Extra.
+        ///   Looks up a localized string similar to Bitiş Tarihi.
+        /// </summary>
+        public static string EndDate {
+            get {
+                return ResourceManager.GetString("EndDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ekstra.
         /// </summary>
         public static string Extra {
             get {
                 return ResourceManager.GetString("Extra", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to İsim.
+        /// </summary>
+        public static string Firstname {
+            get {
+                return ResourceManager.GetString("Firstname", resourceCulture);
             }
         }
         
@@ -291,6 +336,15 @@ namespace Blog.Resources {
         public static string Status {
             get {
                 return ResourceManager.GetString("Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Soyad.
+        /// </summary>
+        public static string Surname {
+            get {
+                return ResourceManager.GetString("Surname", resourceCulture);
             }
         }
         
