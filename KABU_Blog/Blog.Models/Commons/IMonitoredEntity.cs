@@ -2,7 +2,7 @@
 
 namespace Blog.Models.Commons
 {
-    public interface IMonitoredEntity<TId> : IEntity<TId>
+    public interface IMonitoredEntity
     {
         string CreatedId { get; set; }
         string UpdatedId { get; set; }

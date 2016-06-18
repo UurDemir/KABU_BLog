@@ -5,7 +5,7 @@ using Blog.Resources;
 
 namespace Blog.Models.Commons
 {
-    public class MonitoredEntity<TId>:Entity<TId>,IMonitoredEntity<TId>
+    public class MonitoredEntity<TId>:Entity<TId>,IMonitoredEntity
     {
 
         [Column(Order = 97)]

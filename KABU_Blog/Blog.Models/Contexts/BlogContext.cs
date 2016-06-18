@@ -4,6 +4,9 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
+using Blog.Models.Commons;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Blog.Models.Contexts
@@ -17,13 +20,68 @@ namespace Blog.Models.Contexts
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+            
             //modelBuilder.Entity<User>().ToTable("Users");
             //modelBuilder.Entity<IdentityRole>().ToTable("Roles");
             //modelBuilder.Entity<IdentityUserRole>().ToTable("UserRoles");
             //modelBuilder.Entity<IdentityUserLogin>().ToTable("UserLogins");
             //modelBuilder.Entity<IdentityUserClaim>().ToTable("Claims");
 
-            base.OnModelCreating(modelBuilder);
+        }
+
+        public override int SaveChanges()
+        {
+            var changedEntities = ChangeTracker.Entries();
+
+            foreach (var changedEntity in changedEntities)
+            {
+                if (changedEntity is IMonitoredEntity)
+                {
+                    var entity = changedEntity as IMonitoredEntity;
+                    if (changedEntity.State == EntityState.Added)
+                    {
+                        entity.Created = DateTime.Now;
+                        entity.CreatedId = HttpContext.Current.User.Identity.GetUserId();
+                        entity.Updated = DateTime.Now;
+                        entity.UpdatedId = HttpContext.Current.User.Identity.GetUserId();
+                    }
+                    else if (changedEntity.State == EntityState.Modified)
+                    {
+                        entity.Updated = DateTime.Now;
+                        entity.UpdatedId = HttpContext.Current.User.Identity.GetUserId();
+                    }
+
+                }
+            }
+            return base.SaveChanges();
+        }
+
+        public override Task<int> SaveChangesAsync()
+        {
+            var changedEntities = ChangeTracker.Entries();
+
+            foreach (var changedEntity in changedEntities)
+            {
+                if (changedEntity is IMonitoredEntity)
+                {
+                    var entity = changedEntity as IMonitoredEntity;
+                    if (changedEntity.State == EntityState.Added)
+                    {
+                        entity.Created = DateTime.Now;
+                        entity.CreatedId = HttpContext.Current.User.Identity.GetUserId();
+                        entity.Updated = DateTime.Now;
+                        entity.UpdatedId = HttpContext.Current.User.Identity.GetUserId();
+                    }
+                    else if (changedEntity.State == EntityState.Modified)
+                    {
+                        entity.Updated = DateTime.Now;
+                        entity.UpdatedId = HttpContext.Current.User.Identity.GetUserId();
+                    }
+
+                }
+            }
+            return base.SaveChangesAsync();
         }
 
         public static BlogContext Create()
