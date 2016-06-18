@@ -33,7 +33,9 @@ namespace Blog.Models
 
         public DateTime Created { get; set; }
 
-        public Status Type { get; set; }
+        [Display(ResourceType = typeof(Displays), Name = "Status")]
+        [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
+        public CommentStatus Type { get; set; }
 
 
         #region Foreign Key(s)
@@ -47,6 +49,9 @@ namespace Blog.Models
 
         [ForeignKey("ParentId")]
         public Category Parent { get; set; }
+
+        [ForeignKey("ArticleId")]
+        public Article Article { get; set; }
 
         #endregion
     }
