@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using Blog.Models.Commons;
 using Blog.Models.Types;
 using Blog.Resources;

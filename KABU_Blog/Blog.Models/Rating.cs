@@ -1,12 +1,7 @@
 ﻿using Blog.Models.Commons;
 using Blog.Resources;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Blog.Models
 {
@@ -14,7 +9,7 @@ namespace Blog.Models
     {
         [Display(ResourceType = typeof(Displays), Name = "UserIp")]
         [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
-        public string UserIP { get; set; }
+        public string UserIp { get; set; }
 
         [Display(ResourceType = typeof(Displays), Name = "Rate")]
         [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
