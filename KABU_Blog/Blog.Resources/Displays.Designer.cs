@@ -169,16 +169,7 @@ namespace Blog.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Red Edildi.
-        /// </summary>
-        public static string Ignored {
-            get {
-                return ResourceManager.GetString("Ignored", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Extra.
+        ///   Looks up a localized string similar to Ekstra.
         /// </summary>
         public static string Extra {
             get {
@@ -192,6 +183,15 @@ namespace Blog.Resources {
         public static string FullName {
             get {
                 return ResourceManager.GetString("FullName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Red Edildi.
+        /// </summary>
+        public static string Ignored {
+            get {
+                return ResourceManager.GetString("Ignored", resourceCulture);
             }
         }
         
@@ -250,24 +250,6 @@ namespace Blog.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Oran.
-        /// </summary>
-        public static string Rate {
-            get {
-                return ResourceManager.GetString("Rate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Sebep.
-        /// </summary>
-        public static string Reason {
-            get {
-                return ResourceManager.GetString("Reason", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Telefon Numarası.
         /// </summary>
         public static string PhoneNumber {
@@ -277,11 +259,29 @@ namespace Blog.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Oran.
+        /// </summary>
+        public static string Rate {
+            get {
+                return ResourceManager.GetString("Rate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Okundu.
         /// </summary>
         public static string Read {
             get {
                 return ResourceManager.GetString("Read", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sebep.
+        /// </summary>
+        public static string Reason {
+            get {
+                return ResourceManager.GetString("Reason", resourceCulture);
             }
         }
         
@@ -323,7 +323,6 @@ namespace Blog.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to Güncellenme Tarihi.
-        ///   Looks up a localized string similar to Kullanıcı Ip.
         /// </summary>
         public static string UpdatedDate {
             get {
@@ -332,11 +331,11 @@ namespace Blog.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gösterim Sayısı.
+        ///   Looks up a localized string similar to Kullanıcı Ip.
         /// </summary>
-        public static string ViewCount {
+        public static string UserIp {
             get {
-                return ResourceManager.GetString("ViewCount", resourceCulture);
+                return ResourceManager.GetString("UserIp", resourceCulture);
             }
         }
         
@@ -346,15 +345,6 @@ namespace Blog.Resources {
         public static string Value {
             get {
                 return ResourceManager.GetString("Value", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Gösterim Sayısı.
-        /// </summary>
-        public static string ViewCount {
-            get {
-                return ResourceManager.GetString("ViewCount", resourceCulture);
             }
         }
     }

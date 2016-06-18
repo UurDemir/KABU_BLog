@@ -16,7 +16,6 @@ namespace Blog.Models
         public string Value { get; set; }
 
         [Display(ResourceType = typeof (Displays), Name = "Extra")]
-        [Required(ErrorMessageResourceType = typeof (Messages), ErrorMessageResourceName = "Required")]
         public string Extra { get; set; }
 
         #region Foreign Key(s)
