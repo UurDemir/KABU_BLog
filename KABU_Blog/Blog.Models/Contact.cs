@@ -19,6 +19,7 @@ namespace Blog.Models
         public string Fullname { get; set; }
 
         [Display(ResourceType = typeof(Displays), Name = "Email")]
+        [RegularExpression(@"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?",ErrorMessageResourceType = typeof(Messages),ErrorMessageResourceName = "Regex")]
         [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
         public string Email { get; set; }
 
