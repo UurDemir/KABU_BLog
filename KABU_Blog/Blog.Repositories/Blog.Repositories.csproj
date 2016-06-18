@@ -51,7 +51,7 @@
   <ItemGroup>
     <Compile Include="ArticleChangeRepository.cs" />
     <Compile Include="ArticleRepository.cs" />
-    <Compile Include="ArticleInfoRepositories.cs" />
+    <Compile Include="ArticleInfoRepository.cs" />
     <Compile Include="CategoryRepository.cs" />
     <Compile Include="CommentRepository.cs" />
     <Compile Include="Commons\GenericRepository.cs" />
@@ -64,10 +64,10 @@
     <Compile Include="ICategoryRepository.cs" />
     <Compile Include="ICommentRepository.cs" />
     <Compile Include="IContactsRepository.cs" />
-    <Compile Include="ILanguageRepositories.cs" />
+    <Compile Include="ILanguageRepository.cs" />
     <Compile Include="IRatingRepository.cs" />
-    <Compile Include="ISocialMediaRepositories.cs" />
-    <Compile Include="LanguageRepositories.cs" />
+    <Compile Include="ISocialMediaRepository.cs" />
+    <Compile Include="LanguageRepository.cs" />
     <Compile Include="IForbiddenIpRepository.cs" />
     <Compile Include="IPageRepository.cs" />
     <Compile Include="ISettingRepository.cs" />
@@ -76,7 +76,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RatingRepository.cs" />
     <Compile Include="SettingRepository.cs" />
-    <Compile Include="SocialMediaRepositories.cs" />
+    <Compile Include="SocialMediaRepository.cs" />
     <Compile Include="TagRepository.cs" />
   </ItemGroup>
   <ItemGroup>
