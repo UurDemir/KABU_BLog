@@ -42,5 +42,11 @@ namespace Blog.Models
         public Category Parent { get; set; }
 
         #endregion
+
+        #region Computed Properties
+
+        public override string SlugId => $"category{Id}";
+
+        #endregion
     }
 }
