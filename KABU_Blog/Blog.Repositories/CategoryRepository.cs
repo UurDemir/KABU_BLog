@@ -15,10 +15,6 @@ namespace Blog.Repositories
         public CategoryRepository(DbContext context) : base(context)
         {
         }
-
-        public Task<Category> FindById<TProperty>(int id, params Expression<Func<Category, TProperty>>[] includes)
-        {
-            return FindBy(x => x.Id == id, includes);
-        }
+        
     }
 }
