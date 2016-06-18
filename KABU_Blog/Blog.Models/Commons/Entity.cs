@@ -14,5 +14,7 @@ namespace Blog.Models.Commons
         [Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public virtual TId Id { get; set; }
+
+        public virtual string SlugId => $"{Id}";
     }
 }
