@@ -348,14 +348,5 @@ namespace Blog.Resources {
                 return ResourceManager.GetString("Value", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Gösterim Sayısı.
-        /// </summary>
-        public static string ViewCount {
-            get {
-                return ResourceManager.GetString("ViewCount", resourceCulture);
-            }
-        }
     }
 }
