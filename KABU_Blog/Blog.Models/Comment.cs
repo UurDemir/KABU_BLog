@@ -31,6 +31,7 @@ namespace Blog.Models
         public string UserIp { get; set; }
 
 
+        [Display(ResourceType = typeof(Displays), Name = "CreatedDate")]
         public DateTime Created { get; set; }
 
         public Status Type { get; set; }

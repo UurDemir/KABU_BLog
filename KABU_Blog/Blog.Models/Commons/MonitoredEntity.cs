@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Blog.Resources;
 
 namespace Blog.Models.Commons
 {
@@ -11,9 +13,11 @@ namespace Blog.Models.Commons
     {
 
         [Column(Order = 97)]
+        [Display(ResourceType = typeof(Displays),Name = "CreatedDate")]
         public virtual DateTime Created { get; set; }
 
         [Column(Order = 98)]
+        [Display(ResourceType = typeof(Displays), Name = "UpdatedDate")]
         public virtual DateTime Updated { get; set; }
 
         #region Foreign Key(s)
