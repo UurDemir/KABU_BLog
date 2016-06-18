@@ -13,7 +13,6 @@ namespace Blog.Models
 {
     public class Comment : Entity<int>
     {
-        public int ArticleId { get; set; }
 
         [Display(ResourceType = typeof(Displays), Name = "Name")]
         [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
@@ -43,6 +42,9 @@ namespace Blog.Models
 
         [Column("Parent")]
         public int? ParentId { get; set; }
+
+        [Column("Article")]
+        public int ArticleId { get; set; }
 
         #endregion
 
