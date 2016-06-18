@@ -32,55 +32,14 @@ namespace Blog.Models.Contexts
 
         public override int SaveChanges()
         {
-            var changedEntities = ChangeTracker.Entries();
-
-            foreach (var changedEntity in changedEntities)
-            {
-                if (changedEntity is IMonitoredEntity)
-                {
-                    var entity = changedEntity as IMonitoredEntity;
-                    if (changedEntity.State == EntityState.Added)
-                    {
-                        entity.Created = DateTime.Now;
-                        entity.CreatedId = HttpContext.Current.User.Identity.GetUserId();
-                        entity.Updated = DateTime.Now;
-                        entity.UpdatedId = HttpContext.Current.User.Identity.GetUserId();
-                    }
-                    else if (changedEntity.State == EntityState.Modified)
-                    {
-                        entity.Updated = DateTime.Now;
-                        entity.UpdatedId = HttpContext.Current.User.Identity.GetUserId();
-                    }
-
-                }
-            }
+            SetChanges();
             return base.SaveChanges();
         }
 
+
         public override Task<int> SaveChangesAsync()
         {
-            var changedEntities = ChangeTracker.Entries();
-
-            foreach (var changedEntity in changedEntities)
-            {
-                if (changedEntity is IMonitoredEntity)
-                {
-                    var entity = changedEntity as IMonitoredEntity;
-                    if (changedEntity.State == EntityState.Added)
-                    {
-                        entity.Created = DateTime.Now;
-                        entity.CreatedId = HttpContext.Current.User.Identity.GetUserId();
-                        entity.Updated = DateTime.Now;
-                        entity.UpdatedId = HttpContext.Current.User.Identity.GetUserId();
-                    }
-                    else if (changedEntity.State == EntityState.Modified)
-                    {
-                        entity.Updated = DateTime.Now;
-                        entity.UpdatedId = HttpContext.Current.User.Identity.GetUserId();
-                    }
-
-                }
-            }
+            SetChanges();
             return base.SaveChangesAsync();
         }
 
@@ -102,6 +61,35 @@ namespace Blog.Models.Contexts
         public DbSet<Setting> Settings { get; set; }
         public DbSet<SocialMedia> SocialMediae { get; set; }
         public DbSet<Tag> Tags { get; set; }
+
+        #region Helper(s)
+        
+        private void SetChanges()
+        {
+            var changedEntities = ChangeTracker.Entries();
+
+            foreach (var changedEntity in changedEntities)
+            {
+                if (changedEntity is IMonitoredEntity)
+                {
+                    var entity = changedEntity as IMonitoredEntity;
+                    if (changedEntity.State == EntityState.Added)
+                    {
+                        entity.Created = DateTime.Now;
+                        entity.CreatedId = HttpContext.Current.User.Identity.GetUserId();
+                        entity.Updated = DateTime.Now;
+                        entity.UpdatedId = HttpContext.Current.User.Identity.GetUserId();
+                    }
+                    else if (changedEntity.State == EntityState.Modified)
+                    {
+                        entity.Updated = DateTime.Now;
+                        entity.UpdatedId = HttpContext.Current.User.Identity.GetUserId();
+                    }
+                }
+            }
+        }
+
+        #endregion
 
     }
 }

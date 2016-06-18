@@ -68,6 +68,7 @@
     <Compile Include="Commons\MonitoredEntity.cs" />
     <Compile Include="Contact.cs" />
     <Compile Include="Contexts\BlogContext.cs" />
+    <Compile Include="Extensions\Queryable.cs" />
     <Compile Include="ForbiddenIp.cs" />
     <Compile Include="Language.cs" />
     <Compile Include="Page.cs" />
