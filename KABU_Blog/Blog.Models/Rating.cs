@@ -25,6 +25,7 @@ namespace Blog.Models
         public string ArticleId { get; set; }
         #endregion
 
+
         #region Navigation(s)
         [ForeignKey("ArticleId")]
         public  Article Article { get; set; }
