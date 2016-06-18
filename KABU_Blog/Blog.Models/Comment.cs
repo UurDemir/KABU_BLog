@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Blog.Models.Commons;
 using Blog.Models.Types;
 using Blog.Resources;
@@ -13,30 +9,28 @@ namespace Blog.Models
 {
     public class Comment : Entity<int>
     {
-
-        [Display(ResourceType = typeof(Displays), Name = "Name")]
-        [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
+        [Display(ResourceType = typeof (Displays), Name = "Name")]
+        [Required(ErrorMessageResourceType = typeof (Messages), ErrorMessageResourceName = "Required")]
         public string Name { get; set; }
 
-        [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
+        [Required(ErrorMessageResourceType = typeof (Messages), ErrorMessageResourceName = "Required")]
         public string Email { get; set; }
 
-        [Display(ResourceType = typeof(Displays), Name = "Message")]
-        [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
+        [Display(ResourceType = typeof (Displays), Name = "Message")]
+        [Required(ErrorMessageResourceType = typeof (Messages), ErrorMessageResourceName = "Required")]
         public string Message { get; set; }
 
-        [Display(ResourceType = typeof(Displays), Name = "UserIp")]
-        [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
+        [Display(ResourceType = typeof (Displays), Name = "UserIp")]
+        [Required(ErrorMessageResourceType = typeof (Messages), ErrorMessageResourceName = "Required")]
         public string UserIp { get; set; }
 
 
-        [Display(ResourceType = typeof(Displays), Name = "CreatedDate")]
+        [Display(ResourceType = typeof (Displays), Name = "CreatedDate")]
         public DateTime Created { get; set; }
 
-        [Display(ResourceType = typeof(Displays), Name = "Status")]
-        [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
+        [Display(ResourceType = typeof (Displays), Name = "Status")]
+        [Required(ErrorMessageResourceType = typeof (Messages), ErrorMessageResourceName = "Required")]
         public CommentStatus Type { get; set; }
-
 
         #region Foreign Key(s)
 
