@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Blog.Models
 {
-    class ForbiddenIP : MonitoredEntity<int>
+    public class ForbiddenIP : MonitoredEntity<int>
     {
         public string Ip { get; set; }
 

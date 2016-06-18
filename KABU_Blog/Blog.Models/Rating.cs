@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Blog.Models
 {
-    class Rating : Entity<string>
+     public class Rating : Entity<string>
     {
         [Display(ResourceType = typeof(Displays), Name = "UserIp")]
         [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
