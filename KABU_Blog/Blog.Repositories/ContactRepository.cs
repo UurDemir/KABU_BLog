@@ -10,7 +10,7 @@ using Blog.Repositories.Commons;
 
 namespace Blog.Repositories
 {
-   public  class ContactRepository:GenericRepository<Contact>, IContactsRepository
+   public  class ContactRepository:GenericRepository<Contact>, IContactRepository
     {
        public ContactRepository(DbContext context) : base(context)
        {

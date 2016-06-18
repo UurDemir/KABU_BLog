@@ -8,7 +8,7 @@ using Blog.Repositories.Commons;
 
 namespace Blog.Repositories
 {
-    interface ISettingRepository : IGenericRepository<Setting>
+    public interface ISettingRepository : IGenericRepository<Setting>
     {
     }
 }

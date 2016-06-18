@@ -6,7 +6,7 @@ using Blog.Repositories.Commons;
 
 namespace Blog.Repositories
 {
-    public interface IContactsRepository : IGenericRepository<Contact>
+    public interface IContactRepository : IGenericRepository<Contact>
     {
     }
 }
