@@ -31,7 +31,6 @@ namespace Blog.Models
         public string Message { get; set; }
 
         [Display(ResourceType = typeof (Displays), Name = "UserIp")]
-        [Required(ErrorMessageResourceType = typeof (Messages), ErrorMessageResourceName = "Required")]
         public string UserIp { get; set; }
 
         [Display(ResourceType = typeof (Displays), Name = "Status")]
