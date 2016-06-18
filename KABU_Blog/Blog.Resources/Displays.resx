@@ -165,4 +165,19 @@
   <data name="ViewCount" xml:space="preserve">
     <value>Gösterim Sayısı</value>
   </data>
+  <data name="UserIp" xml:space="preserve">
+    <value>Kullanıcı Ip</value>
+  </data>
+  <data name="CreatedBy" xml:space="preserve">
+    <value>Oluşturan</value>
+  </data>
+  <data name="CreatedDate" xml:space="preserve">
+    <value>Oluşturulma Tarihi</value>
+  </data>
+  <data name="UpdatedBy" xml:space="preserve">
+    <value>Güncelleyen</value>
+  </data>
+  <data name="UpdatedDate" xml:space="preserve">
+    <value>Güncellenme Tarihi</value>
+  </data>
 </root>
