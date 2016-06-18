@@ -48,7 +48,7 @@ namespace Blog.Models
         #region Navigation(s)
 
         [ForeignKey("ParentId")]
-        public Category Parent { get; set; }
+        public Comment Parent { get; set; }
 
         [ForeignKey("ArticleId")]
         public Article Article { get; set; }
