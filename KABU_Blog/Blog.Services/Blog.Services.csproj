@@ -61,8 +61,10 @@
     <Compile Include="ICategoryService.cs" />
     <Compile Include="ICommentService.cs" />
     <Compile Include="IPageService.cs" />
+    <Compile Include="IRatingService.cs" />
     <Compile Include="PageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RatingService.cs" />
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
   </ItemGroup>
