@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Blog.Models
 {
-    class Settings: Entity<string>
+    public class Settings: Entity<string>
     {
         [Column("Key")]
         public override string Id { get; set; }
