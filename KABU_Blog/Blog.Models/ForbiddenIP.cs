@@ -1,35 +1,29 @@
 ﻿using Blog.Models.Commons;
+using Blog.Models.Types;
 using Blog.Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Blog.Models
 {
-    class Rating : Entity<string>
+    class ForbiddenIP : MonitoredEntity<int>
     {
+        public string Ip { get; set; }
+
         [Display(ResourceType = typeof(Displays), Name = "UserIp")]
         [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
-        public string UserIP { get; set; }
+        public string Reason { get; set; }
 
-        [Display(ResourceType = typeof(Displays), Name = "Rate")]
+        [Display(ResourceType = typeof(Displays), Name = "BlockingTime")]
         [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
-        public string Rate { get; set; }
+        public DateTime BlockingTime { get; set; }
 
-        #region Foreign Key(s)
-        [Column("Article")]
-        public string ArticleId { get; set; }
-        #endregion
-
-        #region Navigation(s)
-        [ForeignKey("ArticleId")]
-        public  Article Article { get; set; }
-
-        #endregion
-
+        [Display(ResourceType = typeof(Displays), Name = "Status")]
+        [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
+        public Status Status {get ; set;}
     }
 }

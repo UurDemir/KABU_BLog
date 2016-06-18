@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Article.cs" />
+    <Compile Include="ArticleInfo.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="Comment.cs" />
     <Compile Include="Commons\BaseEntity.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="Commons\IMonitoredEntity.cs" />
     <Compile Include="Commons\MonitoredEntity.cs" />
     <Compile Include="Contact.cs" />
+    <Compile Include="ForbiddenIP.cs" />
     <Compile Include="Language.cs" />
     <Compile Include="Page.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
