@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.Repositories", "Blog.R
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.Services", "Blog.Services\Blog.Services.csproj", "{8DF68AFE-7D72-4502-9D78-DA8317FB8ED2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.Resources", "Blog.Resources\Blog.Resources.csproj", "{EE00687E-A917-441B-8B09-93119EB770D5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{8DF68AFE-7D72-4502-9D78-DA8317FB8ED2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DF68AFE-7D72-4502-9D78-DA8317FB8ED2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DF68AFE-7D72-4502-9D78-DA8317FB8ED2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE00687E-A917-441B-8B09-93119EB770D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE00687E-A917-441B-8B09-93119EB770D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE00687E-A917-441B-8B09-93119EB770D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE00687E-A917-441B-8B09-93119EB770D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
