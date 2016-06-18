@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArticleService.cs" />
     <Compile Include="ArticleChangeService.cs" />
     <Compile Include="CategoryService.cs" />
     <Compile Include="CommentService.cs" />
@@ -56,8 +57,11 @@
     <Compile Include="Commons\IEntityService.cs" />
     <Compile Include="Commons\IService.cs" />
     <Compile Include="IArticleChangeService.cs" />
+    <Compile Include="IArticleService.cs" />
     <Compile Include="ICategoryService.cs" />
     <Compile Include="ICommentService.cs" />
+    <Compile Include="IPageService.cs" />
+    <Compile Include="PageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
