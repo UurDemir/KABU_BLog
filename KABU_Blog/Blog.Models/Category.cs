@@ -12,7 +12,7 @@ using Blog.Resources;
 
 namespace Blog.Models
 {
-    public class Category:MonitoredEntity<int>
+    public class Category : MonitoredEntity<int>
     {
         [Display(ResourceType = typeof(Displays),Name = "Name")]
         [Required(ErrorMessageResourceType = typeof(Messages),ErrorMessageResourceName = "Required")]
