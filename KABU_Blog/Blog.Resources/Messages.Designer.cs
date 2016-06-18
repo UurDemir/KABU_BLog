@@ -61,6 +61,15 @@ namespace Blog.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} doğru formatta değil..
+        /// </summary>
+        public static string Regex {
+            get {
+                return ResourceManager.GetString("Regex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} gerekli bir değerdir. Boş geçilemez..
         /// </summary>
         public static string Required {

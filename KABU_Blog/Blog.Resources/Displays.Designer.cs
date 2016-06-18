@@ -97,6 +97,24 @@ namespace Blog.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Oluşturan.
+        /// </summary>
+        public static string CreatedBy {
+            get {
+                return ResourceManager.GetString("CreatedBy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Oluşturulma Tarihi.
+        /// </summary>
+        public static string CreatedDate {
+            get {
+                return ResourceManager.GetString("CreatedDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Silindi.
         /// </summary>
         public static string Deleted {
@@ -129,6 +147,15 @@ namespace Blog.Resources {
         public static string Draft {
             get {
                 return ResourceManager.GetString("Draft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E-Posta.
+        /// </summary>
+        public static string Email {
+            get {
+                return ResourceManager.GetString("Email", resourceCulture);
             }
         }
         
@@ -187,6 +214,15 @@ namespace Blog.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Telefon Numarası.
+        /// </summary>
+        public static string PhoneNumber {
+            get {
+                return ResourceManager.GetString("PhoneNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Durum.
         /// </summary>
         public static string Status {
@@ -205,11 +241,30 @@ namespace Blog.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Güncelleyen.
+        /// </summary>
+        public static string UpdatedBy {
+            get {
+                return ResourceManager.GetString("UpdatedBy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Güncellenme Tarihi.
         ///   Looks up a localized string similar to Kullanıcı Ip.
         /// </summary>
-        public static string UserIp {
+        public static string UpdatedDate {
             get {
-                return ResourceManager.GetString("UserIp", resourceCulture);
+                return ResourceManager.GetString("UpdatedDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gösterim Sayısı.
+        /// </summary>
+        public static string ViewCount {
+            get {
+                return ResourceManager.GetString("ViewCount", resourceCulture);
             }
         }
         

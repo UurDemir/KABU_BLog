@@ -138,6 +138,9 @@
   <data name="Draft" xml:space="preserve">
     <value>Taslak</value>
   </data>
+  <data name="Email" xml:space="preserve">
+    <value>E-Posta</value>
+  </data>
   <data name="Message" xml:space="preserve">
     <value>Mesaj</value>
   </data>
@@ -150,6 +153,9 @@
   <data name="Passive" xml:space="preserve">
     <value>Pasif</value>
   </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Telefon Numarası</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>Durum</value>
   </data>
@@ -161,6 +167,18 @@
   </data>
   <data name="UserIp" xml:space="preserve">
     <value>Kullanıcı Ip</value>
+  </data>
+  <data name="CreatedBy" xml:space="preserve">
+    <value>Oluşturan</value>
+  </data>
+  <data name="CreatedDate" xml:space="preserve">
+    <value>Oluşturulma Tarihi</value>
+  </data>
+  <data name="UpdatedBy" xml:space="preserve">
+    <value>Güncelleyen</value>
+  </data>
+  <data name="UpdatedDate" xml:space="preserve">
+    <value>Güncellenme Tarihi</value>
   </data>
   <data name="BlockingTime" xml:space="preserve">
     <value>Yasak Kalkma Tarihi</value>
