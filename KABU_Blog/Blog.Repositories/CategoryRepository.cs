@@ -1,7 +1,4 @@
-﻿using System;
-using System.Data.Entity;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
+﻿using System.Data.Entity;
 using Blog.Models;
 using Blog.Repositories.Commons;
 
