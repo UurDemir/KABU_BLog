@@ -11,14 +11,13 @@ using Blog.Services.UnitOfWork;
 
 namespace Blog.Services
 {
-    public class PageService : EntityService<Page>, IPageService
+    public class SocialMediaService:EntityService<SocialMedia>,ISocialMediaService
     {
-        public PageService(IUnitOfWork unitOfWork, IGenericRepository<Page> repository) : base(unitOfWork, repository)
+        public SocialMediaService(IUnitOfWork unitOfWork, IGenericRepository<SocialMedia> repository) : base(unitOfWork, repository)
         {
-
         }
 
-        public Task<Page> FindById<TProperty>(int id, params Expression<Func<Page, TProperty>>[] includes)
+        public Task<SocialMedia> FindById<TProperty>(string id, params Expression<Func<SocialMedia, TProperty>>[] includes)
         {
             return FindBy(x => x.Id == id, includes);
         }

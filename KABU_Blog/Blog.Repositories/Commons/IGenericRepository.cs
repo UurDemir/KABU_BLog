@@ -6,7 +6,7 @@ using Blog.Models.Commons;
 
 namespace Blog.Repositories.Commons
 {
-    public interface IGenericRepository<T> where T : BaseEntity
+    public interface IGenericRepository<T>
     {
         Task<IQueryable<T>> Get<TProperty>(Expression<Func<T, bool>> predicate, params Expression<Func<T, TProperty>>[] includes);
         Task<T> FindBy<TProperty>(Expression<Func<T, bool>> predicate, params Expression<Func<T, TProperty>>[] includes);

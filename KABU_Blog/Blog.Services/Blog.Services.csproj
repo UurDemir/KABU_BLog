@@ -62,24 +62,17 @@
     <Compile Include="IArticleChangeService.cs" />
     <Compile Include="IArticleService.cs" />
     <Compile Include="ICategoryService.cs" />
+    <Compile Include="ICommentService.cs" />
     <Compile Include="IPageService.cs" />
     <Compile Include="ISettingService.cs" />
-    <Compile Include="ICategoryService.cs" />
     <Compile Include="IContactService.cs" />
     <Compile Include="ILanguageService.cs" />
     <Compile Include="ISocialMediaService.cs" />
     <Compile Include="LanguageService.cs" />
-    <Compile Include="ICommentService.cs" />
-    <Compile Include="IPageService.cs" />
-    <Compile Include="ICategoryService.cs" />
-    <Compile Include="ICommentService.cs" />
-    <Compile Include="IPageService.cs" />
     <Compile Include="IRatingService.cs" />
-    <Compile Include="ICommentService.cs" />
-    <Compile Include="IPageService.cs" />
     <Compile Include="PageService.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RatingService.cs" />
+    <Compile Include="SocialMedia.cs" />
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
   </ItemGroup>
@@ -111,9 +104,6 @@
   -->
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SocialMediaService.cs" />
-    <Compile Include="UnitOfWork\IUnitOfWork.cs" />
-    <Compile Include="UnitOfWork\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
