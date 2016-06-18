@@ -180,6 +180,21 @@
   <data name="UpdatedDate" xml:space="preserve">
     <value>Güncellenme Tarihi</value>
   </data>
+  <data name="Approved" xml:space="preserve">
+    <value>Onaylandı</value>
+  </data>
+  <data name="Ignored" xml:space="preserve">
+    <value>Red Edildi</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>Yeni</value>
+  </data>
+  <data name="Read" xml:space="preserve">
+    <value>Okundu</value>
+  </data>
+  <data name="UnRead" xml:space="preserve">
+    <value>Okunmadı</value>
+  </data>
   <data name="Extra" xml:space="preserve">
     <value>Extra</value>
   </data>
