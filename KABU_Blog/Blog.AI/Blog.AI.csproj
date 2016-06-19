@@ -184,14 +184,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\CommonController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ProfileViewModels.cs" />
     <Compile Include="Modules\EfModule.cs" />
     <Compile Include="Modules\RepositoryModule.cs" />
     <Compile Include="Modules\ServiceModule.cs" />
@@ -199,25 +200,178 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-responsive.css" />
+    <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\chosen.css" />
+    <Content Include="Content\elfinder.min.css" />
+    <Content Include="Content\elfinder.theme.css" />
+    <Content Include="Content\font-awesome-ie7.min.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\fullcalendar.css" />
+    <Content Include="Content\glyphicons.css" />
+    <Content Include="Content\halflings.css" />
+    <Content Include="Content\ie.css" />
+    <Content Include="Content\ie9.css" />
+    <Content Include="Content\img\arrows-active.png" />
+    <Content Include="Content\img\arrows-normal.png" />
+    <Content Include="Content\img\avatar.jpg" />
+    <Content Include="Content\img\bg-input-focus.png" />
+    <Content Include="Content\img\bg-input.png" />
+    <Content Include="Content\img\bg-login.jpg" />
+    <Content Include="Content\img\browser-chrome-big.png" />
+    <Content Include="Content\img\browser-firefox-big.png" />
+    <Content Include="Content\img\browser-ie.png" />
+    <Content Include="Content\img\browser-opera.png" />
+    <Content Include="Content\img\browser-safari.png" />
+    <Content Include="Content\img\buttons.gif" />
+    <Content Include="Content\img\chat-left%402x.png" />
+    <Content Include="Content\img\chat-left-metro%402x.png" />
+    <Content Include="Content\img\chat-left-metro.png" />
+    <Content Include="Content\img\chat-left.png" />
+    <Content Include="Content\img\chat-right%402x.png" />
+    <Content Include="Content\img\chat-right-metro%402x.png" />
+    <Content Include="Content\img\chat-right-metro.png" />
+    <Content Include="Content\img\chat-right.png" />
+    <Content Include="Content\img\chosen-sprite.png" />
+    <Content Include="Content\img\close-button-white.png" />
+    <Content Include="Content\img\close-button.png" />
+    <Content Include="Content\img\crop.gif" />
+    <Content Include="Content\img\dialogs.png" />
+    <Content Include="Content\img\gallery\photo1.jpg" />
+    <Content Include="Content\img\gallery\photo10.jpg" />
+    <Content Include="Content\img\gallery\photo11.jpg" />
+    <Content Include="Content\img\gallery\photo12.jpg" />
+    <Content Include="Content\img\gallery\photo13.jpg" />
+    <Content Include="Content\img\gallery\photo2.jpg" />
+    <Content Include="Content\img\gallery\photo3.jpg" />
+    <Content Include="Content\img\gallery\photo4.jpg" />
+    <Content Include="Content\img\gallery\photo5.jpg" />
+    <Content Include="Content\img\gallery\photo6.jpg" />
+    <Content Include="Content\img\gallery\photo7.jpg" />
+    <Content Include="Content\img\gallery\photo8.jpg" />
+    <Content Include="Content\img\gallery\photo9.jpg" />
+    <Content Include="Content\img\glyphicons-halflings-white.png" />
+    <Content Include="Content\img\glyphicons-halflings.png" />
+    <Content Include="Content\img\glyphicons-white.png" />
+    <Content Include="Content\img\glyphicons-white.svg" />
+    <Content Include="Content\img\glyphicons.png" />
+    <Content Include="Content\img\glyphicons.svg" />
+    <Content Include="Content\img\glyphicons_halflings-white.png" />
+    <Content Include="Content\img\glyphicons_halflings-white.svg" />
+    <Content Include="Content\img\glyphicons_halflings.png" />
+    <Content Include="Content\img\glyphicons_halflings.svg" />
+    <Content Include="Content\img\icons-big.png" />
+    <Content Include="Content\img\icons-small.png" />
+    <Content Include="Content\img\iphone-style-checkboxes\off-63584.png" />
+    <Content Include="Content\img\iphone-style-checkboxes\on-63584.png" />
+    <Content Include="Content\img\iphone-style-checkboxes\slider_center-63584.png" />
+    <Content Include="Content\img\iphone-style-checkboxes\slider_left-63584.png" />
+    <Content Include="Content\img\iphone-style-checkboxes\slider_right-63584.png" />
+    <Content Include="Content\img\progress.gif" />
+    <Content Include="Content\img\quicklook-bg.png" />
+    <Content Include="Content\img\quicklook-icons.png" />
+    <Content Include="Content\img\quote.png" />
+    <Content Include="Content\img\resize.png" />
+    <Content Include="Content\img\slider_r8.png" />
+    <Content Include="Content\img\spinner-mini.gif" />
+    <Content Include="Content\img\sprite.png" />
+    <Content Include="Content\img\timeline-bg.png" />
+    <Content Include="Content\img\timeline-left-arrow%402x.png" />
+    <Content Include="Content\img\timeline-left-arrow.png" />
+    <Content Include="Content\img\timeline-right-arrow%402x.png" />
+    <Content Include="Content\img\timeline-right-arrow.png" />
+    <Content Include="Content\img\toolbar.gif" />
+    <Content Include="Content\img\toolbar.png" />
+    <Content Include="Content\img\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\img\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\img\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\img\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\img\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\img\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\img\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\img\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\img\ui-icons_222222_256x240.png" />
+    <Content Include="Content\img\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\img\ui-icons_454545_256x240.png" />
+    <Content Include="Content\img\ui-icons_888888_256x240.png" />
+    <Content Include="Content\img\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\img\uploadify-cancel.png" />
+    <Content Include="Content\jquery-ui-1.8.21.custom.css" />
+    <Content Include="Content\jquery.cleditor.css" />
+    <Content Include="Content\jquery.gritter.css" />
+    <Content Include="Content\jquery.iphone.toggle.css" />
+    <Content Include="Content\jquery.noty.css" />
+    <Content Include="Content\noty_theme_default.css" />
+    <Content Include="Content\style-forms.css" />
+    <Content Include="Content\style-responsive.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="Content\uniform.default.css" />
+    <Content Include="Content\uploadify.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\glyphicons-regular.svg" />
+    <Content Include="fonts\glyphiconshalflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="fonts\fontawesome-webfont-0.eot" />
+    <Content Include="fonts\fontawesome-webfont-62877.eot" />
+    <Content Include="fonts\fontawesome-webfont-62877.ttf" />
+    <Content Include="fonts\fontawesome-webfont-62877.woff" />
+    <Content Include="fonts\glyphicons-regular-0.eot" />
+    <Content Include="fonts\glyphicons-regular.eot" />
+    <Content Include="fonts\glyphicons-regular.ttf" />
+    <Content Include="fonts\glyphicons-regular.woff" />
+    <Content Include="fonts\glyphiconshalflings-regular-0.eot" />
+    <Content Include="fonts\glyphiconshalflings-regular.eot" />
+    <Content Include="fonts\glyphiconshalflings-regular.ttf" />
+    <Content Include="fonts\glyphiconshalflings-regular.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\counter.js" />
+    <Content Include="Scripts\custom.js" />
+    <Content Include="Scripts\excanvas.js" />
+    <Content Include="Scripts\fullcalendar.min.js" />
+    <Content Include="Scripts\functions.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery-migrate-1.0.0.min.js" />
+    <Content Include="Scripts\jquery-ui-1.10.0.custom.min.js" />
+    <Content Include="Scripts\jquery.chosen.min.js" />
+    <Content Include="Scripts\jquery.cleditor.min.js" />
+    <Content Include="Scripts\jquery.cookie.js" />
+    <Content Include="Scripts\jquery.dataTables.min.js" />
+    <Content Include="Scripts\jquery.elfinder.min.js" />
+    <Content Include="Scripts\jquery.flot.js" />
+    <Content Include="Scripts\jquery.flot.pie.js" />
+    <Content Include="Scripts\jquery.flot.resize.min.js" />
+    <Content Include="Scripts\jquery.flot.stack.js" />
+    <Content Include="Scripts\jquery.gritter.min.js" />
+    <Content Include="Scripts\jquery.imagesloaded.js" />
+    <Content Include="Scripts\jquery.iphone.toggle.js" />
+    <Content Include="Scripts\jquery.knob.modified.js" />
+    <Content Include="Scripts\jquery.masonry.min.js" />
+    <Content Include="Scripts\jquery.noty.js" />
+    <Content Include="Scripts\jquery.raty.min.js" />
+    <Content Include="Scripts\jquery.sparkline.min.js" />
+    <Content Include="Scripts\jquery.ui.touch-punch.js" />
+    <Content Include="Scripts\jquery.uniform.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.uploadify-3.1.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\modernizr.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\retina.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -245,14 +399,19 @@
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\SendCode.cshtml" />
     <Content Include="Views\Account\VerifyCode.cshtml" />
-    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Common\_LoginPart.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Profile\Informations.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Date.cshtml" />
+    <Content Include="Views\Shared\_SideBar.cshtml" />
+    <Content Include="Views\Shared\_Navigation.cshtml" />
+    <Content Include="Views\Shared\_Notifications.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -266,14 +425,29 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Blog.Core\Blog.Core.csproj">
+      <Project>{4B2EB090-3A89-4988-934E-31C02933A8AF}</Project>
+      <Name>Blog.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Blog.Models\Blog.Models.csproj">
       <Project>{5E051C0B-A8AA-4D15-9AB8-7B2C285A007A}</Project>
       <Name>Blog.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Blog.Mvc\Blog.Mvc.csproj">
+      <Project>{6D99771A-DE05-4D20-A8D3-7ABA97C4E0D6}</Project>
+      <Name>Blog.Mvc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Blog.Resources\Blog.Resources.csproj">
+      <Project>{ee00687e-a917-441b-8b09-93119eb770d5}</Project>
+      <Name>Blog.Resources</Name>
     </ProjectReference>
     <ProjectReference Include="..\Blog.Services\Blog.Services.csproj">
       <Project>{8DF68AFE-7D72-4502-9D78-DA8317FB8ED2}</Project>
       <Name>Blog.Services</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

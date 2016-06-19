@@ -1,0 +1,44 @@
+﻿@using Blog.Resources
+@model Blog.AI.Models.UserInformationViewModel
+
+@{
+    Layout = null;
+}
+<div class="box-content">
+    <form class="form-horizontal" id="frmUserInformation">
+
+        <fieldset>
+            @Html.AntiForgeryToken()
+            @Html.EditorFor(x => x.Name)
+            @Html.EditorFor(x => x.Surname)
+            @Html.EditorFor(x => x.Birthdate)
+            <div class="form-actions">
+                <button type="button" id="btnSaveInformation" class="btn btn-primary">@Displays.SaveChanges</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#btnSaveInformation').click(function () {
+            var $this = $("#btnSaveInformation");
+            var formData = $("#frmUserInformation").serialize();
+            Block($this);
+            $.ajax({
+                method: "POST",
+                url: '@Url.Action("Informations")',
+                data: formData,
+                async: true
+            })
+                .done(function (response) {
+
+                    $("#info").html(response.view);
+                    if (response.IsCompleted) {
+                        AddMessage(response.title, response.message, "success");
+                    }
+
+                    Unblock($this);
+                });
+        });
+    });
+</script>

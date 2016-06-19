@@ -1,6 +1,8 @@
-﻿using System.Web.Mvc;
+﻿using System.Configuration;
+using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Blog.Core;
 
 namespace Blog.AI
 {
@@ -12,6 +14,12 @@ namespace Blog.AI
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            GetAppSettings();
+        }
+
+        public static void GetAppSettings()
+        {
+            Config.MainSiteUrl = ConfigurationManager.AppSettings["MainSite"];
         }
     }
 }

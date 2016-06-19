@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Threading.Tasks;
 using System.Web;
 using Blog.Models.Commons;
@@ -18,12 +19,12 @@ namespace Blog.Models.Contexts
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            
-            //modelBuilder.Entity<User>().ToTable("Users");
-            //modelBuilder.Entity<IdentityRole>().ToTable("Roles");
-            //modelBuilder.Entity<IdentityUserRole>().ToTable("UserRoles");
-            //modelBuilder.Entity<IdentityUserLogin>().ToTable("UserLogins");
-            //modelBuilder.Entity<IdentityUserClaim>().ToTable("Claims");
+
+            modelBuilder.Entity<User>().ToTable("Users");
+            modelBuilder.Entity<IdentityRole>().ToTable("Roles");
+            modelBuilder.Entity<IdentityUserRole>().ToTable("UserRoles");
+            modelBuilder.Entity<IdentityUserLogin>().ToTable("UserLogins");
+            modelBuilder.Entity<IdentityUserClaim>().ToTable("Claims");
 
         }
 
@@ -37,7 +38,21 @@ namespace Blog.Models.Contexts
         public override Task<int> SaveChangesAsync()
         {
             SetChanges();
-            return base.SaveChangesAsync();
+            try
+            {
+
+                return base.SaveChangesAsync();
+            }
+            catch (DbEntityValidationException exception)
+            {
+                
+                throw;
+            }
+            catch (Exception exception)
+            {
+
+                throw;
+            }
         }
 
         public static BlogContext Create()

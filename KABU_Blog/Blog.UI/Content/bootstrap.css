@@ -3998,11 +3998,13 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .tab-content > .tab-pane,
 .pill-content > .pill-pane {
+    overflow-y: hidden; overflow-x: hidden;
   display: none;
 }
 
 .tab-content > .active,
 .pill-content > .active {
+    overflow-y: hidden; overflow-x: hidden;
   display: block;
 }
 

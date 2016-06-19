@@ -1,0 +1,29 @@
+﻿@using Blog.Resources
+
+@{
+    ViewBag.Title = Displays.Profile;
+}
+
+<div class="row-fluid">
+
+    <div class="box span12">
+        <div class="box-header">
+            <h2><i class="halflings-icon white th"></i><span class="break"></span>@Displays.Profile</h2>
+        </div>
+        <div class="box-content">
+            <ul class="nav tab-menu nav-tabs" id="myTab">
+                <li class="active"><a href="#info">@Displays.Informations</a></li>
+            </ul>
+
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane active" id="info">
+                   
+                        @Html.Action("Informations")
+                    
+                </div>
+            </div>
+        </div>
+    </div><!--/span-->
+
+</div>
+

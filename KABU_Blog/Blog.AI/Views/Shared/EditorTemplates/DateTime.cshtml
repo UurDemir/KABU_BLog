@@ -1,0 +1,8 @@
+﻿@model DateTime
+<div class="control-group @(ViewData.ModelState.IsValidField(Html.NameFor(x=> x).ToString()) ? "":"error")">
+    @Html.LabelFor(x => x, new { @class = "control-label" })
+    <div class="controls">
+        @Html.TextBoxFor(x => x, "{r}",new {type="datetime"})
+        <span class="help-inline">@Html.ValidationMessageFor(x => x)</span>
+    </div>
+</div>

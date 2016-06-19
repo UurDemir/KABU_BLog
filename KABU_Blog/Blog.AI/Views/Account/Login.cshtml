@@ -1,63 +1,164 @@
 ﻿@using Blog.AI.Models
+@using Blog.Core
+@using Blog.Resources
 @model LoginViewModel
 @{
-    ViewBag.Title = "Log in";
+    ViewBag.Title = Displays.LogIn;
+    Layout = null;
 }
 
-<h2>@ViewBag.Title.</h2>
-<div class="row">
-    <div class="col-md-8">
-        <section id="loginForm">
-            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                <h4>Use a local account to log in.</h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+<html>
+<head>
+
+    <!-- start: Meta -->
+    <meta charset="utf-8">
+    <title>@ViewBag.Title</title>
+    <meta name="description" content="yonetim paneli giris sayfaı">
+    <meta name="author" content="Kağan Kaptan,Aybars Arslan,Burak Koyun,Uğur Demir">
+    <meta name="keyword" content="Admin,">
+    <!-- end: Meta -->
+    <!-- start: Mobile Specific -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- end: Mobile Specific -->
+    <!-- start: CSS -->
+    <link id="bootstrap-style" href="/Content/bootstrap.min.css" rel="stylesheet">
+    <link href="/Content/bootstrap-responsive.min.css" rel="stylesheet">
+    <link id="base-style" href="/Content/style.css" rel="stylesheet">
+    <link id="base-style-responsive" href="/Content/style-responsive.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>
+    <!-- end: CSS -->
+    <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <link id="ie-style" href="/Content/ie.css" rel="stylesheet">
+    <![endif]-->
+    <!--[if IE 9]>
+        <link id="ie9style" href="/Content/ie9.css" rel="stylesheet">
+    <![endif]-->
+    <!-- start: Favicon -->
+    <link rel="shortcut icon" href="/Content/img/favicon.ico">
+    <!-- end: Favicon -->
+
+    <style type="text/css">
+        body {
+            background: url(/Content/img/bg-login.jpg) !important;
+        }
+    </style>
+
+
+
+</head>
+<body>
+    <div class="container-fluid-full">
+        <div class="row-fluid">
+
+            <div class="row-fluid">
+                <div class="login-box">
+                    <div class="icons">
+                        <a href="@Config.MainSiteUrl"><i class="halflings-icon home"></i></a>
+                        <a href="#"><i class="halflings-icon cog"></i></a>
                     </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <div class="checkbox">
-                            @Html.CheckBoxFor(m => m.RememberMe)
-                            @Html.LabelFor(m => m.RememberMe)
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Log in" class="btn btn-default" />
-                    </div>
-                </div>
-                <p>
-                    @Html.ActionLink("Register as a new user", "Register")
-                </p>
-                @* Enable this once you have account confirmation enabled for password reset functionality
+                    <h2>Login to your account</h2>
+                    <form class="form-horizontal" action="@Url.Action("Login")" method="post">
+                        @Html.AntiForgeryToken()
+                        <fieldset>
+
+                            <div class="input-prepend" title="@Html.NameFor(x => x.Email)">
+                                <span class="add-on"><i class="halflings-icon user"></i></span>
+                                <input class="input-large span10" name="@Html.NameFor(x => x.Email)" id="@Html.NameFor(x => x.Email)" type="text" placeholder="@Html.DisplayNameFor(x => x.Email)"/>
+                                @Html.ValidationMessageFor(x => x.Email)
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="input-prepend" title="@Html.NameFor(x => x.Password)">
+                                <span class="add-on"><i class="halflings-icon lock"></i></span>
+                                <input class="input-large span10" name="@Html.NameFor(x => x.Password)" id="@Html.NameFor(x => x.Password)" type="password" placeholder="@Html.DisplayNameFor(x => x.Password)"/>
+                                @Html.ValidationMessageFor(x => x.Password)
+                            </div>
+                            <div class="clearfix"></div>
+
+                            <label class="remember" for="@Html.NameFor(x => x.RememberMe)"><input type="checkbox" id="@Html.NameFor(x => x.RememberMe)"/>@Displays.RememberMe</label>
+                            <div class="button-login">
+                                <button type="submit" class="btn btn-primary">@Displays.LogIn</button>
+                            </div>
+                            <div class="clearfix"></div>
+                        </fieldset>
+                    </form>
+                    <hr>
+                    <h3>@Displays.ForgotPassword</h3>
                     <p>
-                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                    </p>*@
-            }
-        </section>
-    </div>
-    <div class="col-md-4">
-        <section id="socialLoginForm">
-            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-        </section>
-    </div>
-</div>
+                        No problem, <a href="#">click here</a> to get a new password.
+                    </p>
+                </div><!--/span-->
+            </div><!--/row-->
 
-@section Scripts {
+        </div><!--/.fluid-container-->
+        <div class="common-modal modal fade" id="common-Modal1" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-content">
+                <ul class="list-inline item-details">
+                    <li><a href="http://themifycloud.com">Admin templates</a></li>
+                    <li><a href="http://themescloud.org">Bootstrap themes</a></li>
+                </ul>
+            </div>
+        </div>
+    </div><!--/fluid-row-->
+    <!-- start: JavaScript-->
+    <script src="/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="/Scripts/jquery-migrate-1.0.0.min.js"></script>
+
+    <script src="/Scripts/jquery-ui-1.10.0.custom.min.js"></script>
+
+    <script src="/Scripts/jquery.ui.touch-punch.js"></script>
+
+    <script src="/Scripts/modernizr.js"></script>
+
+    <script src="/Scripts/bootstrap.min.js"></script>
+
+    <script src="/Scripts/jquery.cookie.js"></script>
+
+    <script src='/Scripts/fullcalendar.min.js'></script>
+
+    <script src='/Scripts/jquery.dataTables.min.js'></script>
+    <script src="/Scripts/excanvas.js"></script>
+    <script src="/Scripts/jquery.flot.js"></script>
+    <script src="/Scripts/jquery.flot.pie.js"></script>
+    <script src="/Scripts/jquery.flot.stack.js"></script>
+    <script src="/Scripts/jquery.flot.resize.min.js"></script>
+
+    <script src="/Scripts/jquery.chosen.min.js"></script>
+
+    <script src="/Scripts/jquery.uniform.min.js"></script>
+
+    <script src="/Scripts/jquery.cleditor.min.js"></script>
+
+    <script src="/Scripts/jquery.noty.js"></script>
+
+    <script src="/Scripts/jquery.elfinder.min.js"></script>
+
+    <script src="/Scripts/jquery.raty.min.js"></script>
+
+    <script src="/Scripts/jquery.iphone.toggle.js"></script>
+
+    <script src="/Scripts/jquery.uploadify-3.1.min.js"></script>
+
+    <script src="/Scripts/jquery.gritter.min.js"></script>
+
+    <script src="/Scripts/jquery.imagesloaded.js"></script>
+
+    <script src="/Scripts/jquery.masonry.min.js"></script>
+
+    <script src="/Scripts/jquery.knob.modified.js"></script>
+
+    <script src="/Scripts/jquery.sparkline.min.js"></script>
+
+    <script src="/Scripts/counter.js"></script>
+
+    <script src="/Scripts/retina.js"></script>
+    <script src="/Scripts/custom.js"></script>
     @Scripts.Render("~/bundles/jqueryval")
-}
+    <!-- end: JavaScript-->
+
+</body>
+</html>
+
+
+

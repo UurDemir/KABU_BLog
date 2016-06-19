@@ -1,0 +1,5 @@
+MSSQL Database Informations :
+
+Ip:	      85.95.248.2
+UserId:   kabu_admin
+Password: kabu123kabu

@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Blog.Resources;
 
 namespace Blog.AI.Models
 {
@@ -48,17 +50,17 @@ namespace Blog.AI.Models
 
     public class LoginViewModel
     {
-        [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
+        [Required(ErrorMessageResourceType = typeof(Messages),ErrorMessageResourceName = "Required")]
+        [Display(ResourceType = typeof(Displays),Name = "Email")]
+        [EmailAddress(ErrorMessageResourceType = typeof(Messages),ErrorMessageResourceName = "Regex")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(ResourceType = typeof(Displays), Name = "Password")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(ResourceType = typeof(Displays), Name = "RememberMe")]
         public bool RememberMe { get; set; }
     }
 
@@ -68,6 +70,17 @@ namespace Blog.AI.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "Name")]
+        public string Name { get; set; }
+        
+        [Display(Name = "Surname")]
+        public string Surname { get; set; }
+
+        [Required]
+        [Display(Name = "Birthdate")]
+        public DateTime Birthdate { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
