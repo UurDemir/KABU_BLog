@@ -1,9 +1,15 @@
-﻿
+﻿@using Blog.Resources
+@model dynamic
+
 <ul class="breadcrumb">
     <li>
         <i class="icon-home"></i>
-        <a href="index.html">Home</a>
+        <a href="/">@Displays.MainPage</a>
         <i class="icon-angle-right"></i>
     </li>
-    <li><a href="#">Dashboard</a></li>
+    <li><a href="/@Model.controller">@Model.controller</a>
+        <i class="icon-angle-right"></i></li>
+    <li>
+        <a href="/@Model.controller/@Model.action">@Model.action</a>
+    </li>
 </ul>
