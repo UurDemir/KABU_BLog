@@ -288,4 +288,7 @@
   <data name="Saving" xml:space="preserve">
     <value>Kayıt Ediliyor...</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>Arama</value>
+  </data>
 </root>

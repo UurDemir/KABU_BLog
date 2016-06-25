@@ -34,7 +34,7 @@ namespace Blog.Models
 
         [Display(ResourceType = typeof(Displays), Name = "Status")]
         [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
-        public CommentStatus Status { get; set; }
+        public CommentStatus CommentStatus { get; set; }
 
         #region Foreign Key(s)
 

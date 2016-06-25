@@ -23,9 +23,6 @@ namespace Blog.Models
         [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
         public int ViewCount { get; set; }
 
-        [Display(ResourceType = typeof(Displays), Name = "Status")]
-        [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
-        public Status Status { get; set; }
         
         #region Navigastion(s)
 

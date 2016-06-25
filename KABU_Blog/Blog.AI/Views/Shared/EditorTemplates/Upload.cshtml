@@ -1,0 +1,8 @@
+﻿@model HttpPostedFile
+<div class="control-group @(IsPost ?ViewData.ModelState.IsValidField(Html.NameFor(x=> x).ToString()) ? "success":"error":"")">
+    @Html.LabelFor(x => x, new { @class = "control-label" })
+    <div class="controls">
+        <input class="input-file uniform_on" name="@Html.NameFor(x=> x)" id="@Html.NameFor(x=> x)" type="file">
+        <span class="help-inline">@Html.ValidationMessageFor(x => x)</span>
+    </div>
+</div>

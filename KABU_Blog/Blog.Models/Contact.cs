@@ -41,7 +41,7 @@ namespace Blog.Models
 
         [Display(ResourceType = typeof (Displays), Name = "Status")]
         [Required(ErrorMessageResourceType = typeof (Messages), ErrorMessageResourceName = "Required")]
-        public ContactStatus Status { get; set; }
+        public ContactStatus ContactStatus { get; set; }
 
 
         [Display(ResourceType = typeof(Displays), Name = "CreatedDate")]

@@ -49,7 +49,7 @@ namespace Blog.AI.Controllers
             {
                 Contacts = orderedContacts.Take(5).ToList(),
                 TotalContact = orderedContacts.Count(),
-                UnReadCount = orderedContacts.Count(con => con.Status == ContactStatus.UnRead)
+                UnReadCount = orderedContacts.Count(con => con.ContactStatus == ContactStatus.UnRead && con.Status != Status.Deleted)
             };
 
             return PartialView("_Contacts", contactViewModel);

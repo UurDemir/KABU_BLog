@@ -14,11 +14,7 @@ namespace Blog.Models
         [Display(ResourceType = typeof(Displays), Name = "Content")]
         [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
         public string Content { get; set; }
-
-        [Display(ResourceType = typeof(Displays), Name = "Status")]
-        [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
-        public Status Status { get; set; }
-
+        
         #region Computed Properties
 
         public override string SlugId => $"page{Id}";

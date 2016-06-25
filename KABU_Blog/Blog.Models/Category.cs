@@ -19,10 +19,7 @@ namespace Blog.Models
         
         [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
         public string Slug { get; set; }
-
-        [Display(ResourceType = typeof(Displays), Name = "Status")]
-        [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
-        public Status Status { get; set; }
+        
 
         #region Foreign Key(s)
 

@@ -195,6 +195,7 @@
     <Compile Include="Models\CommonViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ProfileViewModels.cs" />
+    <Compile Include="Models\TableViewModel.cs" />
     <Compile Include="Modules\EfModule.cs" />
     <Compile Include="Modules\RepositoryModule.cs" />
     <Compile Include="Modules\ServiceModule.cs" />
@@ -271,6 +272,7 @@
     <Content Include="Content\img\iphone-style-checkboxes\slider_center-63584.png" />
     <Content Include="Content\img\iphone-style-checkboxes\slider_left-63584.png" />
     <Content Include="Content\img\iphone-style-checkboxes\slider_right-63584.png" />
+    <Content Include="Content\img\loading.gif" />
     <Content Include="Content\img\progress.gif" />
     <Content Include="Content\img\quicklook-bg.png" />
     <Content Include="Content\img\quicklook-icons.png" />
@@ -418,10 +420,13 @@
     <Content Include="Views\Profile\ChangePassword.cshtml" />
     <Content Include="Views\Shared\_Alerts.cshtml" />
     <Content Include="Views\Shared\_Contacts.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Html.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Upload.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Contact\Table.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Contact\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
