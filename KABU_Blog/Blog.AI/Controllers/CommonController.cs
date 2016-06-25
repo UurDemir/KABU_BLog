@@ -11,10 +11,6 @@ namespace Blog.AI.Controllers
 {
     public class CommonController : KabuController
     {
-        public ActionResult _LoginPartial()
-        {
-            return PartialView("_LoginPartial",User.Identity.GetUserName());
-        }
 
         public ActionResult _Header()
         {

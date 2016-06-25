@@ -61,6 +61,15 @@ namespace Blog.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Yeni Şifre ve Yeni Şifre Onay birbiri ile eşleşmiyor..
+        /// </summary>
+        public static string ComparerPassword {
+            get {
+                return ResourceManager.GetString("ComparerPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} doğru formatta değil..
         /// </summary>
         public static string Regex {
@@ -84,6 +93,15 @@ namespace Blog.Resources {
         public static string StringLenght {
             get {
                 return ResourceManager.GetString("StringLenght", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} , en az {2} karakter içerebilir..
+        /// </summary>
+        public static string StringLenghtOnlyMin {
+            get {
+                return ResourceManager.GetString("StringLenghtOnlyMin", resourceCulture);
             }
         }
         

@@ -273,4 +273,16 @@
   <data name="Alerts" xml:space="preserve">
     <value>Uyarılar</value>
   </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Şifre Değiştir</value>
+  </data>
+  <data name="ConfirmNewPassword" xml:space="preserve">
+    <value>Yeni Şifreyi Onayla</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>Yeni Şifre</value>
+  </data>
+  <data name="OldPassword" xml:space="preserve">
+    <value>Eski Şifre</value>
+  </data>
 </root>

@@ -7,10 +7,11 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Blog.AI.Models;
 using Blog.Models;
+using Blog.Mvc;
 
 namespace Blog.AI.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : KabuController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
@@ -446,7 +447,7 @@ namespace Blog.AI.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Dashboard");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

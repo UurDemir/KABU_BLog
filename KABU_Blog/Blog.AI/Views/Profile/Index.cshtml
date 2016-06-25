@@ -12,14 +12,21 @@
         </div>
         <div class="box-content">
             <ul class="nav tab-menu nav-tabs" id="myTab">
-                <li class="active"><a href="#info">@Displays.Informations</a></li>
+                <li class="active"><a href="#information">@Displays.Informations</a></li>
+                <li ><a href="#changePassword">@Displays.ChangePassword</a></li>
             </ul>
 
-            <div id="myTabContent" class="tab-content">
-                <div class="tab-pane active" id="info">
-                   
-                        @Html.Action("Informations")
-                    
+            <div id="profileTab" class="tab-content">
+                <div class="tab-pane active" id="information">
+
+                    @Html.Action("Informations")
+
+                </div>
+
+                <div class="tab-pane" id="changePassword">
+
+                    @Html.Action("ChangePassword")
+
                 </div>
             </div>
         </div>

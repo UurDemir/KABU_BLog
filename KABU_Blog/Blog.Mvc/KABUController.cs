@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace Blog.Mvc
@@ -30,6 +32,23 @@ namespace Blog.Mvc
             if (isExists)
                 return routeValue.ToString();
             throw new KeyNotFoundException();
+        }
+
+        public string GetErrorMessage(IEnumerable<string> errors)
+        {
+            return errors.Aggregate(string.Empty, (current, error) => current + (error + Environment.NewLine));
+        }
+
+
+        public string GetErrorMessage(Exception exception)
+        {
+            var errorMessage = string.Empty;
+            while (exception != null)
+            {
+                errorMessage += exception.Message + Environment.NewLine;
+                exception = exception.InnerException;
+            }
+            return errorMessage;
         }
     }
 }
