@@ -23,6 +23,8 @@
             var $this = $("#btnSaveInformation");
             var formData = $("#frmUserInformation").serialize();
             Block($this);
+
+            document.getElementById("btnSaveInformation").innerHTML = "@Displays.Saving";
             $.ajax({
                 method: "POST",
                 url: '@Url.Action("SaveInformations")',
@@ -34,6 +36,7 @@
 
 
                 Unblock($this);
+                document.getElementById("btnSaveInformation").innerHTML = "@Displays.SaveChanges";
             })
                 .done(function (response) {
 
@@ -50,6 +53,7 @@
                     }
 
                     Unblock($this);
+                    document.getElementById("btnSaveInformation").innerHTML = "@Displays.SaveChanges";
                 })
             ;
         });

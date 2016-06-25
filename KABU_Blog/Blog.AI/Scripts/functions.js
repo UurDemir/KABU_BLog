@@ -23,7 +23,7 @@ $(document).ready(function () {
         debugger;
         var alertContainer = $('#alerts');
 
-        var totalAlerts = document.querySelectorAll(".box-content.alerts").length;
+        var totalAlerts = document.querySelectorAll(".box-content.alerts > .alert").length;
 
         if (totalAlerts === 1 && event.type === "DOMNodeRemoved")
             alertContainer.hide();

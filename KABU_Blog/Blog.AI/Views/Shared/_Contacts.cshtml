@@ -1,0 +1,37 @@
+﻿@model Blog.AI.Models.ContactViewModel
+<li class="dropdown hidden-phone">
+    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+        <i class="icon-envelope"></i>
+        <span class="badge red">
+            @Model.UnReadCount
+        </span>
+    </a>
+    <ul class="dropdown-menu messages">
+        <li class="dropdown-menu-title">
+            <span>@Model.TotalContact adet mesajınız var.</span>
+            <a href="#refresh"><i class="icon-repeat"></i></a>
+        </li>
+        @foreach (var contact in Model.Contacts)
+        {
+            <li>
+                <a href="@Url.Action("ReadMessage", "Contact", new { id = contact.Id })">
+                <span class="header">
+                <span class="from">
+                @contact.Fullname
+                </span>
+                <span class="time">
+                @((DateTime.Now - contact.Created).ToString())
+                </span>
+                </span>
+                <span class="message">
+                @contact.Title
+                </span>
+                </a>
+            </li>
+
+        }
+        <li>
+            <a class="dropdown-menu-sub-footer" href="@Url.Action("Index", "Contact")">Tüm mesajları göster.</a>
+        </li>
+    </ul>
+</li>

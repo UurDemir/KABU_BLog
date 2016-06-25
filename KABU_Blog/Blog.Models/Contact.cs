@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using Blog.Models.Commons;
 using Blog.Models.Types;
 using Blog.Resources;
@@ -41,5 +42,9 @@ namespace Blog.Models
         [Display(ResourceType = typeof (Displays), Name = "Status")]
         [Required(ErrorMessageResourceType = typeof (Messages), ErrorMessageResourceName = "Required")]
         public ContactStatus Status { get; set; }
+
+
+        [Display(ResourceType = typeof(Displays), Name = "CreatedDate")]
+        public DateTime Created { get; set; }
     }
 }

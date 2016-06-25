@@ -285,4 +285,7 @@
   <data name="OldPassword" xml:space="preserve">
     <value>Eski Şifre</value>
   </data>
+  <data name="Saving" xml:space="preserve">
+    <value>Kayıt Ediliyor...</value>
+  </data>
 </root>
