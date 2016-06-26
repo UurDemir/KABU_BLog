@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Blog.Models.Commons;
 using Blog.Models.Extensions;
+using Blog.Models.Types;
 
 namespace Blog.Repositories.Commons
 {
@@ -26,7 +27,14 @@ namespace Blog.Repositories.Commons
 
         public T Delete(T entity)
         {
-            return _dbSet.Remove(entity);
+            Entities.Entry(entity).State = EntityState.Modified;
+            entity.Status = Status.Deleted;
+            return entity;
+        }
+        public T Update(T entity)
+        {
+            Entities.Entry(entity).State = EntityState.Modified;
+            return entity;
         }
 
         public Task<T> FindBy(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includes)
@@ -49,10 +57,5 @@ namespace Blog.Repositories.Commons
             return Entities.SaveChangesAsync();
         }
 
-        public T Update(T entity)
-        {
-           Entities.Entry(entity).State = EntityState.Modified;
-            return entity;
-        }
     }
 }

@@ -45,9 +45,21 @@ namespace Blog.AI.Controllers
             return View(contact);
         }
 
+        public async Task<JsonResult> Remove(int id)
+        {
+            var model = await _contactService.FindById(id);
+
+            if (model == null)
+                return Json(new { IsCompleted = false, title = "Hata !", message = "Model Bulunamadı !" }, JsonRequestBehavior.AllowGet);
+
+            _contactService.Delete(model);
+
+            return Json(new { IsCompleted = true, title = "Başarılı !", message = "Başarı ile silindi !" }, JsonRequestBehavior.AllowGet);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<JsonResult> Update(int id,ContactStatus ContactStatus)
+        public async Task<JsonResult> Update(int id, ContactStatus ContactStatus)
         {
             var updatingModel = await _contactService.FindById(id);
 
@@ -72,9 +84,9 @@ namespace Blog.AI.Controllers
 
             var tableList =
                 _contactService.Get(
-                    x =>
+                    x => x.Status != Status.Deleted && (
                         x.Email.Contains(search) || x.Fullname.Contains(search) || x.Message.Contains(search) ||
-                        x.Title.Contains(search) || x.UserIp.Contains(search) || x.PhoneNumber.Contains(search)).Result;
+                        x.Title.Contains(search) || x.UserIp.Contains(search) || x.PhoneNumber.Contains(search))).Result;
 
             table.Hits = tableList.OrderBy(x => x.Id).Skip((table.CurrentPage - 1) * table.Perpage).Take(table.Perpage).ToList();
             table.TotalCount = tableList.Count();
