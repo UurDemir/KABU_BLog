@@ -47,14 +47,21 @@ namespace Blog.AI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Update(Contact model)
+        public async Task<JsonResult> Update(int id,ContactStatus ContactStatus)
         {
-            var viewResult = RenderRazorViewToString("Show", model);
+            var updatingModel = await _contactService.FindById(id);
+
+            if (updatingModel == null)
+                throw new Exception("Model bulunamadı.");
+
+            updatingModel.ContactStatus = ContactStatus;
+
+            var viewResult = RenderRazorViewToString("Show", updatingModel);
 
             if (!ModelState.IsValid)
                 return Json(new { view = viewResult, IsCompleted = false }, JsonRequestBehavior.AllowGet);
 
-            _contactService.Update(model);
+            _contactService.Update(updatingModel);
 
             return Json(new { view = viewResult, title = "Başarılı !", message = "Başarı ile güncellendi.", IsCompleted = true }, JsonRequestBehavior.AllowGet);
         }

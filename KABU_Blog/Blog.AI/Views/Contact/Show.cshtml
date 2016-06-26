@@ -2,16 +2,61 @@
 @using Blog.Models.Types
 @model Blog.Models.Contact
 
-<form class="form-horizontal">
+<form class="form-horizontal" id="frmContact">
     <fieldset>
-
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(x => x.Id)
         @Html.DisplayFor(x => x.Title)
         @Html.DisplayFor(x => x.Fullname)
         @Html.DisplayFor(x => x.Email)
         @Html.DisplayFor(x => x.PhoneNumber)
         @Html.DisplayFor(x => x.UserIp)
         @Html.DisplayFor(x => x.Message)
-        @Html.EditorFor(x => x.ContactStatus, new { items = EnumHelper<ContactStatus>.GetList() })
+        @Html.EditorFor(x => x.ContactStatus, new {items = EnumHelper<ContactStatus>.GetList()})
 
     </fieldset>
 </form>
+
+<script>
+    $(document).ready(
+        function () {
+            $("#@Html.IdFor(x=> x.ContactStatus)").change(function () {
+                debugger;
+                var $this = $("#showModel");
+
+                var formData = $("#frmContact").serialize();
+                Block($this);
+                $.ajax({
+                    method: "POST",
+                    url: '@Url.Action("Update")',
+                    data: formData,
+                    async: true
+                })
+                    .fail(function (response) {
+                        AddMessage(response, response, "error");
+
+
+                        Unblock($this);
+                    })
+                    .done(function (response) {
+
+                        if (response === "")
+                            AddMessage("Hata", "Bir hata oluştu.", "error");
+
+
+                        $this.html(response.view);
+                        if (response.IsCompleted) {
+                            if (response.title)
+                                AddMessage(response.title, response.message, "success");
+                        }
+                        else {
+                            if (response.title) {
+                                AddMessage(response.title, response.message, "error");
+                            }
+                        }
+
+                        Unblock($this);
+                    });
+            });
+        });
+</script>
