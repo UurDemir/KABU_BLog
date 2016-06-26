@@ -7,11 +7,59 @@
 }
 
 <h2>Ayarlar</h2>
-
 <div class="row-fluid sortable">
     @Html.Partial("AddNew", Model)
+</div>
+<div class="row-fluid sortable" id="dataTable">
 
     @Html.Action("Settings")
 </div>
 
+<script type="text/javascript">
 
+    function changePage(newPage) {
+        debugger;
+        if (newPage === -1)
+            return;
+
+        refreshData();
+    }
+
+    function refreshData() {
+        var formData = $("#table").serialize();
+        var $this = $("#tableContent");
+        document.getElementById("tableContent").innerHTML = "<center><img src='/Content/img/loading.gif' /></center>";
+
+        Block($this);
+        $.ajax({
+            method: "POST",
+            url: '@Url.Action("RefreshTableData")',
+            data: formData,
+            async: true
+        })
+            .fail(function (response) {
+                AddMessage(response, response, "error");
+
+
+                Unblock($this);
+            })
+            .done(function (response) {
+                debugger;
+                if (response === "")
+                    AddMessage("Hata", "Bir hata oluştu.", "error");
+
+
+                $("#dataTable").html(response.view);
+                if (response.IsCompleted) {
+                    if (response.title)
+                        AddMessage(response.title, response.message, "success");
+                } else {
+                    if (response.title) {
+                        AddMessage(response.title, response.message, "error");
+                    }
+                }
+
+                Unblock($this);
+            });
+    }
+</script>

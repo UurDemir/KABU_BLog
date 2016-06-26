@@ -1,0 +1,20 @@
+﻿@model Blog.Models.Article
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<div class="row-fluid sortable">
+    <div class="box span12">
+        <div class="box-header" data-original-title>
+            <h2><i class="halflings-icon white edit"></i><span class="break"></span>Makale</h2>
+            <div class="box-icon">
+            </div>
+        </div>
+        <div class="box-content" id="showModel">
+
+            @Html.Partial("NewContent", Model)
+
+        </div>
+    </div><!--/span-->
+</div><!--/row-->

@@ -28,6 +28,7 @@ namespace Blog.Models
         public int? ParentId { get; set; }
 
         [Column("Language")]
+        [UIHint("DropDown")]
         public string LanguageId { get; set; }
 
         #endregion

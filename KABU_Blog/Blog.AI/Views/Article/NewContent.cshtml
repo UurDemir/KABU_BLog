@@ -1,18 +1,15 @@
 ﻿@using Blog.Common.Extensions
 @using Blog.Models.Types
-@model Blog.Models.Contact
+@model Blog.Models.Article
 
 <form class="form-horizontal" id="frmContact">
     <fieldset>
         @Html.AntiForgeryToken()
         @Html.HiddenFor(x => x.Id)
-        @Html.DisplayFor(x => x.Title)
-        @Html.DisplayFor(x => x.Fullname)
-        @Html.DisplayFor(x => x.Email)
-        @Html.DisplayFor(x => x.PhoneNumber)
-        @Html.DisplayFor(x => x.UserIp)
-        @Html.DisplayFor(x => x.Message)
-        @Html.EditorFor(x => x.ContactStatus, new {items = EnumHelper<ContactStatus>.GetList()})
+        @Html.EditorFor(x=> x.Title)
+        @Html.EditorFor(x=> x.ContentSummary)
+        @Html.EditorFor(x=> x.Content)
+        @Html.EditorFor(x=> x.ca)
 
     </fieldset>
 </form>

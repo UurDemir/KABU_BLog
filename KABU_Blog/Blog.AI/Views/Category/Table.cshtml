@@ -76,7 +76,7 @@
                             <td class="center">@category.Parent</td>
                             <td class="center">@category.Status</td>
                             <td class="center">
-                                <a class="btn btn-success" href="#">
+                                <a class="btn btn-success" href="@Url.Action("Edit", new { id = category.Id })">
                                     <i class="halflings-icon white zoom-in"></i>
                                 </a>
                                 <a class="btn btn-danger" href="#">
@@ -108,8 +108,7 @@
                 changePage(1);
             });
             $('#@Html.IdFor(x => x.Search)').change(function () {
-
-                    changePage(1);
+                changePage(1);
             });
         }
         );

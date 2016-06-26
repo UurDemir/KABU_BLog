@@ -30,7 +30,7 @@ namespace Blog.AI.Controllers
         [HttpPost]
         public JsonResult RefreshTableData(TableViewModel<Contact> tableModel)
         {
-            var viewResult = RenderRazorViewToString("Index", GenerateTableModel(tableModel));
+            var viewResult = RenderRazorViewToString("Table", GenerateTableModel(tableModel));
 
             return Json(new { view = viewResult, IsCompleted = true });
         }
@@ -45,29 +45,48 @@ namespace Blog.AI.Controllers
             return View(contact);
         }
 
+        public async Task<JsonResult> Remove(int id)
+        {
+            var model = await _contactService.FindById(id);
+
+            if (model == null)
+                return Json(new { IsCompleted = false, title = "Hata !", message = "Model Bulunamadı !" }, JsonRequestBehavior.AllowGet);
+
+            _contactService.Delete(model);
+
+            return Json(new { IsCompleted = true, title = "Başarılı !", message = "Başarı ile silindi !" }, JsonRequestBehavior.AllowGet);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Update(Contact model)
+        public async Task<JsonResult> Update(int id, ContactStatus ContactStatus)
         {
-            var viewResult = RenderRazorViewToString("Show", model);
+            var updatingModel = await _contactService.FindById(id);
+
+            if (updatingModel == null)
+                throw new Exception("Model bulunamadı.");
+
+            updatingModel.ContactStatus = ContactStatus;
+
+            var viewResult = RenderRazorViewToString("Show", updatingModel);
 
             if (!ModelState.IsValid)
                 return Json(new { view = viewResult, IsCompleted = false }, JsonRequestBehavior.AllowGet);
 
-            _contactService.Update(model);
+            _contactService.Update(updatingModel);
 
             return Json(new { view = viewResult, title = "Başarılı !", message = "Başarı ile güncellendi.", IsCompleted = true }, JsonRequestBehavior.AllowGet);
         }
 
-        public TableViewModel<Contact> GenerateTableModel(TableViewModel<Contact> table)
+        private TableViewModel<Contact> GenerateTableModel(TableViewModel<Contact> table)
         {
             var search = table.Search ?? "";
 
             var tableList =
                 _contactService.Get(
-                    x =>
+                    x => x.Status != Status.Deleted && (
                         x.Email.Contains(search) || x.Fullname.Contains(search) || x.Message.Contains(search) ||
-                        x.Title.Contains(search) || x.UserIp.Contains(search) || x.PhoneNumber.Contains(search)).Result;
+                        x.Title.Contains(search) || x.UserIp.Contains(search) || x.PhoneNumber.Contains(search))).Result;
 
             table.Hits = tableList.OrderBy(x => x.Id).Skip((table.CurrentPage - 1) * table.Perpage).Take(table.Perpage).ToList();
             table.TotalCount = tableList.Count();

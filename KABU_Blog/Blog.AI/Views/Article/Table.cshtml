@@ -1,10 +1,9 @@
-﻿@model Blog.AI.Models.TableViewModel<Blog.Models.Setting>
-
+﻿@model Blog.AI.Models.TableViewModel<Blog.Models.Article>
 <form id="table">
     @Html.HiddenFor(x => x.CurrentPage)
     <div class="box span12">
         <div class="box-header">
-            <h2><i class="halflings-icon white align-justify"></i><span class="break"></span>Ayarlar</h2>
+            <h2><i class="halflings-icon white align-justify"></i><span class="break"></span>Makaleler</h2>
             <div class="box-icon">
             </div>
         </div>
@@ -53,31 +52,34 @@
                        })
                     </div>
                 </div>
+                <div class="control-group span6">
+                    @Html.EditorFor(x => x.Search)
+                </div>
             </div>
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Key</th>
-                        <th>Value</th>
-                        <th>Extra</th>
-                        <th>Status</th>
+                        <th>Id</th>
+                        <th>Başlık</th>
+                        <th>Slug</th>
+                        <th>Gönderilme Tarihi</th>
                         <th>İşlemler</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var setting in Model.Hits)
+                    @foreach (var item in Model.Hits)
                     {
 
                         <tr>
-                            <td>@setting.Id</td>
-                            <td class="center">@setting.Value</td>
-                            <td class="center">@setting.Extra</td>
-                            <td class="center">@setting.Status</td>
+                            <td>@item.Id</td>
+                            <td class="center">@item.Title</td>
+                            <td class="center">@item.SlugId</td>
+                            <td class="center">@item.Created.ToShortDateString()</td>
                             <td class="center">
-                                <a class="btn btn-success" href="#">
-                                    <i class="halflings-icon white zoom-in"></i>
+                                <a class="btn btn-success" href="@Url.Action("Edit", new { id = item.Id })">
+                                    <i class="halflings-icon white edit"></i>
                                 </a>
-                                <a class="btn btn-danger" href="#">
+                                <a class="btn btn-danger" href="javascript:void(0)" onclick="removeItem(@item.Id)">
                                     <i class="halflings-icon white trash"></i>
                                 </a>
                             </td>
@@ -88,7 +90,6 @@
             <div class="pagination pagination-centered">
                 <ul>
                     <li class="prev @(Model.CurrentPage == 1 ? "disabled" : "") "><a href="javascript:void(0)" onclick="changePage(@(Model.CurrentPage == 1 ? -1 : Model.CurrentPage - 1))">Önceki</a></li>
-
                     @for (int i = 1; i <= Model.PageCount; i++)
                     {
                         <li @(Model.CurrentPage == i ? "class='active disabled'" : "")><a href="javascript:void(0)" onclick="changePage(@i)">@i</a></li>
@@ -100,19 +101,15 @@
     </div><!--/span-->
 </form>
 <script>
-    $(document)
-        .ready(
-            function() {
-                $("#@Html.IdFor(x => x.Perpage)")
-                    .change(function() {
-                        changePage(1);
-                    });
-                $('#@Html.IdFor(x => x.Search)')
-                    .change(function() {
+    $(document).ready(
+        function () {
+            $("#@Html.IdFor(x=> x.Perpage)").change(function () {
+                changePage(1);
+            });
+            $('#@Html.IdFor(x => x.Search)').change(function () {
 
-                        changePage(1);
-                    });
-            }
+                changePage(1);
+            });
+        }
         );
 </script>
-
