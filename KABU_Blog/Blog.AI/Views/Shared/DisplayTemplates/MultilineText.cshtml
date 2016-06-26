@@ -3,6 +3,6 @@
 <div class="control-group">
     @Html.LabelFor(x => x, new { @class = "control-label" })
     <div class="controls">
-        <textarea class="input-xlarge uneditable-input" rows="3">@Html.ValueFor(x => x)</textarea>
+        <textarea class="input-xlarge uneditable-input" rows="3"  id="@Html.IdFor(x=> x)" name="@Html.NameFor(x=> x)">@Html.ValueFor(x => x)</textarea>
     </div>
 </div>

@@ -3,11 +3,8 @@
     ViewBag.Title = "İletişim Mesajları";
 }
 <div class="row-fluid sortable" id="dataTable">
-
     @Html.Partial("Table", Model)
-
 </div>
-
 @section scripts
 {
     <script>
@@ -20,6 +17,47 @@
 
             currentPage.val(newPage);
             refreshData();
+        }
+
+        function removeItem(id) {
+            var isConfirmed = confirm("Silmek istediğinize emin misiniz ?");
+
+            if (!isConfirmed)
+                return;
+
+            var $this = $("#tableContent");
+            Block($this);
+            $.ajax({
+                method: "POST",
+                url: '@Url.Action("Remove")',
+                data: { id: id },
+                async: true
+            })
+                .fail(function (response) {
+                    AddMessage(response, response, "error");
+
+                    Unblock($this);
+
+                })
+                .done(function (response) {
+
+                    if (response === "")
+                        AddMessage("Hata", "Bir hata oluştu.", "error");
+
+
+                    if (response.IsCompleted) {
+                        if (response.title)
+                            AddMessage(response.title, response.message, "success");
+                    }
+                    else {
+                        if (response.title) {
+                            AddMessage(response.title, response.message, "error");
+                        }
+                    }
+
+                    Unblock($this);
+                    refreshData();
+                });
         }
 
         function refreshData() {

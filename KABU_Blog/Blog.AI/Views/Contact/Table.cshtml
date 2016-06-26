@@ -77,9 +77,9 @@
                             <td class="center">@contact.Created.ToShortDateString()</td>
                             <td class="center">
                                 <a class="btn btn-success" href="@Url.Action("ReadMessage", new { id = contact.Id })">
-                                <i class="halflings-icon white zoom-in"></i>
+                                    <i class="halflings-icon white zoom-in"></i>
                                 </a>
-                                <a class="btn btn-danger" href="#">
+                                <a class="btn btn-danger" href="javascript:void(0)" onclick="removeItem(@contact.Id)">
                                     <i class="halflings-icon white trash"></i>
                                 </a>
                             </td>

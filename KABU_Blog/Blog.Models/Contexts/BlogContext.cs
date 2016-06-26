@@ -99,6 +99,7 @@ namespace Blog.Models.Contexts
                         entity.UpdatedId = HttpContext.Current.User.Identity.GetUserId();
                     }
                 }
+                
             }
         }
 

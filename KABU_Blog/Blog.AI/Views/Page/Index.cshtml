@@ -1,0 +1,27 @@
+﻿@using Blog.Resources
+@model Blog.AI.Models.TableViewModel<Blog.Models.Page>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row-fluid">
+    <div class="box span12">
+        <div class="box-header">
+            <h2><i class="halflings-icon white th"></i><span class="break"></span>Sayfa Bilgileri</h2>
+        </div>
+        <div class="box-content">
+            <ul class="nav tab-menu nav-tabs" id="myTab">
+                <li class="active"><a href="#information">Sayfa Bilgileri</a></li>
+                <li><a href="#newPage">Yeni Sayfa</a></li>
+            </ul>
+            <div id="profileTab" class="tab-content">
+                <div class="tab-pane active" id="information">
+                    @Html.Action("PageInformation")
+                </div>
+                <div class="tab-pane" id="newPage">
+                    @Html.Action("NewPage")
+                </div>
+            </div>
+        </div>
+    </div><!--/span-->
+</div>

@@ -3,6 +3,6 @@
 <div class="control-group">
     @Html.LabelFor(x => x, new { @class = "control-label" })
         <div class="controls">
-            <span class="input-xlarge uneditable-input">@Html.ValueFor(x=> x)</span>
+            <span class="input-xlarge uneditable-input" id="@Html.IdFor(x=> x)" name="@Html.NameFor(x=> x)">@Html.ValueFor(x=> x)</span>
         </div>
     </div>
