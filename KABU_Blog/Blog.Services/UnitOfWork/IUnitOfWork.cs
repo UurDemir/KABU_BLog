@@ -4,6 +4,6 @@ namespace Blog.Services.UnitOfWork
 {
     public interface IUnitOfWork
     {
-        Task<int> Commit();
+        int Commit();
     }
 }

@@ -1,0 +1,17 @@
+﻿@using Blog.Common.Extensions
+@using Blog.Models.Types
+@model Blog.Models.Contact
+
+<form class="form-horizontal">
+    <fieldset>
+
+        @Html.DisplayFor(x => x.Title)
+        @Html.DisplayFor(x => x.Fullname)
+        @Html.DisplayFor(x => x.Email)
+        @Html.DisplayFor(x => x.PhoneNumber)
+        @Html.DisplayFor(x => x.UserIp)
+        @Html.DisplayFor(x => x.Message)
+        @Html.DropDownListFor(x=> x.ContactStatus,EnumHelper<ContactStatus>.GetList())
+
+    </fieldset>
+</form>

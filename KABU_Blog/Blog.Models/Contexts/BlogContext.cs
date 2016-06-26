@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Threading.Tasks;
@@ -25,7 +26,7 @@ namespace Blog.Models.Contexts
             modelBuilder.Entity<IdentityUserRole>().ToTable("UserRoles");
             modelBuilder.Entity<IdentityUserLogin>().ToTable("UserLogins");
             modelBuilder.Entity<IdentityUserClaim>().ToTable("Claims");
-
+            modelBuilder.Entity<Setting>().Property(s => s.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
         }
 
         public override int SaveChanges()
