@@ -1,4 +1,10 @@
-﻿<div class="row-fluid sortable">
+﻿@model Blog.Models.Contact
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<div class="row-fluid sortable">
     <div class="box span12">
         <div class="box-header" data-original-title>
             <h2><i class="halflings-icon white edit"></i><span class="break"></span>Mesaj</h2>
@@ -7,7 +13,7 @@
         </div>
         <div class="box-content" id="showModel">
 
-            @Html.Partial("Show")
+            @Html.Partial("Show",Model)
 
         </div>
     </div><!--/span-->

@@ -15,24 +15,15 @@ namespace Blog.AI.Controllers
     public class ContactController : KabuController
     {
         private IContactService _contactService;
-        private ISettingService _setting;
 
-        public ContactController(IContactService contactService,ISettingService setting)
+        public ContactController(IContactService contactService)
         {
             _contactService = contactService;
-            _setting = setting;
         }
 
         // GET: Contact
         public ActionResult Index()
         {
-            _setting.Create(new Setting
-            {
-                Extra = "Extra",
-                Id = "Key",
-                Value = "Value",
-                Status = Status.Active
-            });
             return View(GenerateTableModel(new TableViewModel<Contact>()));
         }
 

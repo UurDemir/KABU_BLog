@@ -434,10 +434,11 @@
     <Content Include="Views\Shared\DisplayTemplates\MultilineText.cshtml" />
     <Content Include="Views\Category\New.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Enum.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DropDown.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Shared\DisplayTemplates\" />
     <Folder Include="Views\Setting\" />
   </ItemGroup>
   <ItemGroup>

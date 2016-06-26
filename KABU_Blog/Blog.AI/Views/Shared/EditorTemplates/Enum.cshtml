@@ -1,0 +1,8 @@
+﻿@model Enum
+
+<div class="control-group hidden-phone @(IsPost ? ViewData.ModelState.IsValidField(Html.NameFor(x => x).ToString()) ? "success" : "error" : "")">
+    @Html.LabelFor(x => x, new { @class = "control-label" })
+    <div class="controls">
+        @Html.DropDownListFor(x => x, (List<SelectListItem>)ViewBag.items, new { data_rel = "chosen" })
+    </div>
+</div>

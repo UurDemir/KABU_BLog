@@ -11,7 +11,7 @@
         @Html.DisplayFor(x => x.PhoneNumber)
         @Html.DisplayFor(x => x.UserIp)
         @Html.DisplayFor(x => x.Message)
-        @Html.DropDownListFor(x=> x.ContactStatus,EnumHelper<ContactStatus>.GetList())
+        @Html.EditorFor(x => x.ContactStatus, new { items = EnumHelper<ContactStatus>.GetList() })
 
     </fieldset>
 </form>
