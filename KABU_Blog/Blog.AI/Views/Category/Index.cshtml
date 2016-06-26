@@ -1,7 +1,67 @@
-﻿
+﻿@model Blog.AI.Models.TableViewModel<Blog.Models.Category>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Kategoriler";
 }
+<div class="row-fluid sortable" id="dataTable">
 
-<h2>Index</h2>
+    @Html.Partial("Table", Model)
 
+</div>
+
+@section scripts
+{
+    <script>
+
+
+
+        function changePage(newPage) {
+
+            if (newPage === -1)
+                return;
+
+            var currentPage = $("#@Html.IdFor(x=> x.CurrentPage)");
+
+            currentPage.val(newPage);
+            refreshData();
+        }
+
+        function refreshData() {
+            var formData = $("#table").serialize();
+            var $this = $("#tableContent");
+            document.getElementById("tableContent").innerHTML = "<center><img src='/Content/img/loading.gif' /></center>";
+
+            Block($this);
+            $.ajax({
+                method: "POST",
+                url: '@Url.Action("RefreshTableData")',
+                data: formData,
+                async: true
+            })
+                .fail(function (response) {
+                    AddMessage(response, response, "error");
+
+
+                    Unblock($this);
+                })
+                .done(function (response) {
+
+                    if (response === "")
+                        AddMessage("Hata", "Bir hata oluştu.", "error");
+
+
+                    $("#dataTable").html(response.view);
+                    if (response.IsCompleted) {
+                        if (response.title)
+                            AddMessage(response.title, response.message, "success");
+                    }
+                    else {
+                        if (response.title) {
+                            AddMessage(response.title, response.message, "error");
+                        }
+                    }
+
+                    Unblock($this);
+                });
+        }
+    </script>
+}

@@ -1,7 +1,62 @@
-﻿
+﻿@using Blog.Models
+@model Category
+
 @{
     ViewBag.Title = "New";
 }
 
-<h2>New</h2>
 
+
+<div class="row-fluid sortable">
+    <div class="box span12">
+        <div class="box-header" data-original-title>
+            <h2><i class="halflings-icon white edit"></i><span class="break"></span>Mesaj</h2>
+            <div class="box-icon">
+            </div>
+        </div>
+        <div class="box-content" id="showModel">
+
+            <form class="form-horizontal" id="NewCategory">
+                <fieldset>
+                    @if (Model != null)
+                    {
+                        @Html.HiddenFor(m => m.Id);
+                    }
+
+                    @Html.EditorFor(m => m.Name)
+                    @Html.DropDownListFor(m => m.ParentId, new List<SelectListItem>
+                       {
+                               new SelectListItem
+                               {
+                                   Value = "10",
+                                   Text = "test"
+                               },
+                               new SelectListItem
+                               {
+                                   Value = "25",
+                                   Text = "test2"
+                               }
+                        })
+
+                    @Html.DropDownListFor(m => m.Status, new List<SelectListItem>
+                       {
+                               new SelectListItem
+                               {
+                                   Value = "10",
+                                   Text = "10"
+                               },
+                               new SelectListItem
+                               {
+                                   Value = "25",
+                                   Text = "25"
+                               }
+                        })
+                    @Html.EditorFor(m => m.Description)
+
+
+                </fieldset>
+            </form>
+
+        </div>
+    </div><!--/span-->
+</div><!--/row-->
