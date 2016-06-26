@@ -455,6 +455,8 @@
     <Content Include="Views\Article\New.cshtml" />
     <Content Include="Views\Article\NewContent.cshtml" />
     <Content Include="Views\Page\EditPage.cshtml" />
+    <Content Include="Views\Category\Show.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\MultiSelect.cshtml" />
     <Content Include="Views\Blocker\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

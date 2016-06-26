@@ -13,17 +13,38 @@ namespace Blog.AI.Controllers
 {
     public class ArticleController : KabuController
     {
-        private IArticleService _articleService;
+        private readonly IArticleService _articleService;
+        private ICategoryService _categoryService;
 
-        public ArticleController(IArticleService articleService)
+        public ArticleController(IArticleService articleService, ICategoryService categoryService)
         {
             this._articleService = articleService;
+            _categoryService = categoryService;
         }
 
         // GET: Article
         public ActionResult Index()
         {
             return View(GenerateTableModel(new TableViewModel<Article>()));
+        }
+
+        [HttpGet]
+        public ActionResult New()
+        {
+            ViewBag.Categories = _categoryService.Get().Result.OrderBy(x => x.Name).Select(x => new SelectListItem
+            {
+                Value = x.Id.ToString(),
+                Text = x.Name
+            }).ToList();
+
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult NewItem(ArticleViewModel model)
+        {
+            return null;
         }
 
         [HttpGet]

@@ -1,0 +1,18 @@
+﻿@using WebGrease.Css.Extensions
+@model int[]
+@{
+    var items = (List<SelectListItem>)ViewBag.items;
+    if (Model != null && items.Any(x => Model.Contains(int.Parse(x.Value))))
+    {
+        var selected = items.Where(x => Model.Contains(int.Parse(x.Value)));
+        selected.ForEach(x => x.Selected = true);
+    }
+}
+
+<div class="control-group hidden-phone @(IsPost ? ViewData.ModelState.IsValidField(Html.NameFor(x => x).ToString()) ? "success" : "error" : "")">
+    @Html.LabelFor(x => x, new { @class = "control-label" })
+    <div class="controls">
+        @Html.DropDownListFor(x => x, items, new { data_rel = "chosen", multiple = "true" })
+    </div>
+</div>
+
