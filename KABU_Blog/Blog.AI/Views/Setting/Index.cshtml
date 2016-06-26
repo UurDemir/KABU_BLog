@@ -6,7 +6,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Ayarlar</h2>
 <div class="row-fluid sortable">
     @Html.Partial("AddNew", Model)
 </div>
@@ -18,12 +17,91 @@
 <script type="text/javascript">
 
     function changePage(newPage) {
-        debugger;
         if (newPage === -1)
             return;
 
         refreshData();
     }
+
+    function removeItem(id) {
+        var isConfirmed = confirm("Silmek istediğinize emin misiniz ?");
+
+        if (!isConfirmed)
+            return;
+
+        var $this = $("#tableContent");
+        Block($this);
+        $.ajax({
+            method: "POST",
+            url: '@Url.Action("Remove")',
+            data: { id: id },
+            async: true
+        })
+            .fail(function (response) {
+                AddMessage(response, response, "error");
+
+                Unblock($this);
+
+            })
+            .done(function (response) {
+
+                if (response === "")
+                    AddMessage("Hata", "Bir hata oluştu.", "error");
+
+
+                if (response.IsCompleted) {
+                    if (response.title)
+                        AddMessage(response.title, response.message, "success");
+                }
+                else {
+                    if (response.title) {
+                        AddMessage(response.title, response.message, "error");
+                    }
+                }
+
+                Unblock($this);
+                refreshData();
+            });
+    }
+
+    function loadItem(id) {
+        var $this = $("#tableContent");
+        Block($this);
+        $.ajax({
+            method: "POST",
+            url: '@Url.Action("Load")',
+            data: { id: id },
+            async: true
+        })
+            .fail(function (response) {
+                AddMessage(response, response, "error");
+
+                Unblock($this);
+
+            })
+            .done(function (response) {
+                debugger;
+                if (response === "")
+                    AddMessage("Hata", "Bir hata oluştu.", "error");
+
+
+                if (response.isCompleted) {
+
+                    $("#Id").val(response.model.Id);
+                    $("#Value").val(response.model.Value);
+                    $("#Extra").val(response.model.Extra);
+                }
+                else {
+                    if (response.title) {
+                        AddMessage(response.title, response.message, "error");
+                    }
+                }
+
+                Unblock($this);
+                refreshData();
+            });
+    }
+
 
     function refreshData() {
         var formData = $("#table").serialize();
@@ -39,12 +117,9 @@
         })
             .fail(function (response) {
                 AddMessage(response, response, "error");
-
-
                 Unblock($this);
             })
             .done(function (response) {
-                debugger;
                 if (response === "")
                     AddMessage("Hata", "Bir hata oluştu.", "error");
 

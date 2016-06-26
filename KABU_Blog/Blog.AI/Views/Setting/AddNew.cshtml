@@ -1,10 +1,12 @@
-﻿@using Blog.Resources
+﻿@using Blog.Common.Extensions
+@using Blog.Models.Types
+@using Blog.Resources
 @model Blog.Models.Setting
 
 
 <div class="box span12">
     <div class="box-header" data-original-title>
-        <h2><i class="halflings-icon white edit"></i><span class="break"></span>Form Elements</h2>
+        <h2><i class="halflings-icon white edit"></i><span class="break"></span>Yeni Ekle</h2>
         <div class="box-icon">
             <a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
             <a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
@@ -29,6 +31,13 @@
                         @Html.EditorFor(x => x.Extra)
                     </div>
                 </div>
+
+                <div class="control-group">
+                    <div class="controls">
+                        @Html.EditorFor(x => x.Status, new { items = EnumHelper<Status>.GetList() })
+                    </div>
+                </div>
+
             </fieldset>
         </form>
         <div class="form-actions">
