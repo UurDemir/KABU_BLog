@@ -29,34 +29,11 @@
                     @Html.EditorFor(m => m.Name)
                     @Html.EditorFor(m => m.ParentId, new
                {
-                   items = new List<SelectListItem>
-                    {
-                        new SelectListItem
-                        {
-                            Value = "1",
-                            Text = "test"
-                        },
-                        new SelectListItem
-                        {
-                            Value = "2",
-                            Text = "test2"
-                        }}
+                   items = ViewBag.Categories
                })
                     @Html.EditorFor(m => m.LanguageId, new
                {
-                   items = new List<SelectListItem>
-                   {
-                       new SelectListItem
-                       {
-                           Value = "tr",
-                           Text = "Türkçe"
-                       },
-                       new SelectListItem
-                       {
-                           Value = "en",
-                           Text = "İngilizce"
-                       }
-                   }
+                   items = ViewBag.Languages
                })
 
                     @Html.EditorFor(m => m.Status, new { items = EnumHelper<Status>.GetList() })

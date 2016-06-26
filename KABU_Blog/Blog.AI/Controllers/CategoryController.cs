@@ -26,9 +26,30 @@ namespace Blog.AI.Controllers
 
         public ActionResult New()
         {
-            ViewBag.Category = _categoryService.Get().Result;
-            ViewBag.Language = _languageService.Get().Result;
+            var categories = _categoryService.Get().Result.Select(x => new SelectListItem
+            {
+                Text = x.Name,
+                Value = x.Id.ToString()
+            }).ToList();
+            categories.Add(new SelectListItem
+            {
+                Text = "",
+                Value = "",
+                Selected = true
+            });
+            ViewBag.Categories = categories;
+            ViewBag.Languages = _languageService.Get().Result.ToList();
             return View();
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var category = _categoryService.FindById(id).Result;
+            if (category == null)
+            {
+                return Index();
+            }
+            return View(category);
         }
 
         public ActionResult SaveCategory(Category model)
@@ -37,7 +58,7 @@ namespace Blog.AI.Controllers
 
             if (!ModelState.IsValid)
             {
-                return Json(new {isCompleted = false}, JsonRequestBehavior.AllowGet);
+                return Json(new { isCompleted = false }, JsonRequestBehavior.AllowGet);
             }
 
             if (model.Id == 0)
@@ -50,7 +71,7 @@ namespace Blog.AI.Controllers
                 _categoryService.Update(model);
             }
 
-            return Json(new {view = viewResult, message = "Yeni kategori başarı ile eklenmiştir!", isCompleted = true},
+            return Json(new { view = viewResult, message = "Yeni kategori başarı ile eklenmiştir!", isCompleted = true },
                 JsonRequestBehavior.AllowGet);
         }
 
