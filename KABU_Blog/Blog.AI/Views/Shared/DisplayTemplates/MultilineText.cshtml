@@ -1,0 +1,8 @@
+﻿@model string
+
+<div class="control-group">
+    @Html.LabelFor(x => x, new { @class = "control-label" })
+    <div class="controls">
+        <textarea class="input-xlarge uneditable-input" rows="3">@Html.ValueFor(x => x)</textarea>
+    </div>
+</div>

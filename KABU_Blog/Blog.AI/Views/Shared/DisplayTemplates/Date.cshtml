@@ -1,0 +1,8 @@
+﻿@model DateTime
+
+    <div class="control-group">
+        @Html.LabelFor(x => x, new { @class = "control-label" })
+        <div class="controls">
+            <span class="input-xlarge uneditable-input">@Html.ValueFor(x => x, "{0:yyyy-MM-dd}")</span>
+        </div>
+    </div>

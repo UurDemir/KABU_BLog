@@ -30,6 +30,7 @@ namespace Blog.Models
         [StringLength(100, ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "StringLenght")]
         public string Title { get; set; }
 
+        [DataType(DataType.MultilineText)]
         [Display(ResourceType = typeof (Displays), Name = "Message")]
         [Required(ErrorMessageResourceType = typeof (Messages), ErrorMessageResourceName = "Required")]
         [StringLength(2000, ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "StringLenght")]
