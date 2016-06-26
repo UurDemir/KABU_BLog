@@ -445,12 +445,11 @@
     <Content Include="Views\Page\Index.cshtml" />
     <Content Include="Views\Page\PageInformation.cshtml" />
     <Content Include="Views\Page\NewPage.cshtml" />
+    <Content Include="Views\Category\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Article\" />
-    <Folder Include="Views\Setting\" />
-    <Folder Include="Views\Shared\DisplayTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
