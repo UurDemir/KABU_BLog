@@ -1,0 +1,72 @@
+﻿@using Blog.Common.Extensions
+@using Blog.Models.Types
+@using Blog.Resources
+@model Blog.Models.Category
+
+<form class="form-horizontal" id="frmNewCategory">
+    <fieldset>
+        @if (Model != null)
+        {
+            @Html.HiddenFor(m => m.Id)
+        }
+
+        @Html.EditorFor(m => m.Name)
+        @Html.EditorFor(m => m.ParentId, new
+        {
+            items = ViewBag.Categories
+        })
+        @Html.EditorFor(m => m.LanguageId, new
+        {
+            items = ViewBag.Languages
+        })
+
+        @Html.EditorFor(m => m.Status, new {items = EnumHelper<Status>.GetList()})
+        @Html.EditorFor(m => m.Description)
+        @Html.EditorFor(m => m.Slug)
+        <div class="form-actions">
+            <button type="button" id="btnSaveCategory" class="btn btn-primary">@Displays.SaveChanges</button>
+        </div>
+
+    </fieldset>
+</form>
+
+<script>
+
+    $(document).ready(function () {
+        $('#btnSaveCategory').click(function () {
+            var $this = $("#btnSaveCategory");
+            var formData = $("#frmNewCategory").serialize();
+            Block($this);
+
+            document.getElementById("btnSaveCategory").innerHTML = "@Displays.Saving";
+            $.ajax({
+                method: "POST",
+                url: '@Url.Action("SaveCategory")',
+                data: formData,
+                async: true
+            })
+                .fail(function (response) {debugger
+                    AddMessage(response, response, "error");
+
+                    Unblock($this);
+                    document.getElementById("btnSaveCategory").innerHTML = "@Displays.SaveChanges";
+                })
+                .done(function (response) {debugger
+
+                    if (response === "")
+                        AddMessage("Hata", "Bir hata oluştu.", "error");
+
+                    $("#showModel").html(response.view);
+                    if (response.IsCompleted)
+                        AddMessage(response.Name, response.message, "success");
+                    else {
+                        AddMessage("HATA", response.message, "error");
+                    }
+
+                    Unblock($this);
+                    document.getElementById("btnSaveCategory").innerHTML = "@Displays.SaveChanges";
+                });
+        });
+    });
+
+</script>

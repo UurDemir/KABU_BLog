@@ -1,0 +1,73 @@
+﻿@using Blog.Common.Extensions
+@using Blog.Models.Types
+@using Blog.Resources
+@model Blog.Models.Page
+<div class="row-fluid sortable">
+    <div class="box span12">
+        <div class="box-header" data-original-title>
+            <h2><i class="halflings-icon white edit"></i><span class="break"></span>Mesaj</h2>
+            <div class="box-icon">
+            </div>
+        </div>
+        <div class="box-content" id="showModel">
+
+            <form class="form-horizontal" id ="editsave">
+                <fieldset>
+                    @Html.AntiForgeryToken()
+                    @Html.EditorFor(x => x.Id)
+                    @Html.EditorFor(x => x.Title)
+                    @Html.EditorFor(x => x.Content)
+                    @Html.EditorFor(x => x.CreatedId)
+                    @Html.EditorFor(x => x.Status, new { items = EnumHelper<Status>.GetList() })
+                    <div class="form-actions">
+                        <button type="button" id="btnEditSavePage" class="btn btn-primary">@Displays.SaveChanges</button>
+                    </div>
+                </fieldset>
+            </form>
+
+        </div>
+    </div><!--/span-->
+</div><!--/row-->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#btnEditSavePage').click(function () {
+            var $this = $("#btnEditSavePage");
+            var formData = $("#editsave").serialize();
+            Block($this);
+
+            document.getElementById("btnEditSavePage").innerHTML = "@Displays.Saving";
+            $.ajax({
+                method: "POST",
+                url: '@Url.Action("SavePageInformations")',
+                data: formData,
+                async: true
+            })
+            .fail(function (response) {
+                AddMessage(response, response, "error");
+
+
+                Unblock($this);
+                document.getElementById("btnEditSavePage").innerHTML = "@Displays.SaveChanges";
+            })
+                .done(function (response) {
+
+                    if (response === "")
+                        AddMessage("Hata", "Bir hata oluştu.", "error");
+
+                    $("#information").html(response.view);
+                    if (response.IsCompleted)
+                        AddMessage(response.title, response.message, "success");
+                    else {
+                        if (response.title) {
+                            AddMessage(response.title, response.message, "error");
+                        }
+                    }
+
+                    Unblock($this);
+                    document.getElementById("btnEditSavePage").innerHTML = "@Displays.SaveChanges";
+                })
+            ;
+        });
+    });
+</script>

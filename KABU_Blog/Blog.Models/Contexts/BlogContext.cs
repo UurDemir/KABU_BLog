@@ -83,9 +83,9 @@ namespace Blog.Models.Contexts
 
             foreach (var changedEntity in changedEntities)
             {
-                if (changedEntity is IMonitoredEntity)
+                if (changedEntity.Entity is IMonitoredEntity)
                 {
-                    var entity = changedEntity as IMonitoredEntity;
+                    var entity = changedEntity.Entity as IMonitoredEntity;
                     if (changedEntity.State == EntityState.Added)
                     {
                         entity.Created = DateTime.Now;
