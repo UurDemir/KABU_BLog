@@ -30,7 +30,7 @@ namespace Blog.AI.Controllers
         [HttpPost]
         public JsonResult RefreshTableData(TableViewModel<Contact> tableModel)
         {
-            var viewResult = RenderRazorViewToString("Index", GenerateTableModel(tableModel));
+            var viewResult = RenderRazorViewToString("Table", GenerateTableModel(tableModel));
 
             return Json(new { view = viewResult, IsCompleted = true });
         }
@@ -78,7 +78,7 @@ namespace Blog.AI.Controllers
             return Json(new { view = viewResult, title = "Başarılı !", message = "Başarı ile güncellendi.", IsCompleted = true }, JsonRequestBehavior.AllowGet);
         }
 
-        public TableViewModel<Contact> GenerateTableModel(TableViewModel<Contact> table)
+        private TableViewModel<Contact> GenerateTableModel(TableViewModel<Contact> table)
         {
             var search = table.Search ?? "";
 

@@ -1,0 +1,59 @@
+﻿@using Blog.Common.Extensions
+@using Blog.Models.Types
+@model Blog.Models.Article
+
+<form class="form-horizontal" id="frmContact">
+    <fieldset>
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(x => x.Id)
+        @Html.EditorFor(x=> x.Title)
+        @Html.EditorFor(x=> x.ContentSummary)
+        @Html.EditorFor(x=> x.Content)
+        @Html.EditorFor(x=> x.ca)
+
+    </fieldset>
+</form>
+
+<script>
+    $(document).ready(
+        function () {
+            $("#@Html.IdFor(x=> x.ContactStatus)").change(function () {
+                debugger;
+                var $this = $("#showModel");
+
+                var formData = $("#frmContact").serialize();
+                Block($this);
+                $.ajax({
+                    method: "POST",
+                    url: '@Url.Action("Update")',
+                    data: formData,
+                    async: true
+                })
+                    .fail(function (response) {
+                        AddMessage(response, response, "error");
+
+
+                        Unblock($this);
+                    })
+                    .done(function (response) {
+
+                        if (response === "")
+                            AddMessage("Hata", "Bir hata oluştu.", "error");
+
+
+                        $this.html(response.view);
+                        if (response.IsCompleted) {
+                            if (response.title)
+                                AddMessage(response.title, response.message, "success");
+                        }
+                        else {
+                            if (response.title) {
+                                AddMessage(response.title, response.message, "error");
+                            }
+                        }
+
+                        Unblock($this);
+                    });
+            });
+        });
+</script>

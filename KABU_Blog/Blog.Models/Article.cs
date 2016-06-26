@@ -12,10 +12,12 @@ namespace Blog.Models
         [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
         public string Title { get; set; }
 
+        [DataType(DataType.Html)]
         [Display(ResourceType = typeof(Displays), Name = "Content")]
         [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
         public string Content { get; set; }
 
+        [DataType(DataType.Html)]
         [Display(ResourceType = typeof(Displays), Name = "ContentSummary")]
         public string ContentSummary { get; set; }
 

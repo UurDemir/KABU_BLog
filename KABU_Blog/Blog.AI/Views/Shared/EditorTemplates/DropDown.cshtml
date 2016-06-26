@@ -2,7 +2,7 @@
 
 @{
     var items = (List<SelectListItem>)ViewBag.items;
-    if (Model != null)
+    if (Model != null && items.Any(x => x.Value == Model.ToString()))
     {
         var selected = items.FirstOrDefault(x => x.Value == Model.ToString());
         selected.Selected = true;
