@@ -1,7 +1,7 @@
-﻿@model Blog.Models.Article
+﻿@model Blog.AI.Models.ArticleViewModel
 
 @{
-    ViewBag.Title = Model.Title;
+    ViewBag.Title ="Yeni Makale";
 }
 
 <div class="row-fluid sortable">
@@ -11,7 +11,7 @@
             <div class="box-icon">
             </div>
         </div>
-        <div class="box-content" id="showModel">
+        <div class="box-content" id="Model">
 
             @Html.Partial("NewContent", Model)
 
