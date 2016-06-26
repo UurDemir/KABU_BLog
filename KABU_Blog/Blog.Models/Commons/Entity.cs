@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Blog.Models.Commons
 {
-    public class Entity<TId>:BaseEntity,IEntity<TId>
+    public class Entity<TId> : BaseEntity, IEntity<TId>
     {
         [Key]
         [Column(Order = 0)]
