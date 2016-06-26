@@ -43,15 +43,25 @@ namespace Blog.AI.Controllers
         [HttpGet]
         public ActionResult Settings()
         {
-            var data = _settingService.Get().Result;
+            var model = GenerateTableModel(new TableViewModel<Setting>());
 
-            var model = new TableViewModel<Setting>();
+            return PartialView(model);
+        }
+
+        private TableViewModel<Setting> GenerateTableModel(TableViewModel<Setting> model)
+        {
+            var data = _settingService.Get().Result;
 
             model.Hits = data.OrderBy(x => x.Id).Skip((model.CurrentPage - 1)*model.Perpage).Take(model.Perpage).ToList();
             model.TotalCount = data.ToList().Count;
-            
-            return PartialView(model);
-            
+            return model;
         }
+
+        public JsonResult RefreshTableData(TableViewModel<Setting> tableModel)
+        {
+            var viewResult = RenderRazorViewToString("Settings", GenerateTableModel(tableModel));
+            return Json(new { view = viewResult, IsCompleted = true });
+        }
+
     }
 }

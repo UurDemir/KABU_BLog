@@ -100,15 +100,19 @@
     </div><!--/span-->
 </form>
 <script>
-    $(document).ready(
-        function () {
-            $("#@Html.IdFor(x=> x.Perpage)").change(function () {
-                changePage(1);
-            });
-            $('#@Html.IdFor(x => x.Search)').change(function () {
+    $(document)
+        .ready(
+            function() {
+                $("#@Html.IdFor(x => x.Perpage)")
+                    .change(function() {
+                        changePage(1);
+                    });
+                $('#@Html.IdFor(x => x.Search)')
+                    .change(function() {
 
-                    changePage(1);
-            });
-        }
+                        changePage(1);
+                    });
+            }
         );
 </script>
+
