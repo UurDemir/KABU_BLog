@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using Blog.AI.Models;
 using Blog.Models;
@@ -26,19 +27,25 @@ namespace Blog.AI.Controllers
 
         public ActionResult New()
         {
-            var categories = _categoryService.Get().Result.Select(x => new SelectListItem
+            List<SelectListItem> categories = new List<SelectListItem>();
+            categories.Add(new SelectListItem
+            {
+                Text = "Üst Kategorisi yok",
+                Value = "-1",
+                Selected = true
+            });
+            categories.AddRange(_categoryService.Get().Result.Select(x => new SelectListItem
             {
                 Text = x.Name,
                 Value = x.Id.ToString()
-            }).ToList();
-            categories.Add(new SelectListItem
-            {
-                Text = "",
-                Value = "",
-                Selected = true
-            });
+            }).ToList());
+            
             ViewBag.Categories = categories;
-            ViewBag.Languages = _languageService.Get().Result.ToList();
+            ViewBag.Languages = _languageService.Get().Result.Select(x=> new SelectListItem
+            {
+                Text = x.NativeName,
+                Value = x.Id
+            }).ToList();
             return View();
         }
 
@@ -54,24 +61,58 @@ namespace Blog.AI.Controllers
 
         public ActionResult SaveCategory(Category model)
         {
-            var viewResult = RenderRazorViewToString("New", model);
+            List<SelectListItem> categories = new List<SelectListItem>();
+            categories.Add(new SelectListItem
+            {
+                Text = "Üst Kategorisi yok",
+                Value = "-1",
+                Selected = true
+            });
+            categories.AddRange(_categoryService.Get().Result.Select(x => new SelectListItem
+            {
+                Text = x.Name,
+                Value = x.Id.ToString()
+            }).ToList());
+
+            ViewBag.Categories = categories;
+            ViewBag.Languages = _languageService.Get().Result.Select(x => new SelectListItem
+            {
+                Text = x.NativeName,
+                Value = x.Id
+            }).ToList();
+            var viewResult = RenderRazorViewToString("Show", model);
 
             if (!ModelState.IsValid)
             {
-                return Json(new { isCompleted = false }, JsonRequestBehavior.AllowGet);
+                return Json(new { message = "Lütfen değerleri doğru giriniz!", IsCompleted = false }, JsonRequestBehavior.AllowGet);
             }
 
             if (model.Id == 0)
             {
+                var findCategory = _categoryService.FindBy(c => c.Slug == model.Slug).Result;
+                if (findCategory != null)
+                {
+                    return Json(new { message = "Bu isimde bir kategori bulunmaktadır. Lütfen tekrar deneyiniz!", IsCompleted = false }, JsonRequestBehavior.AllowGet);
+                }
+                model.ParentId = model.ParentId != -1 ? model.ParentId : null;
                 _categoryService.Create(model);
             }
             else
             {
-
-                _categoryService.Update(model);
+                var findCategory = _categoryService.FindBy(c => c.Slug == model.Slug).Result;
+                if (findCategory != null)
+                {
+                    return Json(new { message = "Bu isimde bir kategori bulunmaktadır. Lütfen tekrar deneyiniz!", IsCompleted = false }, JsonRequestBehavior.AllowGet);
+                }
+                var category = _categoryService.FindById(model.Id).Result;
+                category.Name = model.Name;
+                category.ParentId = model.ParentId != -1 ? model.ParentId : null;
+                category.LanguageId = model.LanguageId;
+                category.Status = model.Status;
+                _categoryService.Update(category);
             }
 
-            return Json(new { view = viewResult, message = "Yeni kategori başarı ile eklenmiştir!", isCompleted = true },
+            return Json(new { view = viewResult, Name = model.Name, message = "Yeni kategori başarı ile eklenmiştir!", IsCompleted = true },
                 JsonRequestBehavior.AllowGet);
         }
 
