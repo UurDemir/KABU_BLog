@@ -35,6 +35,7 @@ namespace Blog.AI.Controllers
 
         public ActionResult ReadMessage(int id)
         {
+
             return View();
         }
 
