@@ -22,9 +22,9 @@ namespace Blog.Services.UnitOfWork
             GC.SuppressFinalize(this);
         }
 
-        public Task<int> Commit()
+        public int Commit()
         {
-            return _dbContext.SaveChangesAsync();
+            return _dbContext.SaveChanges();
         }
 
         private void Dispose(bool disposing)

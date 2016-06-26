@@ -10,6 +10,7 @@ namespace Blog.Models.Commons
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public virtual TId Id { get; set; }
 
+        [NotMapped]
         public virtual string SlugId => $"{Id}";
     }
 }

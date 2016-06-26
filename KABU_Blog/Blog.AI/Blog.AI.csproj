@@ -427,6 +427,12 @@
     <Content Include="Views\Shared\EditorTemplates\Upload.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Contact\Table.cshtml" />
+    <Content Include="Views\Contact\ReadMessage.cshtml" />
+    <Content Include="Views\Contact\Show.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\String.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Date.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MultilineText.cshtml" />
     <Content Include="Views\Category\New.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\Category\Table.cshtml" />
@@ -446,6 +452,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Blog.Common\Blog.Common.csproj">
+      <Project>{0747b2c8-525a-4241-9e7f-ec5ded8fea25}</Project>
+      <Name>Blog.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Blog.Core\Blog.Core.csproj">
       <Project>{4B2EB090-3A89-4988-934E-31C02933A8AF}</Project>
       <Name>Blog.Core</Name>

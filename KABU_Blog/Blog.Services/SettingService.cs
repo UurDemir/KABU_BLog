@@ -13,9 +13,9 @@ namespace Blog.Services
 {
     public class SettingService : EntityService<Setting>, ISettingService
     {
-        public SettingService(IUnitOfWork unitOfWork, IGenericRepository<Setting> repository ) : base(unitOfWork, repository)
+        public SettingService(IUnitOfWork unitOfWork, IGenericRepository<Setting> repository) : base(unitOfWork, repository)
         {
-            
+
         }
 
 
