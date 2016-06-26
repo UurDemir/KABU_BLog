@@ -1,0 +1,71 @@
+﻿@using Blog.Resources
+@model Blog.Models.Setting
+
+
+<div class="box span12">
+    <div class="box-header" data-original-title>
+        <h2><i class="halflings-icon white edit"></i><span class="break"></span>Form Elements</h2>
+        <div class="box-icon">
+            <a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
+            <a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
+            <a href="#" class="btn-close"><i class="halflings-icon white remove"></i></a>
+        </div>
+    </div>
+    <div class="box-content">
+        <form class="form-horizontal" id="frmNewSetting">
+            <fieldset>
+                <div class="control-group">
+                    <div class="controls">
+                        @Html.EditorFor(x => x.Id)
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        @Html.EditorFor(x => x.Value)
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        @Html.EditorFor(x => x.Extra)
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="btnAddNewSetting">Save changes</button>
+            <button type="reset" class="btn">Cancel</button>
+        </div>
+    </div>
+</div><!--/span-->
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#btnAddNewSetting').click(function () {
+            var formData = $("#frmNewSetting").serialize();
+            $.ajax({
+                method: "POST",
+                url: '@Url.Action("AddNew")',
+                data: formData
+            })
+            .fail(function (response) {
+                AddMessage(response, response, "error");
+            })
+                .done(function (response) {
+
+                    if (response === "")
+                        AddMessage("Hata", "Bir hata oluştu.", "error");
+
+                    $("#btnAddNewSetting").html(response.view);
+                    if (response.IsCompleted)
+                        AddMessage(response.title, response.message, "success");
+                    else {
+                        if (response.title) {
+                            AddMessage(response.title, response.message, "error");
+                        }
+                    }
+                });
+        });
+    });
+</script>
+
