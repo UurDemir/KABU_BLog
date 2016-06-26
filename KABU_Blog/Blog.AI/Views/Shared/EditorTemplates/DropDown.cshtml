@@ -2,8 +2,11 @@
 
 @{
     var items = (List<SelectListItem>)ViewBag.items;
-    var selected = items.FirstOrDefault(x => x.Value == Model.ToString());
-    selected.Selected = true;
+    if (Model != null)
+    {
+        var selected = items.FirstOrDefault(x => x.Value == Model.ToString());
+        selected.Selected = true;
+    }
 }
 
 <div class="control-group hidden-phone @(IsPost ? ViewData.ModelState.IsValidField(Html.NameFor(x => x).ToString()) ? "success" : "error" : "")">
