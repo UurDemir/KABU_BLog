@@ -24,6 +24,7 @@ namespace Blog.Models
         #region Foreign Key(s)
 
         [Column("Parent")]
+        [UIHint("DropDown")]
         public int? ParentId { get; set; }
 
         [Column("Language")]
