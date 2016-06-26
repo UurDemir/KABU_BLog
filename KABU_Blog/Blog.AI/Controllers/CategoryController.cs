@@ -33,6 +33,8 @@ namespace Blog.AI.Controllers
 
         public ActionResult SaveCategory(Category model)
         {
+            var viewResult = RenderRazorViewToString("New", model);
+
             if (!ModelState.IsValid)
             {
                 return Json(new {isCompleted = false}, JsonRequestBehavior.AllowGet);
@@ -44,10 +46,12 @@ namespace Blog.AI.Controllers
             }
             else
             {
+
                 _categoryService.Update(model);
             }
 
-            return Json(1, JsonRequestBehavior.AllowGet);
+            return Json(new {view = viewResult, message = "Yeni kategori başarı ile eklenmiştir!", isCompleted = true},
+                JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]

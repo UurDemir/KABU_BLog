@@ -1,56 +1,116 @@
 ﻿@using Blog.Common.Extensions
 @using Blog.Models
 @using Blog.Models.Types
+@using Blog.Resources
 @model Category
 
 @{
     ViewBag.Title = "New";
 }
 
-
-
 <div class="row-fluid sortable">
     <div class="box span12">
         <div class="box-header" data-original-title>
             <h2>
-                <i class="halflings-icon white edit"></i><span class="break"></span>Mesaj
+                <i class="halflings-icon white edit"></i><span class="break"></span>Kategori
             </h2>
             <div class="box-icon">
             </div>
         </div>
         <div class="box-content" id="showModel">
 
-            <form class="form-horizontal" id="NewCategory">
+            <form class="form-horizontal" id="frmNewCategory">
                 <fieldset>
                     @if (Model != null)
                     {
                         @Html.HiddenFor(m => m.Id)
-                        ;
                     }
 
                     @Html.EditorFor(m => m.Name)
                     @Html.EditorFor(m => m.ParentId, new
                {
                    items = new List<SelectListItem>
-                        {
-                            new SelectListItem
-                            {
-                                Value = "10",
-                                Text = "test"
-                            }
-                        ,
+                    {
                         new SelectListItem
                         {
-                            Value = "25",
+                            Value = "1",
+                            Text = "test"
+                        },
+                        new SelectListItem
+                        {
+                            Value = "2",
                             Text = "test2"
                         }}
+               })
+                    @Html.EditorFor(m => m.LanguageId, new
+               {
+                   items = new List<SelectListItem>
+                   {
+                       new SelectListItem
+                       {
+                           Value = "tr",
+                           Text = "Türkçe"
+                       },
+                       new SelectListItem
+                       {
+                           Value = "en",
+                           Text = "İngilizce"
+                       }
+                   }
                })
 
                     @Html.EditorFor(m => m.Status, new { items = EnumHelper<Status>.GetList() })
                     @Html.EditorFor(m => m.Description)
+                    <div class="form-actions">
+                        <button type="button" id="btnSaveCategory" class="btn btn-primary">@Displays.SaveChanges</button>
+                    </div>
 
                 </fieldset>
             </form>
         </div>
     </div><!--/span-->
 </div><!--/row-->
+
+<script>
+
+    $(document).ready(function () {
+        $('#btnSaveCategory').click(function () {
+            var $this = $("#btnSaveCategory");
+            var formData = $("#frmNewCategory").serialize();
+            Block($this);
+
+            document.getElementById("btnSaveCategory").innerHTML = "@Displays.Saving";
+            $.ajax({
+                method: "POST",
+                url: '@Url.Action("SaveCategory")',
+                data: formData,
+                async: true
+            })
+                .fail(function (response) {
+                    AddMessage(response, response, "error");
+
+
+                    Unblock($this);
+                    document.getElementById("btnSaveInformation").innerHTML = "@Displays.SaveChanges";
+                })
+                .done(function (response) {
+
+                    if (response === "")
+                        AddMessage("Hata", "Bir hata oluştu.", "error");
+
+                    $("#showModel").html(response.view);
+                    if (response.IsCompleted)
+                        AddMessage(response.title, response.message, "success");
+                    else {
+                        if (response.title) {
+                            AddMessage(response.title, response.message, "error");
+                        }
+                    }
+
+                    Unblock($this);
+                    document.getElementById("btnSaveCategory").innerHTML = "@Displays.SaveChanges";
+                });
+        });
+    });
+
+</script>
