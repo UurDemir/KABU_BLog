@@ -20,7 +20,7 @@ function Unblock(input) {
 $(document).ready(function () {
 
     $(".box-content.alerts").bind('DOMNodeInserted DOMNodeRemoved', function (event) {
-        debugger;
+       
         var alertContainer = $('#alerts');
 
         var totalAlerts = document.querySelectorAll(".box-content.alerts > .alert").length;

@@ -1,6 +1,6 @@
-﻿@model Blog.AI.Models.TableViewModel<Blog.Models.Contact>
+﻿@model Blog.AI.Models.TableViewModel<Blog.Models.Category>
 @{
-    ViewBag.Title = "İletişim Mesajları";
+    ViewBag.Title = "Kategoriler";
 }
 <div class="row-fluid sortable" id="dataTable">
 
@@ -11,6 +11,9 @@
 @section scripts
 {
     <script>
+
+
+
         function changePage(newPage) {
 
             if (newPage === -1)

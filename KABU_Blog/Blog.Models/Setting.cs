@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Blog.Models
 {
-    public class Setting: Entity<string>
+    public class Setting : Entity<string>
     {
         [Column("Key")]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

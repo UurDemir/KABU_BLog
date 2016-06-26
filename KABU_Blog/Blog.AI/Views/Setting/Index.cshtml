@@ -1,0 +1,17 @@
+﻿@using Blog.Models
+@model Blog.Models.Setting
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Ayarlar</h2>
+
+<div class="row-fluid sortable">
+    @Html.Partial("AddNew", Model)
+
+    @Html.Action("Settings")
+</div>
+
+
