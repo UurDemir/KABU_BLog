@@ -56,23 +56,23 @@ namespace Blog.AI.Controllers
             return table;
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult SavePageInformations()
-        {
-            var viewResult = RenderRazorViewToString("PageInformations", userInformation);
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult SavePageInformations()
+        //{
+        //    var viewResult = RenderRazorViewToString("PageInformations", userInformation);
 
-            if (!ModelState.IsValid)
-                return Json(new { view = viewResult, IsCompleted = false }, JsonRequestBehavior.AllowGet);
+        //    if (!ModelState.IsValid)
+        //        return Json(new { view = viewResult, IsCompleted = false }, JsonRequestBehavior.AllowGet);
 
-            var currentUser = UserManager.FindByIdAsync(User.Identity.GetUserId()).Result;
-            currentUser.Name = userInformation.Name;
-            currentUser.Surname = userInformation.Surname;
-            currentUser.Birthdate = userInformation.Birthdate;
+        //    var currentUser = UserManager.FindByIdAsync(User.Identity.GetUserId()).Result;
+        //    currentUser.Name = userInformation.Name;
+        //    currentUser.Surname = userInformation.Surname;
+        //    currentUser.Birthdate = userInformation.Birthdate;
 
-            var result = UserManager.Update(currentUser);
+        //    var result = UserManager.Update(currentUser);
 
-            return Json(result.Succeeded ? new { view = viewResult, title = "Başarılı !", message = "Kullanıcı bilgileri başarıyla kayıt edildi.", IsCompleted = true } : new { view = viewResult, title = "Hata !", message = GetErrorMessage(result.Errors), IsCompleted = false }, JsonRequestBehavior.AllowGet);
-        }
+        //    return Json(result.Succeeded ? new { view = viewResult, title = "Başarılı !", message = "Kullanıcı bilgileri başarıyla kayıt edildi.", IsCompleted = true } : new { view = viewResult, title = "Hata !", message = GetErrorMessage(result.Errors), IsCompleted = false }, JsonRequestBehavior.AllowGet);
+        //}
     }
 }

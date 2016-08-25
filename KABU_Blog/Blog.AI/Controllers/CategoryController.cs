@@ -41,7 +41,7 @@ namespace Blog.AI.Controllers
             }).ToList());
             
             ViewBag.Categories = categories;
-            ViewBag.Languages = _languageService.Get().Result.Select(x=> new SelectListItem
+            ViewBag.Languages = _languageService.Get().Result.OrderByDescending(l => l.NativeName).Select(x=> new SelectListItem
             {
                 Text = x.NativeName,
                 Value = x.Id

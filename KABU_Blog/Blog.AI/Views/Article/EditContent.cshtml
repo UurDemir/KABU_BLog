@@ -1,1 +1,60 @@
-﻿
+﻿@using Blog.Resources
+@model Blog.AI.Models.ArticleViewModel
+
+<form class="form-horizontal" id="frmEditContent">
+    <fieldset>
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(x => x.Article.Id)
+        @Html.EditorFor(x => x.Article.Title)
+        @Html.EditorFor(x => x.Article.ContentSummary)
+        @Html.EditorFor(x => x.Article.Content)
+        @Html.EditorFor(x => x.CategoryIds, new { items = ViewBag.Categories })
+        <div class="form-actions">
+            <button type="button" id="btnSave" class="btn btn-primary">@Displays.SaveChanges</button>
+        </div>
+    </fieldset>
+</form>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#btnSave').click(function () {
+            var $this = $("#btnSave");
+            var formData = $("#frmEditContent").serialize();
+            Block($this);
+
+            document.getElementById("btnSave").innerHTML = "@Displays.Saving";
+            $.ajax({
+                method: "POST",
+                url: '@Url.Action("NewItem")',
+                data: formData,
+                async: true
+            })
+            .fail(function (response) {
+                AddMessage(response, response, "error");
+
+
+                Unblock($this);
+                document.getElementById("btnSave").innerHTML = "@Displays.SaveChanges";
+            })
+                .done(function (response) {
+
+                    if (response === "")
+                        AddMessage("Hata", "Bir hata oluştu.", "error");
+
+                    $("#Model").html(response.view);
+                    if (response.IsCompleted)
+                        AddMessage(response.title, response.message, "success");
+                    else {
+                        if (response.title) {
+                            AddMessage(response.title, response.message, "error");
+                        }
+                    }
+
+                    Unblock($this);
+                    document.getElementById("btnSaveInformation").innerHTML = "@Displays.SaveChanges";
+                })
+            ;
+        });
+    });
+</script>
+

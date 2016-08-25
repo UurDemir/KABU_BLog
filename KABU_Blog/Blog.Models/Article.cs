@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 using Blog.Models.Commons;
 using Blog.Models.Types;
 using Blog.Resources;
@@ -12,11 +13,13 @@ namespace Blog.Models
         [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
         public string Title { get; set; }
 
+        [AllowHtml]
         [DataType(DataType.Html)]
         [Display(ResourceType = typeof(Displays), Name = "Content")]
         [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
         public string Content { get; set; }
 
+        [AllowHtml]
         [DataType(DataType.Html)]
         [Display(ResourceType = typeof(Displays), Name = "ContentSummary")]
         public string ContentSummary { get; set; }
@@ -38,7 +41,7 @@ namespace Blog.Models
         #region Computed Properties
 
         public override string SlugId => $"article{Id}";
-
+        //Title.Replace(" ", "-")
         #endregion
 
     }
