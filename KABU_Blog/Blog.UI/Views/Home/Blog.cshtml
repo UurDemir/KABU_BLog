@@ -1,0 +1,67 @@
+﻿@model List<Blog.Models.Article>
+
+@{
+    ViewBag.Title = "Blog";
+}
+
+<!-- BREADCRUMBS -->
+<section class="breadcrumbs_block clearfix parallax">
+    <div class="container center">
+        <h2><b>The</b> Blog</h2>
+        <p>Publication of the latest news, articles, and free apps.</p>
+    </div>
+</section><!-- //BREADCRUMBS -->
+<!-- BLOG -->
+<section id="blog">
+
+    <!-- CONTAINER -->
+    <div class="container">
+
+        <!-- ROW -->
+        <div class="row">
+
+            <!-- BLOG BLOCK -->
+            <div class="blog_block col-lg-9 col-md-9 padbot50">
+
+                @foreach (var article in Model)
+                {
+                    <!-- BLOG POST -->
+                    <div class="blog_post margbot50 clearfix" data-animated="fadeInUp">
+                        <div class="blog_post_img">
+                            <img src="/images/blog/1.jpg" alt="" />
+                            <a class="zoom" href="@Url.Action("Post", "Home", new {id = (int)article.Id, area = ""})"></a>
+                        </div>
+                        <div class="blog_post_descr">
+                            <div class="blog_post_date">@article.Created.ToString("d")</div>
+                            <a class="blog_post_title" href="@Url.Action("Post", "Home", new {id = (int)article.Id, area = ""})">@article.Title</a>
+                            <ul class="blog_post_info">
+                                @*<li><a href="javascript:void(0);">Admin</a></li>
+                                    <li><a href="javascript:void(0);">Creative</a></li>*@
+                                <li><a href="javascript:void(0);">@article.Comments.Count Yorum</a></li>
+                            </ul>
+                            <hr>
+                            <div class="blog_post_content">@Html.Raw(article.ContentSummary)</div>
+                            <a class="read_more_btn" href="@Url.Action("Post", "Home", new {id = (int)article.Id, area = ""})">Devamını oku..</a>
+                        </div>
+                    </div><!-- //BLOG POST -->
+                }
+
+                @*<!-- PAGINATION -->
+                    <ul class="pagination clearfix">
+                        <li><a href="javascript:void(0);">1</a></li>
+                        <li><a href="javascript:void(0);">2</a></li>
+                        <li class="active"><a href="javascript:void(0);">3</a></li>
+                        <li><a href="javascript:void(0);">4</a></li>
+                        <li><a href="javascript:void(0);">5</a></li>
+                        <li><a href="javascript:void(0);">. . .</a></li>
+                        <li><a href="javascript:void(0);">75</a></li>
+                    </ul><!-- //PAGINATION -->*@
+            </div><!-- //BLOG BLOCK -->
+
+            <!-- SIDEBAR -->
+            @Html.Action("Sidebar", "Home")
+            <!-- //SIDEBAR -->
+
+        </div><!-- //ROW -->
+    </div><!-- //CONTAINER -->
+</section><!-- //BLOG -->

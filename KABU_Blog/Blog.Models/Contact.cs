@@ -20,14 +20,14 @@ namespace Blog.Models
         [Required(ErrorMessageResourceType = typeof (Messages), ErrorMessageResourceName = "Required")]
         public string Email { get; set; }
 
-        [Display(ResourceType = typeof (Displays), Name = "PhoneNumber")]
-        [Required(ErrorMessageResourceType = typeof (Messages), ErrorMessageResourceName = "Required")]
-        [StringLength(20,MinimumLength = 10, ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "StringLenghtWithMin")]
+        //[Display(ResourceType = typeof (Displays), Name = "PhoneNumber")]
+        //[Required(ErrorMessageResourceType = typeof (Messages), ErrorMessageResourceName = "Required")]
+        //[StringLength(20,MinimumLength = 10, ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "StringLenghtWithMin")]
         public string PhoneNumber { get; set; }
 
-        [Display(ResourceType = typeof (Displays), Name = "Title")]
-        [Required(ErrorMessageResourceType = typeof (Messages), ErrorMessageResourceName = "Required")]
-        [StringLength(100, ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "StringLenght")]
+        //[Display(ResourceType = typeof (Displays), Name = "Title")]
+        //[Required(ErrorMessageResourceType = typeof (Messages), ErrorMessageResourceName = "Required")]
+        //[StringLength(100, ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "StringLenght")]
         public string Title { get; set; }
 
         [DataType(DataType.MultilineText)]
@@ -36,12 +36,12 @@ namespace Blog.Models
         [StringLength(2000, ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "StringLenght")]
         public string Message { get; set; }
 
-        [Display(ResourceType = typeof (Displays), Name = "UserIp")]
-        [Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
+        //[Display(ResourceType = typeof (Displays), Name = "UserIp")]
+        //[Required(ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "Required")]
         public string UserIp { get; set; }
 
-        [Display(ResourceType = typeof (Displays), Name = "Status")]
-        [Required(ErrorMessageResourceType = typeof (Messages), ErrorMessageResourceName = "Required")]
+        //[Display(ResourceType = typeof (Displays), Name = "Status")]
+        //[Required(ErrorMessageResourceType = typeof (Messages), ErrorMessageResourceName = "Required")]
         public ContactStatus ContactStatus { get; set; }
 
 

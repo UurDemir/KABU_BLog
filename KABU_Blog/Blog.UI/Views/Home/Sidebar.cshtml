@@ -1,0 +1,57 @@
+﻿@model Blog.UI.Models.SidebarViewModel
+
+<div class="sidebar col-lg-3 col-md-3 padbot50">
+    <!-- META WIDGET -->
+    <div class="sidepanel widget_meta">
+        <ul>
+            @foreach (var category in Model.Categories)
+            {
+                <li><a href="@Url.Action("Index","Category", new {id = category.Id})">@category.Name</a></li>
+            }
+        </ul>
+    </div><!-- //META WIDGET -->
+    <!-- POPULAR POSTS WIDGET -->
+    <div class="sidepanel widget_popular_posts">
+        <h3><b>Popüler</b> Gönderiler</h3>
+
+        @foreach (var popular in Model.Articles)
+        {
+            <div class="recent_posts_widget clearfix">
+                <div class="post_item_img_widget">
+                    <img src="/images/blog/1.jpg" alt="" />
+                </div>
+                <div class="post_item_content_widget">
+                    <a class="title" href="@Url.Action("Blog", "Home", new {id = (int)popular.Id, area = ""})">@popular.Title</a>
+                    <ul class="post_item_inf_widget">
+                        <li>@popular.Created.ToString("d")</li>
+                    </ul>
+                </div>
+            </div>
+        }
+
+    </div><!-- //POPULAR POSTS WIDGET -->
+
+    <hr>
+
+    @*<!-- POPULAR TAGS WIDGET -->
+    <div class="sidepanel widget_tags">
+        <h3><b>Popular</b> Tags</h3>
+        <ul>
+            <li><a href="javascript:void(0);">Fashion</a></li>
+            <li><a href="javascript:void(0);">Shop</a></li>
+            <li><a href="javascript:void(0);">Color</a></li>
+            <li><a href="javascript:void(0);">Creative Agency</a></li>
+            <li><a href="javascript:void(0);">Theme</a></li>
+            <li><a href="javascript:void(0);">Dress</a></li>
+            <li><a href="javascript:void(0);">Wordpress</a></li>
+        </ul>
+    </div><!-- POPULAR TAGS WIDGET -->*@
+
+    <hr>
+
+    <!-- TEXT WIDGET -->
+    <div class="sidepanel widget_text">
+        <h3><b>Blog</b> Hakkında</h3>
+        <p>I must admit this particular defense set me on edge a little bit, for two reasons. The first is that she’s being held to a completely different standard than male politicians are held to.</p>
+    </div><!-- //TEXT WIDGET -->
+</div>

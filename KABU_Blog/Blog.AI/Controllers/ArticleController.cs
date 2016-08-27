@@ -52,10 +52,15 @@ namespace Blog.AI.Controllers
 
             var viewResult = RenderRazorViewToString("New", model);
 
+            // Remove id in model state for validation! :)
+            ModelState.Remove("Article.Id");
+
             if (!ModelState.IsValid)
             {
                 return Json(new { message = "Lütfen değerleri doğru giriniz!", IsCompleted = false }, JsonRequestBehavior.AllowGet);
             }
+
+            var categories = _categoryService.Get(c => model.CategoryIds.Contains(c.Id)).Result;
 
             if (model.Article.Id == 0)
             {
@@ -68,6 +73,7 @@ namespace Blog.AI.Controllers
                     Updated = DateTime.Now,
                     Status = Status.Active,
                     ViewCount = 0,
+                    Categories = categories.ToList()
                 };
                 _articleService.Create(article);
             }
@@ -84,6 +90,7 @@ namespace Blog.AI.Controllers
                 findArticle.ContentSummary = model.Article.ContentSummary;
                 findArticle.Updated = DateTime.Now;
                 findArticle.Status = Status.Active;
+                findArticle.Categories = categories.ToList();
                 _articleService.Update(findArticle);
             }
 

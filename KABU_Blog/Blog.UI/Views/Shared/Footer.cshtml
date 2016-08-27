@@ -1,0 +1,81 @@
+﻿<!-- FOOTER -->
+<footer>
+    <!-- CONTAINER -->
+    <div class="container">
+        <!-- ROW -->
+        <div class="row" data-appear-top-offset="-200" data-animated="fadeInUp">
+
+            <div class="col-lg-4 col-md-4 col-sm-6 padbot30">
+                <h4><b>Hakkımda</b> </h4>
+                <p>We value people over profits, quality over quantity, and keeping it real. As such, we deliver an unmatched working relationship with our clients.</p>
+                <p>Our team is intentionally small, eclectic, and skilled; with our in-house expertise, we provide sharp and</p>
+                
+                
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-6 padbot30 foot_about_block">
+                <h4><b>Sosyal</b> Medya</h4>
+                <ul class="social">
+                    <li><a href="https://twitter.com/mhrbnoztmrck"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="https://www.facebook.com/mihriban.oztomurcuk"><i class="fa fa-facebook"></i></a></li>
+                    @*<li><a href="javascript:void(0);"><i class="fa fa-google-plus"></i></a></li>*@
+                    <li><a href="javascript:void(0);"><i class="fa fa-pinterest-square"></i></a></li>
+                    @*<li><a href="javascript:void(0);"><i class="map_show fa fa-map-marker"></i></a></li>*@
+                </ul>
+            </div>
+
+            <div class="respond_clear"></div>
+
+            <div class="col-lg-4 col-md-4 padbot30">
+                <h4><b>İletişime</b> Geçin</h4>
+
+                <!-- CONTACT FORM -->
+                <div class="span9 contact_form">
+                    <div id="note"></div>
+                    <div id="fields">
+                        <form id="contact-form-face" class="clearfix" action="#">
+                            <input id="txtName" type="text" name="name" placeholder="İsim"/>
+                            <input id="txtEmail" type="text" name="name" placeholder="E-mail"/>
+                            <textarea id="txtMessage" name="message" placeholder="Mesaj"></textarea>
+                            <input class="contact_btn" type="submit" value="Mesajı Gönder" onclick="sendContactFrom();" />
+                        </form>
+                    </div>
+                </div><!-- //CONTACT FORM -->
+            </div>
+        </div><!-- //ROW -->
+        <div class="row copyright">
+            <div class="col-lg-12 text-center">
+
+                <p>&copy; Mihriban Öztomurcuk <i class="fa fa-heart"></i></p>
+            </div>
+
+        </div><!-- //ROW -->
+    </div><!-- //CONTAINER -->
+</footer><!-- //FOOTER -->
+
+<script type="text/javascript">
+    
+    function sendContactFrom() {
+
+        var model = {
+            Fullname: $("#txtName").val(),
+            Email: $("#txtEmail").val(),
+            Message: $("#txtMessage").val(),
+        };
+        $.ajax({
+            url: "@Url.Action("Contact", "Home")",
+            data: model,
+            type: "POST",
+            async: true,
+            cache: false
+        }).done(function (response) {debugger
+            $("#txtName").val("");
+            $("#txtEmail").val("");
+            $("#txtMessage").val("");
+            alert("TEŞEKKÜRLER, MESAJINIZ TARAFIMIZA ULAŞMIŞTIR.");
+        }).fail(function (response) { 
+                alert("Hata! " + response.responseJSON.Message);
+        });
+    }
+
+</script>
