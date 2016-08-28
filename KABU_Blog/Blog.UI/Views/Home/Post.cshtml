@@ -53,35 +53,25 @@
 
                 <!-- COMMENTS -->
                 <div id="comments" class="margbot30" data-animated="fadeInUp">
-                    <h3><b>Comments </b><span class="comments_count">(152)</span></h3>
+                    <h3><b>Yorumlar </b><span class="comments_count">(@Model.Comments.Count)</span></h3>
 
                     <ul>
-                        <li class="clearfix" data-animated="fadeInUp">
-                            <div class="pull-left avatar">
-                                <a href="javascript:void(0);"><img src="/images/avatar1.jpg" alt="" /></a>
-                            </div>
-                            <div class="comment_right">
-                                <div class="comment_info clearfix">
-                                    <div class="pull-left comment_author">Stanislav Kerimov</div>
-                                    <div class="pull-left comment_inf_sep">|</div>
-                                    <div class="pull-left comment_date">13 January 2014</div>
+                        @foreach (var comment in Model.Comments)
+                        {
+                            <li class="clearfix" data-animated="fadeInUp">
+                                <div class="pull-left avatar">
+                                    <a href="javascript:void(0);"><img src="/images/avatar1.jpg" alt="" /></a>
                                 </div>
-                                <p>Thank you so much for putting this together Jeremy. Most of these seem like common sense but it is amazing how many times I see new employees having the worst days of their life because managers/leaders don’t want to be “bothered” with the new guy.</p>
-                            </div>
-                        </li>
-                        <li class="clearfix" data-animated="fadeInUp">
-                            <div class="pull-left avatar">
-                                <a href="javascript:void(0);"><img src="/images/avatar1.jpg" alt="" /></a>
-                            </div>
-                            <div class="comment_right">
-                                <div class="comment_info clearfix">
-                                    <div class="pull-left comment_author">Anna Balashova</div>
-                                    <div class="pull-left comment_inf_sep">|</div>
-                                    <div class="pull-left comment_date">10 January 2014</div>
+                                <div class="comment_right">
+                                    <div class="comment_info clearfix">
+                                        <div class="pull-left comment_author">@comment.Fullname.ToUpper()</div>
+                                        <div class="pull-left comment_inf_sep">|</div>
+                                        <div class="pull-left comment_date">@comment.Created.ToString("d")</div>
+                                    </div>
+                                    <p>@comment.Message.ToUpper()</p>
                                 </div>
-                                <p>I would add under “keep the busy” to make sure that every team member is aware of the new team member starting, and even thought the first 1-2 days may be meet and greats, to have them up with access to everything they need to preform their tasks.</p>
-                            </div>
-                        </li>
+                            </li>
+                        }
                     </ul>
                 </div>
                 <!-- //COMMENTS -->
@@ -90,18 +80,17 @@
 
                 <!-- LEAVE A COMMENT -->
                 <div class="leave_comment" data-animated="fadeInUp">
-                    <h3><b>Leave a</b> Comment</h3>
+                    <h3><b>Yorum</b> Bırakınız</h3>
 
                     <form id="comment_form" class="row" action="#" method="post">
                         <div class="col-lg-4 col-md-4">
-                            <input type="text" name="name" value="Your Name *" onFocus="if (this.value == 'Your Name *') this.value = '';" onBlur="if (this.value == '') this.value = 'Your Name *';" />
-                            <input type="text" name="phone" value="E-mail *" onFocus="if (this.value == 'E-mail *') this.value = '';" onBlur="if (this.value == '') this.value = 'E-mail *';" />
-                            <input type="text" name="phone" value="Web site" onFocus="if (this.value == 'Web site') this.value = '';" onBlur="if (this.value == '') this.value = 'Web site';" />
-                            <div class="comment_note">All fields marked with an asterisk (*) are required</div>
+                            <input id="txtName" type="text" name="name" placeholder="* İSMİNİZ" />
+                            <input id="txtEmail" type="text" name="phone" placeholder="* E-MAİL"/>
+                            <div class="comment_note">Yıldız (*) ile işaretlenmiş alanlar zorunludur.</div>
                         </div>
                         <div class="col-lg-8 col-md-8">
-                            <textarea name="message" onFocus="if (this.value == 'Your message *') this.value = '';" onBlur="if (this.value == '') this.value = 'Your message *';">Your message *</textarea>
-                            <input class="contact_btn pull-right" type="submit" value="Send message" />
+                            <textarea id="txtMessage" name="message" placeholder="* Mesajınız"></textarea>
+                            <input class="contact_btn pull-right" type="submit" value="YORUMU GÖNDER" onclick="sendCommentFrom();" />
                         </div>
                     </form>
                 </div><!-- //LEAVE A COMMENT -->
@@ -114,3 +103,27 @@
     </div><!-- //CONTAINER -->
 </section><!-- //BLOG -->
 
+<script type="text/javascript">
+
+    function sendCommentFrom() {
+
+        var model = {
+            Fullname: $("#txtName").val(),
+            Email: $("#txtEmail").val(),
+            Message: $("#txtMessage").val(),
+            ArticleId: @Model.Id,
+        };
+        $.ajax({
+            url: "@Url.Action("Comment", "Home")",
+            data: model,
+            type: "POST",
+            async: true,
+            cache: false
+        }).done(function (response) {
+            
+        }).fail(function (response) {
+            alert("Hata! " + response.responseJSON.Message);
+        });
+    }
+
+</script>

@@ -51,6 +51,14 @@ namespace Blog.UI.Controllers
                     .Include(a => a.Comments)
                     .FirstOrDefault();
 
+                if (article == null)
+                {
+                    return HttpNotFound();
+                }
+
+                article.ViewCount += 1;
+                ctx.SaveChanges();
+
                 return View(article);
             }
         }
@@ -70,6 +78,48 @@ namespace Blog.UI.Controllers
 
                 return PartialView(sidebarModel);
             }
+        }
+
+        [HttpPost]
+        public JsonResult Comment(Comment model)
+        {
+            // Remove id in model state for validation! :)
+            ModelState.Remove("UserIp");
+
+            if (!ModelState.IsValid)
+            {
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                var errors = ModelState.Values.Select(x => x.Errors.Select(er => er.ErrorMessage));
+                var result = "";
+                foreach (var error in errors)
+                {
+                    foreach (var str in error)
+                    {
+                        result += "\n" + str;
+                    }
+                }
+                return Json(new { Message = result }, JsonRequestBehavior.AllowGet);
+            }
+
+            using (var ctx = new BlogContext())
+            {
+                var comment = new Comment
+                {
+                    ArticleId = model.ArticleId,
+                    CommentStatus = CommentStatus.New,
+                    Email = model.Email,
+                    Fullname = model.Fullname,
+                    Message = model.Message,
+                    Created = DateTime.Now,
+                    Status = Status.Active,
+                    UserIp = Request.ServerVariables["REMOTE_ADDR"].ToString(),
+                    ParentId = null
+                };
+                ctx.Comments.Add(comment);
+                ctx.SaveChanges();
+            }
+
+             return Json(new { Message = "MESAJINIZ TARAFIMIZA ULAŞMIŞTIR." }, JsonRequestBehavior.AllowGet);
         }
         
         [HttpPost]
