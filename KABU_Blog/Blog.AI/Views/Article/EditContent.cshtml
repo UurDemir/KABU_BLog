@@ -1,4 +1,6 @@
-﻿@using Blog.Resources
+﻿@using Blog.Common.Extensions
+@using Blog.Models.Types
+@using Blog.Resources
 @model Blog.AI.Models.ArticleViewModel
 
 <form class="form-horizontal" id="frmEditContent">
@@ -9,6 +11,7 @@
         @Html.EditorFor(x => x.Article.ContentSummary)
         @Html.EditorFor(x => x.Article.Content)
         @Html.EditorFor(x => x.CategoryIds, new { items = ViewBag.Categories })
+        @Html.EditorFor(x => x.Article.Status, new { items = EnumHelper<Status>.GetList() })
         <div class="form-actions">
             <button type="button" id="btnSave" class="btn btn-primary">@Displays.SaveChanges</button>
         </div>
@@ -37,7 +40,7 @@
                 document.getElementById("btnSave").innerHTML = "@Displays.SaveChanges";
             })
                 .done(function (response) {
-
+                    
                     if (response === "")
                         AddMessage("Hata", "Bir hata oluştu.", "error");
 
@@ -51,7 +54,7 @@
                     }
 
                     Unblock($this);
-                    document.getElementById("btnSaveInformation").innerHTML = "@Displays.SaveChanges";
+                    document.getElementById("btnSave").innerHTML = "@Displays.SaveChanges";
                 })
             ;
         });

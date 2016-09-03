@@ -11,9 +11,12 @@
         @Html.EditorFor(x=> x.Article.ContentSummary)
         @Html.EditorFor(x=> x.Article.Content)
         @Html.EditorFor(x=> x.CategoryIds,new {items = ViewBag.Categories})
+        @Html.EditorFor(x => x.Article.Status, new { items = EnumHelper<Status>.GetList() })
+
         <div class="form-actions">
             <button type="button" id="btnSave" class="btn btn-primary">@Displays.SaveChanges</button>
         </div>
+
     </fieldset>
 </form>
 

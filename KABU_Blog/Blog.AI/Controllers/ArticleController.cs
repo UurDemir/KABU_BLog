@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 using Blog.AI.Models;
 using Blog.Models;
+using Blog.Models.Contexts;
 using Blog.Models.Types;
 using Blog.Mvc;
 using Blog.Services;
@@ -71,7 +74,7 @@ namespace Blog.AI.Controllers
                     ContentSummary = model.Article.ContentSummary,
                     Created = DateTime.Now,
                     Updated = DateTime.Now,
-                    Status = Status.Active,
+                    Status = model.Article.Status,
                     ViewCount = 0,
                     Categories = categories.ToList()
                 };
@@ -79,28 +82,56 @@ namespace Blog.AI.Controllers
             }
             else
             {
-                var findArticle = _articleService.FindBy(a => a.Id == model.Article.Id).Result;
+                //using (var ctx = new BlogContext())
+                //{
+                    //var art = ctx.Articles.Include(a => a.Categories).FirstOrDefault(a => a.Id == model.Article.Id);
+                    //if (art == null)
+                    //{
+                    //    return Json(new { message = "Bu isimde bir gönderi bulunmamaktadır. Lütfen tekrar deneyiniz!", IsCompleted = false }, JsonRequestBehavior.AllowGet);
+                    //}
+
+                    //var existingCategories = art.Categories.ToArray();
+                    //foreach (var existingCategory in existingCategories)
+                    //{
+                    //    art.Categories.Remove(existingCategory);
+                    //}
+
+                //}
+
+                var findArticle = _articleService.FindBy(a => a.Id == model.Article.Id, a => a.Categories).Result;
+
                 if (findArticle == null)
                 {
                     return Json(new { message = "Bu isimde bir gönderi bulunmamaktadır. Lütfen tekrar deneyiniz!", IsCompleted = false }, JsonRequestBehavior.AllowGet);
+                }
+                var existingCategories = findArticle.Categories.ToArray();
+                foreach (var existingCategory in existingCategories)
+                {
+                    findArticle.Categories.Remove(existingCategory);
                 }
 
                 findArticle.Title = model.Article.Title;
                 findArticle.Content = model.Article.Content;
                 findArticle.ContentSummary = model.Article.ContentSummary;
                 findArticle.Updated = DateTime.Now;
-                findArticle.Status = Status.Active;
+                findArticle.Status = model.Article.Status;
                 findArticle.Categories = categories.ToList();
                 _articleService.Update(findArticle);
             }
 
-            return Json(new { view = viewResult, Name = model.Article.Title, message = "Yeni yazı başarı ile eklenmiştir!", IsCompleted = true },
+            return Json(new { view = viewResult, Name = model.Article.Title, message = "Yeni yazı başarı ile güncellenmiştir!", IsCompleted = true },
                 JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
         public ActionResult Edit(int id)
         {
+            ViewBag.Categories = _categoryService.Get().Result.OrderBy(x => x.Name).Select(x => new SelectListItem
+            {
+                Value = x.Id.ToString(),
+                Text = x.Name
+            }).ToList();
+
             var article = _articleService.FindById(id, a => a.Categories).Result;
             if (article == null)
                 return Index();
@@ -136,6 +167,30 @@ namespace Blog.AI.Controllers
             table.Hits = tableList.OrderBy(x => x.Id).Skip((table.CurrentPage - 1) * table.Perpage).Take(table.Perpage).ToList();
             table.TotalCount = tableList.Count();
             return table;
+        }
+
+        public ActionResult FileUpload(HttpPostedFileBase file)
+        {
+            if (file != null)
+            {
+                string pic = System.IO.Path.GetFileName(file.FileName);
+                string path = System.IO.Path.Combine(
+                                       Server.MapPath("~/images/l"), pic);
+                // file is uploaded
+                file.SaveAs(path);
+
+                // save the image path path to the database or you can send image 
+                // directly to database
+                // in-case if you want to store byte[] ie. for DB
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    file.InputStream.CopyTo(ms);
+                    byte[] array = ms.GetBuffer();
+                }
+
+            }
+            // after successfully uploading redirect the user
+            return RedirectToAction("Index", "Article");
         }
     }
 }

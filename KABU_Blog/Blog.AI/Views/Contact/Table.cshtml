@@ -63,6 +63,7 @@
                         <th>Başlık</th>
                         <th>Ip</th>
                         <th>Gönderilme Tarihi</th>
+                        <th>Durum</th>
                         <th>İşlemler</th>
                     </tr>
                 </thead>
@@ -75,6 +76,7 @@
                             <td class="center">@contact.Title</td>
                             <td class="center">@contact.UserIp</td>
                             <td class="center">@contact.Created.ToShortDateString()</td>
+                            <td class="center">@contact.ContactStatus</td>
                             <td class="center">
                                 <a class="btn btn-success" href="@Url.Action("ReadMessage", new { id = contact.Id })">
                                     <i class="halflings-icon white zoom-in"></i>

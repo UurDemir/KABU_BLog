@@ -1,5 +1,6 @@
 ﻿@model Blog.UI.Models.SidebarViewModel
 
+
 <div class="sidebar col-lg-3 col-md-3 padbot50">
     <!-- META WIDGET -->
     <div class="sidepanel widget_meta">
@@ -16,9 +17,10 @@
 
         @foreach (var popular in Model.Articles)
         {
+            var imgUrl = $"/images/blog/l/{@popular.Id}.jpg";
             <div class="recent_posts_widget clearfix">
                 <div class="post_item_img_widget">
-                    <img src="/images/blog/1.jpg" alt="" />
+                    <img src=@imgUrl alt="" />
                 </div>
                 <div class="post_item_content_widget">
                     <a class="title" href="@Url.Action("Blog", "Home", new {id = (int)popular.Id, area = ""})">@popular.Title</a>

@@ -44,7 +44,7 @@ namespace Blog.AI.Controllers
 
         public ActionResult _Contacts()
         {
-            var orderedContacts = _contactService.Get().Result.OrderByDescending(con => con.Created);
+            var orderedContacts = _contactService.Get().Result.Where(con => con.ContactStatus == ContactStatus.UnRead).OrderByDescending(con => con.Created);
             var contactViewModel = new ContactViewModel
             {
                 Contacts = orderedContacts.Take(5).ToList(),

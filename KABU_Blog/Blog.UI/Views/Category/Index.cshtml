@@ -28,7 +28,8 @@
                     <!-- BLOG POST -->
                     <div class="blog_post margbot50 clearfix" data-animated="fadeInUp">
                         <div class="blog_post_img">
-                            <img src="/images/blog/1.jpg" alt="" />
+                            @{ var imgUrl = $"/images/blog/l/{@article.Id}.jpg";}
+                            <img src=@imgUrl alt="@article.Title" />
                             <a class="zoom" href="@Url.Action("Post", "Home", new {id = (int)article.Id, area = ""})"></a>
                         </div>
                         <div class="blog_post_descr">

@@ -4,6 +4,8 @@
     ViewBag.Title = "Post";
 }
 
+@{ var imgUrl = $"/images/blog/l/{@Model.Id}.jpg";}
+
 <!-- BREADCRUMBS -->
 <section class="breadcrumbs_block clearfix parallax">
     <div class="container center">
@@ -33,7 +35,7 @@
                             <li><a href="javascript:void(0);">@Model.ViewCount Görüntüleme</a></li>
                         </ul>
                     </div>
-                    <div class="single_blog_post_img"><img src="/images/blog/1.jpg" alt="" /></div>
+                    <div class="single_blog_post_img"><img src=@imgUrl alt="" /></div>
 
                     <div class="single_blog_post_content">
                          @Html.Raw(Model.Content)

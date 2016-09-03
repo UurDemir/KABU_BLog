@@ -38,6 +38,7 @@ namespace Blog.UI.Controllers
             {
                 var articles = ctx.Articles
                     .Include(a => a.Comments)
+                    .Where(a => a.Status == Status.Active)
                     .OrderByDescending(a => a.Created).ToList();
                 return View(articles);
             }
@@ -47,7 +48,8 @@ namespace Blog.UI.Controllers
         {
             using (var ctx = new BlogContext())
             {
-                var article = ctx.Articles.Where(a => a.Id == id)
+                var article = ctx.Articles
+                    .Where(a => a.Id == id && a.Status == Status.Active)
                     .Include(a => a.Comments)
                     .FirstOrDefault();
 
@@ -67,7 +69,11 @@ namespace Blog.UI.Controllers
         {
             using (var ctx = new BlogContext())
             {
-                var articles = ctx.Articles.OrderByDescending(a => a.ViewCount).Take(3).ToList();
+                var articles =
+                    ctx.Articles.Where(a => a.Status == Status.Active)
+                        .OrderByDescending(a => a.ViewCount)
+                        .Take(3)
+                        .ToList();
                 var categories = ctx.Categories.ToList();
 
                 var sidebarModel = new SidebarViewModel
