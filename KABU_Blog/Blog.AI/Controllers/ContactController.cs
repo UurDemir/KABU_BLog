@@ -88,7 +88,7 @@ namespace Blog.AI.Controllers
                         x.Email.Contains(search) || x.Fullname.Contains(search) || x.Message.Contains(search) ||
                         x.Title.Contains(search) || x.UserIp.Contains(search) || x.PhoneNumber.Contains(search))).Result;
 
-            table.Hits = tableList.OrderBy(x => x.Id).Skip((table.CurrentPage - 1) * table.Perpage).Take(table.Perpage).ToList();
+            table.Hits = tableList.OrderByDescending(x => x.Id).Skip((table.CurrentPage - 1) * table.Perpage).Take(table.Perpage).ToList();
             table.TotalCount = tableList.Count();
             return table;
         }
