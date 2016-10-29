@@ -58,7 +58,11 @@ namespace Blog.UI.Controllers
                     return HttpNotFound();
                 }
 
-                article.ViewCount += 1;
+                if (Session[$"postId={id}"] == null)
+                {
+                    article.ViewCount += 1;
+                    Session[$"postId={id}"] = true;
+                }
                 ctx.SaveChanges();
 
                 return View(article);
@@ -83,6 +87,15 @@ namespace Blog.UI.Controllers
                 };
 
                 return PartialView(sidebarModel);
+            }
+        }
+
+        public ActionResult Comments(int id)
+        {
+            using (var ctx = new BlogContext())
+            {
+                var comments = ctx.Comments.Where(c => c.ArticleId == id).ToList();
+                return PartialView(comments);
             }
         }
 
@@ -125,7 +138,7 @@ namespace Blog.UI.Controllers
                 ctx.SaveChanges();
             }
 
-             return Json(new { Message = "MESAJINIZ TARAFIMIZA ULAŞMIŞTIR." }, JsonRequestBehavior.AllowGet);
+            return Json(new { Message = "MESAJINIZ TARAFIMIZA ULAŞMIŞTIR." }, JsonRequestBehavior.AllowGet);
         }
         
         [HttpPost]

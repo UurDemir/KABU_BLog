@@ -1,0 +1,44 @@
+﻿@model List<Blog.Models.Comment>
+
+<div id="comments" class="margbot30" data-animated="fadeInUp">
+    <h3><b>Yorumlar </b><span class="comments_count">(@Model.Count())</span></h3>
+
+    <ul>
+        @foreach (var comment in Model)
+        {
+            <li class="clearfix" data-animated="fadeInUp">
+                <div class="pull-left avatar">
+                    <a href="javascript:void(0);"><img src="/images/avatar.png" alt="" /></a>
+                </div>
+                <div class="comment_right">
+                    <div class="comment_info clearfix">
+                        <div class="pull-left comment_author">@comment.Fullname.ToUpper()</div>
+                        <div class="pull-left comment_inf_sep">|</div>
+                        <div class="pull-left comment_date">@comment.Created.ToString("d")</div>
+                    </div>
+                    <p>@comment.Message.ToUpper()</p>
+                </div>
+            </li>
+        }
+    </ul>
+</div>
+<!-- //COMMENTS -->
+
+<hr class="margbot80">
+
+<!-- LEAVE A COMMENT -->
+<div class="leave_comment" data-animated="fadeInUp">
+    <h3><b>Yorum</b> Bırakınız</h3>
+
+    <form id="comment_form" class="row" action="#" method="post">
+        <div class="col-lg-4 col-md-4">
+            <input id="txtName" type="text" name="name" placeholder="* İSMİNİZ" />
+            <input id="txtEmail" type="text" name="phone" placeholder="* E-MAİL" />
+            <div class="comment_note">Yıldız (*) ile işaretlenmiş alanlar zorunludur.</div>
+        </div>
+        <div class="col-lg-8 col-md-8">
+            <textarea id="txtMessage" name="message" placeholder="* Mesajınız"></textarea>
+            <input class="contact_btn pull-right" type="button" value="YORUMU GÖNDER" onclick="sendCommentFrom();" />
+        </div>
+    </form>
+</div>

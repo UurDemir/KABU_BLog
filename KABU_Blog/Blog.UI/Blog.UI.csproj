@@ -197,6 +197,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\avatar.png" />
     <Content Include="images\avatar1.jpg" />
     <Content Include="images\blog\1.jpg" />
     <Content Include="images\blog\l\1.jpg" />
@@ -273,6 +274,7 @@
     <Content Include="Views\Home\Post.cshtml" />
     <Content Include="Views\Home\Sidebar.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Home\Comments.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -1306,7 +1306,7 @@ input[type="color"]:focus {
 	height:36px;
 	margin:0 0 -30px -30px;
 	opacity:0;
-	background-image:url(../images/zoom.png);
+	/*background-image:url(../images/zoom.png);*/
 	background-repeat:no-repeat;
 	background-position:0 0;
 	background-size:100% auto;
@@ -1318,7 +1318,7 @@ input[type="color"]:focus {
 	bottom:50%;
 	opacity:1;
 }
-.blog_post a.zoom:hover {background-image:url(../images/zoom_h.png);}
+/*.blog_post a.zoom:hover {background-image:url(../images/zoom_h.png);}*/
 
 .blog_post_descr hr {
 	border-color:#e9e9e9;

@@ -38,69 +38,29 @@
                     <div class="single_blog_post_img"><img src=@imgUrl alt="" /></div>
 
                     <div class="single_blog_post_content">
-                         @Html.Raw(Model.Content)
+                        @Html.Raw(Model.Content)
                     </div>
                 </div><!-- //SINGLE BLOG POST -->
-
                 @*<!-- SINGLE BLOG POST TAG -->
-                <div class="single_blog_post_tags margbot50" data-animated="fadeInUp">
-                    <ul>
-                        <li><a href="javascript:void(0);">Fashion</a></li>
-                        <li><a href="javascript:void(0);">Shop</a></li>
-                        <li><a href="javascript:void(0);">Color</a></li>
-                    </ul>
-                </div><!-- //SINGLE BLOG POST TAG -->*@
+                    <div class="single_blog_post_tags margbot50" data-animated="fadeInUp">
+                        <ul>
+                            <li><a href="javascript:void(0);">Fashion</a></li>
+                            <li><a href="javascript:void(0);">Shop</a></li>
+                            <li><a href="javascript:void(0);">Color</a></li>
+                        </ul>
+                    </div><!-- //SINGLE BLOG POST TAG -->*@
 
                 <hr>
 
                 <!-- COMMENTS -->
-                <div id="comments" class="margbot30" data-animated="fadeInUp">
-                    <h3><b>Yorumlar </b><span class="comments_count">(@Model.Comments.Count)</span></h3>
-
-                    <ul>
-                        @foreach (var comment in Model.Comments)
-                        {
-                            <li class="clearfix" data-animated="fadeInUp">
-                                <div class="pull-left avatar">
-                                    <a href="javascript:void(0);"><img src="/images/avatar1.jpg" alt="" /></a>
-                                </div>
-                                <div class="comment_right">
-                                    <div class="comment_info clearfix">
-                                        <div class="pull-left comment_author">@comment.Fullname.ToUpper()</div>
-                                        <div class="pull-left comment_inf_sep">|</div>
-                                        <div class="pull-left comment_date">@comment.Created.ToString("d")</div>
-                                    </div>
-                                    <p>@comment.Message.ToUpper()</p>
-                                </div>
-                            </li>
-                        }
-                    </ul>
+                <div id="divComments">
+                    @Html.Action("Comments", new {id = Model.Id});
                 </div>
-                <!-- //COMMENTS -->
-
-                <hr class="margbot80">
-
-                <!-- LEAVE A COMMENT -->
-                <div class="leave_comment" data-animated="fadeInUp">
-                    <h3><b>Yorum</b> Bırakınız</h3>
-
-                    <form id="comment_form" class="row" action="#" method="post">
-                        <div class="col-lg-4 col-md-4">
-                            <input id="txtName" type="text" name="name" placeholder="* İSMİNİZ" />
-                            <input id="txtEmail" type="text" name="phone" placeholder="* E-MAİL"/>
-                            <div class="comment_note">Yıldız (*) ile işaretlenmiş alanlar zorunludur.</div>
-                        </div>
-                        <div class="col-lg-8 col-md-8">
-                            <textarea id="txtMessage" name="message" placeholder="* Mesajınız"></textarea>
-                            <input class="contact_btn pull-right" type="submit" value="YORUMU GÖNDER" onclick="sendCommentFrom();" />
-                        </div>
-                    </form>
-                </div><!-- //LEAVE A COMMENT -->
+                <!-- //LEAVE A COMMENT -->
             </div><!-- //BLOG BLOCK -->
-
             <!-- SIDEBAR -->
             @Html.Action("Sidebar", "Home")
-            
+
         </div><!-- //ROW -->
     </div><!-- //CONTAINER -->
 </section><!-- //BLOG -->
@@ -122,6 +82,7 @@
             async: true,
             cache: false
         }).done(function (response) {
+            $('#divComments').load("/Home/Comments/@Model.Id");
             
         }).fail(function (response) {
             alert("Hata! " + response.responseJSON.Message);

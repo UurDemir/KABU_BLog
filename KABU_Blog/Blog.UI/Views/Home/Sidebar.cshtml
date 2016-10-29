@@ -23,7 +23,7 @@
                     <img src=@imgUrl alt="" />
                 </div>
                 <div class="post_item_content_widget">
-                    <a class="title" href="@Url.Action("Blog", "Home", new {id = (int)popular.Id, area = ""})">@popular.Title</a>
+                    <a class="title" href="@Url.Action("Post", "Home", new {id = (int)popular.Id, area = ""})">@popular.Title</a>
                     <ul class="post_item_inf_widget">
                         <li>@popular.Created.ToString("d")</li>
                     </ul>
